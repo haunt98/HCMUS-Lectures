@@ -291,6 +291,11 @@ __pycache__/
 Nhap
 Temp
 XXX
+
 *.sln
 *.vcxproj.filters
 *.vcxproj
+
+*.txt
+*.in
+*.out
