@@ -10,7 +10,7 @@ void main()
 	while (true)
 	{
 		temp = toupper(_getch());
-		if (STATE == 1)
+		if (STATE)
 		{
 			if (temp == 'P')
 			{

@@ -16,7 +16,7 @@ extern int SPEED;
 extern int HEIGH_CONSOLE, WIDTH_CONSOLE;
 extern int FOOD_INDEX;
 extern int SIZE_SNAKE;
-extern int STATE;
+extern bool STATE;
 
 void FixConsoleWindow();
 void GotoXY(int x, int y);
@@ -31,6 +31,7 @@ void PauseGame(HANDLE t);
 void Eat();
 void ProcessDead();
 void DrawSnakeAndFood(char* str);
+bool isTouchBody();
 void MoveRight();
 void MoveLeft();
 void MoveDown();

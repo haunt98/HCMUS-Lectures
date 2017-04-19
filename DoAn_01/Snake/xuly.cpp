@@ -8,7 +8,7 @@ int SPEED;
 int HEIGH_CONSOLE, WIDTH_CONSOLE;
 int FOOD_INDEX;
 int SIZE_SNAKE;
-int STATE;
+bool STATE;
 
 void FixConsoleWindow()
 {
@@ -49,7 +49,7 @@ void GenerateFood()
 }
 void ResetData()
 {
-	CHAR_LOCK = 'A', MOVING = 'D', SPEED = 1;
+	CHAR_LOCK = 'A', MOVING = 'D', SPEED = 10;
 	FOOD_INDEX = 0, WIDTH_CONSOLE = 70, HEIGH_CONSOLE = 20, SIZE_SNAKE = 6;
 	snake[0] = { 10, 5 }; snake[1] = { 11, 5 };
 	snake[2] = { 12, 5 }; snake[3] = { 13, 5 };
@@ -62,24 +62,24 @@ void StartGame()
 	system("cls");
 	ResetData();
 	DrawBoard(0, 0, WIDTH_CONSOLE, HEIGH_CONSOLE);
-	STATE = 1;
+	STATE = true;
 }
 void DrawBoard(int x, int y, int width, int height,
 	int curPosX, int curPosY)
 {
-	GotoXY(x, y); cout << 'X';
+	GotoXY(x, y); cout << '#';
 
 	for (int i = 1; i < width; i++)
-		cout << 'X';
-	cout << 'X';
-	GotoXY(x, height + y); cout << 'X';
+		cout << '#';
+	cout << '#';
+	GotoXY(x, height + y); cout << '#';
 	for (int i = 1; i < width; i++)
-		cout << 'X';
-	cout << 'X';
+		cout << '#';
+	cout << '#';
 	for (int i = y + 1; i < height + y; i++)
 	{
-		GotoXY(x, i); cout << 'X';
-		GotoXY(x + width, i); cout << 'X';
+		GotoXY(x, i); cout << '#';
+		GotoXY(x + width, i); cout << '#';
 	}
 	GotoXY(curPosX, curPosY);
 }
@@ -114,7 +114,7 @@ void Eat()
 }
 void ProcessDead()
 {
-	STATE = 0;
+	STATE = false;
 	GotoXY(0, HEIGH_CONSOLE + 2);
 	cout << "Dead, type y to continue or anykey to exit" << endl;
 }
@@ -128,9 +128,19 @@ void DrawSnakeAndFood(char* str)
 	}
 }
 
+bool isTouchBody()
+{
+	for (int i = 0; i < SIZE_SNAKE - 1; ++i)
+	{
+		if (snake[i].x == snake[SIZE_SNAKE - 1].x &&
+			snake[i].y == snake[SIZE_SNAKE - 1].y)
+			return true;
+	}
+	return false;
+}
 void MoveRight()
 {
-	if (snake[SIZE_SNAKE - 1].x + 1 == WIDTH_CONSOLE)
+	if (snake[SIZE_SNAKE - 1].x + 1 == WIDTH_CONSOLE || isTouchBody())
 		ProcessDead();
 	else {
 		if (snake[SIZE_SNAKE - 1].x + 1 == food[FOOD_INDEX].x &&
@@ -146,7 +156,8 @@ void MoveRight()
 	}
 }
 void MoveLeft() {
-	if (snake[SIZE_SNAKE - 1].x - 1 == 0)
+	if (snake[SIZE_SNAKE - 1].x - 1 == 0 ||
+		isTouchBody())
 		ProcessDead();
 	else {
 		if (snake[SIZE_SNAKE - 1].x - 1 == food[FOOD_INDEX].x &&
@@ -163,7 +174,8 @@ void MoveLeft() {
 }
 void MoveDown()
 {
-	if (snake[SIZE_SNAKE - 1].y + 1 == HEIGH_CONSOLE)
+	if (snake[SIZE_SNAKE - 1].y + 1 == HEIGH_CONSOLE ||
+		isTouchBody())
 		ProcessDead();
 	else
 	{
@@ -181,7 +193,8 @@ void MoveDown()
 }
 void MoveUp()
 {
-	if (snake[SIZE_SNAKE - 1].y - 1 == 0)
+	if (snake[SIZE_SNAKE - 1].y - 1 == 0 ||
+		isTouchBody())
 		ProcessDead();
 	else
 	{
@@ -201,7 +214,7 @@ void ThreadFunc()
 {
 	while (true)
 	{
-		if (STATE == 1)
+		if (STATE)
 		{
 			DrawSnakeAndFood(" ");
 			switch (MOVING)
