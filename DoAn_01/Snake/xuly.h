@@ -1,3 +1,6 @@
+#ifndef XULY_H
+#define XULY_H
+#define _CRT_SECURE_NO_WARNINGS
 #include <iostream>
 #include <Windows.h>
 #include <time.h>
@@ -5,35 +8,43 @@
 #include <conio.h>
 using namespace std;
 
-#define MAX_SIZE_SNAKE 10
+#define MAX_SIZE_SNAKE 20
 #define MAX_SIZE_FOOD 4
-#define MAX_SPEED 3
+#define MAX_SPEED 20
 #define ESC 27
+#define DEBUG 0
 
-extern int CHAR_LOCK;
-extern int MOVING;
-extern int SPEED;
 extern int HEIGH_CONSOLE, WIDTH_CONSOLE;
-extern int FOOD_INDEX;
-extern int SIZE_SNAKE;
+extern int CHAR_LOCK, MOVING, SPEED;
+extern POINT snake[MAX_SIZE_SNAKE];
+extern POINT food[MAX_SIZE_FOOD];
+extern int FOOD_INDEX, SIZE_SNAKE;
 extern bool STATE;
 
 void FixConsoleWindow();
 void GotoXY(int x, int y);
+void ShowCur(bool CursorVisibility);
+
 bool IsValid(int x, int y);
 void GenerateFood();
 void ResetData();
+
 void StartGame();
 void DrawBoard(int x, int y, int width, int height,
 	int curPosX = 0, int curPosY = 0);
+void ProcessDead();
 void ExitGame(HANDLE t);
 void PauseGame(HANDLE t);
+
 void Eat();
-void ProcessDead();
-void DrawSnakeAndFood(char* str);
 bool isTouchBody();
 void MoveRight();
 void MoveLeft();
 void MoveDown();
 void MoveUp();
+void DrawSnakeAndFood(char* draw_snake, char *draw_food);
 void ThreadFunc();
+
+void SaveGame(char *filename);
+void LoadGame(char *filename);
+#endif

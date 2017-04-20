@@ -1,13 +1,10 @@
 #include "xuly.h"
 
+int HEIGH_CONSOLE, WIDTH_CONSOLE;
+int CHAR_LOCK, MOVING, SPEED;
 POINT snake[MAX_SIZE_SNAKE];
 POINT food[MAX_SIZE_FOOD];
-int CHAR_LOCK;
-int MOVING;
-int SPEED;
-int HEIGH_CONSOLE, WIDTH_CONSOLE;
-int FOOD_INDEX;
-int SIZE_SNAKE;
+int SIZE_SNAKE, FOOD_INDEX;
 bool STATE;
 
 void FixConsoleWindow()
@@ -19,10 +16,16 @@ void FixConsoleWindow()
 }
 void GotoXY(int x, int y)
 {
-	COORD coord;
-	coord.X = x;
-	coord.Y = y;
-	SetConsoleCursorPosition(GetStdHandle(STD_OUTPUT_HANDLE), coord);
+	COORD cursor_pos = { x, y };
+	HANDLE hConsoleOutput = GetStdHandle(STD_OUTPUT_HANDLE);
+	SetConsoleCursorPosition(hConsoleOutput, cursor_pos);
+}
+// An con tro nhap nhay
+void ShowCur(bool CursorVisibility)
+{
+	HANDLE handle = GetStdHandle(STD_OUTPUT_HANDLE);
+	CONSOLE_CURSOR_INFO cursor = { 1, CursorVisibility };
+	SetConsoleCursorInfo(handle, &cursor);
 }
 
 bool IsValid(int x, int y)
@@ -50,7 +53,7 @@ void GenerateFood()
 void ResetData()
 {
 	CHAR_LOCK = 'A', MOVING = 'D', SPEED = 10;
-	FOOD_INDEX = 0, WIDTH_CONSOLE = 70, HEIGH_CONSOLE = 20, SIZE_SNAKE = 6;
+	FOOD_INDEX = 0, WIDTH_CONSOLE = 80, HEIGH_CONSOLE = 20, SIZE_SNAKE = 6;
 	snake[0] = { 10, 5 }; snake[1] = { 11, 5 };
 	snake[2] = { 12, 5 }; snake[3] = { 13, 5 };
 	snake[4] = { 14, 5 }; snake[5] = { 15, 5 };
@@ -84,6 +87,12 @@ void DrawBoard(int x, int y, int width, int height,
 	GotoXY(curPosX, curPosY);
 }
 
+void ProcessDead()
+{
+	STATE = false;
+	GotoXY(0, HEIGH_CONSOLE + 2);
+	cout << "Dead, type y to continue or anykey to exit" << endl;
+}
 void ExitGame(HANDLE t)
 {
 	system("cls");
@@ -100,9 +109,11 @@ void Eat()
 	if (FOOD_INDEX == MAX_SIZE_FOOD - 1)
 	{
 		FOOD_INDEX = 0;
-		SIZE_SNAKE = 6;
 		if (SPEED == MAX_SPEED)
+		{
+			SIZE_SNAKE = 6;
 			SPEED = 1;
+		}
 		else SPEED++;
 		GenerateFood();
 	}
@@ -110,21 +121,6 @@ void Eat()
 	{
 		FOOD_INDEX++;
 		SIZE_SNAKE++;
-	}
-}
-void ProcessDead()
-{
-	STATE = false;
-	GotoXY(0, HEIGH_CONSOLE + 2);
-	cout << "Dead, type y to continue or anykey to exit" << endl;
-}
-void DrawSnakeAndFood(char* str)
-{
-	GotoXY(food[FOOD_INDEX].x, food[FOOD_INDEX].y);
-	cout << str;
-	for (int i = 0; i < SIZE_SNAKE; i++){
-		GotoXY(snake[i].x, snake[i].y);
-		cout << str;
 	}
 }
 
@@ -210,13 +206,22 @@ void MoveUp()
 	}
 }
 
+void DrawSnakeAndFood(char* draw_snake, char *draw_food)
+{
+	GotoXY(food[FOOD_INDEX].x, food[FOOD_INDEX].y);
+	cout << draw_food;
+	for (int i = 0; i < SIZE_SNAKE; i++){
+		GotoXY(snake[i].x, snake[i].y);
+		cout << draw_snake;
+	}
+}
 void ThreadFunc()
 {
 	while (true)
 	{
 		if (STATE)
 		{
-			DrawSnakeAndFood(" ");
+			DrawSnakeAndFood(" ", " ");
 			switch (MOVING)
 			{
 			case 'A':
@@ -232,8 +237,38 @@ void ThreadFunc()
 				MoveDown();
 				break;
 			}
-			DrawSnakeAndFood("O");
+			DrawSnakeAndFood("O", "F");
 			Sleep(1000 / SPEED);
 		}
+	}
+}
+
+void SaveGame(char *filename)
+{
+	FILE *f = fopen(filename, "w");
+	fprintf(f, "%d %d\n", SIZE_SNAKE, FOOD_INDEX);
+	fprintf(f, "%d %d %d\n", CHAR_LOCK, MOVING, SPEED);
+	for (int i = 0; i < SIZE_SNAKE; ++i)
+	{
+		fprintf(f, "%d %d ", snake[i].x, snake[i].y);
+	}
+	fprintf(f, "\n");
+	for (int i = 0; i < FOOD_INDEX; ++i)
+	{
+		fprintf(f, "%d %d ", food[i].x, food[i].y);
+	}
+}
+void LoadGame(char *filename)
+{
+	FILE *f = fopen(filename, "r");
+	fscanf(f, "%d %d", &SIZE_SNAKE, &FOOD_INDEX);
+	fscanf(f, "%d %d %d", &CHAR_LOCK, &MOVING, &SPEED);
+	for (int i = 0; i < SIZE_SNAKE; ++i)
+	{
+		fscanf(f, "%d %d", &snake[i].x, &snake[i].y);
+	}
+	for (int i = 0; i < FOOD_INDEX; ++i)
+	{
+		fscanf(f, "%d %d", &food[i].x, &food[i].y);
 	}
 }
