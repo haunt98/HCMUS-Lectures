@@ -1,9 +1,10 @@
 #include "xuly.h"
 
-int HEIGH_CONSOLE, WIDTH_CONSOLE;
+int HEIGHT_CONSOLE, WIDTH_CONSOLE;
 int CHAR_LOCK, MOVING, SPEED;
 POINT snake[MAX_SIZE_SNAKE];
 POINT food[MAX_SIZE_FOOD];
+POINT my_gate[SIZE_GATE];
 int SIZE_SNAKE, FOOD_INDEX;
 bool STATE;
 
@@ -35,6 +36,9 @@ bool IsValid(int x, int y)
 		if (snake[i].x == x && snake[i].y == y)
 			return false;
 	}
+	if (x == 0 || x == WIDTH_CONSOLE ||
+		y == 0 || y == HEIGHT_CONSOLE)
+		return false;
 	return true;
 }
 void GenerateFood()
@@ -44,8 +48,7 @@ void GenerateFood()
 	for (int i = 0; i < MAX_SIZE_FOOD; i++) {
 		do {
 			x = rand() % (WIDTH_CONSOLE - 1) + 1;
-
-			y = rand() % (HEIGH_CONSOLE - 1) + 1;
+			y = rand() % (HEIGHT_CONSOLE - 1) + 1;
 		} while (IsValid(x, y) == false);
 		food[i] = { x, y };
 	}
@@ -53,7 +56,7 @@ void GenerateFood()
 void ResetData()
 {
 	CHAR_LOCK = 'A', MOVING = 'D', SPEED = 10;
-	FOOD_INDEX = 0, WIDTH_CONSOLE = 80, HEIGH_CONSOLE = 20, SIZE_SNAKE = 6;
+	FOOD_INDEX = 0, WIDTH_CONSOLE = 80, HEIGHT_CONSOLE = 20, SIZE_SNAKE = 6;
 	snake[0] = { 10, 5 }; snake[1] = { 11, 5 };
 	snake[2] = { 12, 5 }; snake[3] = { 13, 5 };
 	snake[4] = { 14, 5 }; snake[5] = { 15, 5 };
@@ -64,21 +67,20 @@ void StartGame()
 {
 	system("cls");
 	ResetData();
-	DrawBoard(0, 0, WIDTH_CONSOLE, HEIGH_CONSOLE);
+	DrawBoard(0, 0, WIDTH_CONSOLE, HEIGHT_CONSOLE);
 	STATE = true;
 }
 void DrawBoard(int x, int y, int width, int height,
 	int curPosX, int curPosY)
 {
-	GotoXY(x, y); cout << '#';
-
-	for (int i = 1; i < width; i++)
+	// ngang
+	GotoXY(x, y);
+	for (int i = 0; i <= width; i++)
 		cout << '#';
-	cout << '#';
-	GotoXY(x, height + y); cout << '#';
-	for (int i = 1; i < width; i++)
+	GotoXY(x, height + y);
+	for (int i = 0; i <= width; i++)
 		cout << '#';
-	cout << '#';
+	// doc
 	for (int i = y + 1; i < height + y; i++)
 	{
 		GotoXY(x, i); cout << '#';
@@ -90,7 +92,7 @@ void DrawBoard(int x, int y, int width, int height,
 void ProcessDead()
 {
 	STATE = false;
-	GotoXY(0, HEIGH_CONSOLE + 2);
+	GotoXY(0, HEIGHT_CONSOLE + 2);
 	cout << "Dead, type y to continue or anykey to exit" << endl;
 }
 void ExitGame(HANDLE t)
@@ -109,12 +111,19 @@ void Eat()
 	if (FOOD_INDEX == MAX_SIZE_FOOD - 1)
 	{
 		FOOD_INDEX = 0;
+		// max level
 		if (SPEED == MAX_SPEED)
 		{
 			SIZE_SNAKE = 6;
 			SPEED = 1;
 		}
-		else SPEED++;
+		// level up
+		else
+		{
+			DrawGate();
+			SPEED++;
+			//CloseGate();
+		}
 		GenerateFood();
 	}
 	else
@@ -170,7 +179,7 @@ void MoveLeft() {
 }
 void MoveDown()
 {
-	if (snake[SIZE_SNAKE - 1].y + 1 == HEIGH_CONSOLE ||
+	if (snake[SIZE_SNAKE - 1].y + 1 == HEIGHT_CONSOLE ||
 		isTouchBody())
 		ProcessDead();
 	else
@@ -270,5 +279,48 @@ void LoadGame(char *filename)
 	for (int i = 0; i < FOOD_INDEX; ++i)
 	{
 		fscanf(f, "%d %d", &food[i].x, &food[i].y);
+	}
+}
+
+void DrawGate()
+{
+	// XXX
+	// X X
+
+	do{
+		my_gate[0].x = rand() % (WIDTH_CONSOLE - 1) + 1;
+		my_gate[0].y = rand() % (HEIGHT_CONSOLE - 1) + 1;
+		my_gate[1] = { my_gate[0].x, my_gate[0].y - 1 };
+		my_gate[2] = { my_gate[0].x + 1, my_gate[0].y - 1 };
+		my_gate[3] = { my_gate[0].x + 2, my_gate[0].y - 1 };
+		my_gate[4] = { my_gate[0].x + 2, my_gate[0].y };
+	} while (IsValid(my_gate[0].x, my_gate[0].y) &&
+		IsValid(my_gate[1].x, my_gate[1].y) &&
+		IsValid(my_gate[2].x, my_gate[2].y) &&
+		IsValid(my_gate[3].x, my_gate[3].y) &&
+		IsValid(my_gate[4].x, my_gate[4].y) &&
+		my_gate[0].x != food[FOOD_INDEX].x &&
+		my_gate[0].y != food[FOOD_INDEX].y &&
+		my_gate[1].x != food[FOOD_INDEX].x &&
+		my_gate[1].y != food[FOOD_INDEX].y &&
+		my_gate[2].x != food[FOOD_INDEX].x &&
+		my_gate[2].y != food[FOOD_INDEX].y &&
+		my_gate[3].x != food[FOOD_INDEX].x &&
+		my_gate[3].y != food[FOOD_INDEX].y &&
+		my_gate[4].x != food[FOOD_INDEX].x &&
+		my_gate[5].y != food[FOOD_INDEX].y);
+	// draw
+	for (int i = 0; i < SIZE_GATE; ++i)
+	{
+		GotoXY(my_gate[i].x, my_gate[i].y);
+		cout << "X";
+	}
+}
+void CloseGate()
+{
+	for (int i = 0; i < SIZE_GATE; ++i)
+	{
+		GotoXY(my_gate[i].x, my_gate[i].y);
+		cout << " ";
 	}
 }

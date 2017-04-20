@@ -20,18 +20,18 @@ void main()
 			else if (temp == ESC)
 			{
 				ExitGame(handle_t1);
-				return;
+				break;
 			}
 			// Luu game
 			else if (temp == 'L')
 			{
 				PauseGame(handle_t1);
-				GotoXY(0, HEIGH_CONSOLE + 2);
+				GotoXY(0, HEIGHT_CONSOLE + 2);
 				cout << "Input filename to save game" << endl;
 				char p[20];
 				cin >> p;
 				SaveGame(p);
-				GotoXY(0, HEIGH_CONSOLE + 2);
+				GotoXY(0, HEIGHT_CONSOLE + 2);
 				for (int i = 0; i < 150; ++i)
 					cout << " ";
 				//cout << "Game Saved";
@@ -42,12 +42,12 @@ void main()
 			{
 				PauseGame(handle_t1);
 				DrawSnakeAndFood(" ", " ");
-				GotoXY(0, HEIGH_CONSOLE + 2);
+				GotoXY(0, HEIGHT_CONSOLE + 2);
 				cout << "Where saved game?" << endl;
 				char p[20];
 				cin >> p;
 				LoadGame(p);
-				GotoXY(0, HEIGH_CONSOLE + 2);
+				GotoXY(0, HEIGHT_CONSOLE + 2);
 				for (int i = 0; i < 150; ++i)
 					cout << " ";
 				ResumeThread(handle_t1);
@@ -77,8 +77,10 @@ void main()
 			else
 			{
 				ExitGame(handle_t1);
-				return;
+				break;
 			}
 		}
 	}
+	t1.join();
+	return;
 }
