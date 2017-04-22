@@ -300,3 +300,26 @@ XXX
 *.in
 *.out
 *.bmp
+
+#################  
+## openFrameworks  
+#################  
+
+[Bb]in/*  
+![Bb]in/data/  
+[Bb]uild/  
+[Oo]bj/  
+*.o  
+[Dd]ebug*/  
+[Rr]elease*/  
+*.mode*  
+*.app/  
+
+#################  
+## Code::Blocks  
+#################  
+
+*.depend  
+*.layout  
+*.cbp
+*.save
