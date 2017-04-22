@@ -2,30 +2,29 @@
 
 void main()
 {
-	int temp;
 	FixConsoleWindow();
 	StartGame();
 	ShowCur(false);
-	thread t1(ThreadFunc);
-	HANDLE handle_t1 = t1.native_handle();
+	thread main_thread(ThreadFunc);
+	HANDLE handle_main_thread = main_thread.native_handle();
 	while (true)
 	{
-		temp = toupper(_getch());
+		int temp = toupper(_getch());
 		if (STATE)
 		{
 			if (temp == 'P')
 			{
-				PauseGame(handle_t1);
+				PauseGame(handle_main_thread);
 			}
 			else if (temp == ESC)
 			{
-				ExitGame(handle_t1);
+				ExitGame(handle_main_thread);
 				break;
 			}
 			// Luu game
 			else if (temp == 'L')
 			{
-				PauseGame(handle_t1);
+				PauseGame(handle_main_thread);
 				GotoXY(0, HEIGHT_CONSOLE + 2);
 				cout << "Input filename to save game" << endl;
 				char p[20];
@@ -35,12 +34,12 @@ void main()
 				for (int i = 0; i < 150; ++i)
 					cout << " ";
 				//cout << "Game Saved";
-				ResumeThread(handle_t1);
+				ResumeThread(handle_main_thread);
 			}
 			// Tai game da luu
 			else if (temp == 'T')
 			{
-				PauseGame(handle_t1);
+				PauseGame(handle_main_thread);
 				DrawSnakeAndFood(" ", " ");
 				GotoXY(0, HEIGHT_CONSOLE + 2);
 				cout << "Where saved game?" << endl;
@@ -50,11 +49,11 @@ void main()
 				GotoXY(0, HEIGHT_CONSOLE + 2);
 				for (int i = 0; i < 150; ++i)
 					cout << " ";
-				ResumeThread(handle_t1);
+				ResumeThread(handle_main_thread);
 			}
 			else
 			{
-				ResumeThread(handle_t1);
+				ResumeThread(handle_main_thread);
 				if ((temp != CHAR_LOCK) && (temp == 'D' || temp == 'A'
 					|| temp == 'W' || temp == 'S'))
 				{
@@ -76,11 +75,11 @@ void main()
 				StartGame();
 			else
 			{
-				ExitGame(handle_t1);
+				ExitGame(handle_main_thread);
 				break;
 			}
 		}
 	}
-	t1.join();
+	main_thread.join();
 	return;
 }

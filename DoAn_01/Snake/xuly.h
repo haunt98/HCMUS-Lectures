@@ -52,4 +52,5 @@ void LoadGame(char *filename);
 
 void DrawGate();
 void CloseGate();
+void PassGate();
 #endif

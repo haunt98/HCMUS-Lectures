@@ -324,3 +324,7 @@ void CloseGate()
 		cout << " ";
 	}
 }
+void PassGate()
+{
+	;
+}
