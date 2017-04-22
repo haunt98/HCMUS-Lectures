@@ -321,4 +321,5 @@ XXX
 
 *.depend  
 *.layout  
-
+*.cbp
+*.save
