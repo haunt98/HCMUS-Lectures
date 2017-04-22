@@ -1,9 +1,7 @@
-#include <iostream>
-
-using namespace std;
+#include "xuly.h"
 
 int main()
 {
-    cout << "Hello world!" << endl;
+    test();
     return 0;
 }
