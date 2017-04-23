@@ -9,11 +9,14 @@
 using namespace std;
 
 #define MAX_SIZE_SNAKE 20
-#define MAX_SIZE_FOOD 2
-#define MAX_SPEED 20
+#define MAX_SIZE_FOOD 4
+#define MAX_SPEED 14
 #define SIZE_GATE 5
 #define ESC 27
 #define DEBUG 0
+
+#define LOW_SPEED 10
+#define LOW_SIZE_SNAKE 4
 
 extern int HEIGHT_CONSOLE, WIDTH_CONSOLE;
 extern int CHAR_LOCK, MOVING, SPEED;
@@ -21,7 +24,9 @@ extern POINT snake[MAX_SIZE_SNAKE];
 extern POINT food[MAX_SIZE_FOOD];
 extern POINT my_gate[SIZE_GATE];
 extern int FOOD_INDEX, SIZE_SNAKE;
+extern int TEMP_SNAKE;
 extern bool STATE;
+extern bool GATE_STATE;
 
 void FixConsoleWindow();
 void GotoXY(int x, int y);
@@ -39,11 +44,22 @@ void ExitGame(HANDLE t);
 void PauseGame(HANDLE t);
 
 void Eat();
-bool isTouchBody();
+bool TouchRightBody();
+bool TouchRightGate();
 void MoveRight();
+
+bool TouchLeftBody();
+bool TouchLeftGate();
 void MoveLeft();
+
+bool TouchDownBody();
+bool TouchDownGate();
 void MoveDown();
+
+bool TouchUpBody();
+bool TouchUpGate();
 void MoveUp();
+
 void DrawSnakeAndFood(char* draw_snake, char *draw_food);
 void ThreadFunc();
 

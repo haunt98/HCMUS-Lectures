@@ -16,6 +16,10 @@ void main()
 			{
 				PauseGame(handle_main_thread);
 			}
+			else if (temp == 'R')
+			{
+				ResumeThread(handle_main_thread);
+			}
 			else if (temp == ESC)
 			{
 				ExitGame(handle_main_thread);
