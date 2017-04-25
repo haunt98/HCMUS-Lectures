@@ -44,7 +44,7 @@ void main()
 			else if (temp == 'T')
 			{
 				PauseGame(handle_main_thread);
-				DrawSnakeAndFood(" ", " ");
+				DrawSnakeFoodGate(' ', ' ');
 				GotoXY(0, HEIGHT_CONSOLE + 2);
 				cout << "Where saved game?" << endl;
 				char p[20];

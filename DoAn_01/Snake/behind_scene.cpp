@@ -6,6 +6,7 @@ POINT snake[MAX_SIZE_SNAKE];
 POINT food[MAX_SIZE_FOOD];
 int SIZE_SNAKE, FOOD_INDEX;
 int TEMP_SNAKE = 0;
+char MSSV[8] = "1612180";
 
 void FixConsoleWindow()
 {
@@ -36,9 +37,6 @@ bool IsValid(int x, int y)
 		if (snake[i].x == x && snake[i].y == y)
 			return false;
 	}
-	if (x == 0 || x == WIDTH_CONSOLE ||
-		y == 0 || y == HEIGHT_CONSOLE)
-		return false;
 	return true;
 }
 void GenerateFood()
@@ -51,8 +49,8 @@ void GenerateFood()
 			x = rand() % (WIDTH_CONSOLE - 1) + 1;
 			y = rand() % (HEIGHT_CONSOLE - 1) + 1;
 		} while (!IsValid(x, y) ||
-			x == 1 || x == WIDTH_CONSOLE - 1 ||
-			y == 1 || y == HEIGHT_CONSOLE - 1);
+			x <2 || x > WIDTH_CONSOLE - 2 ||
+			y < 2 || y > HEIGHT_CONSOLE - 2);
 		food[i] = { x, y };
 	}
 }
@@ -73,12 +71,13 @@ void StartGame()
 	system("cls");
 	ResetData();
 	DrawBoard(0, 0, WIDTH_CONSOLE, HEIGHT_CONSOLE);
-	STATE = true;
+	STATE = 1;
 }
 void ExitGame(HANDLE t)
 {
 	system("cls");
 	TerminateThread(t, 0);
+	exit(0);
 }
 void PauseGame(HANDLE t)
 {
@@ -91,7 +90,7 @@ void ThreadFunc()
 	{
 		if (STATE)
 		{
-			DrawSnakeAndFood(" ", " ");
+			DrawSnakeFoodGate(' ', ' ');
 			switch (MOVING)
 			{
 			case 'A':
@@ -107,7 +106,7 @@ void ThreadFunc()
 				MoveDown();
 				break;
 			}
-			DrawSnakeAndFood("O", "F");
+			DrawSnakeFoodGate('O', 'F');
 			Sleep(1000 / SPEED);
 		}
 	}

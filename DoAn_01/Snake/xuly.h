@@ -10,13 +10,13 @@ using namespace std;
 
 #define MAX_SIZE_SNAKE 20
 #define MAX_SIZE_FOOD 4
-#define MAX_SPEED 14
+#define MAX_SPEED 20
 #define SIZE_GATE 5
 #define ESC 27
 #define DEBUG 0
 
 #define LOW_SPEED 10
-#define LOW_SIZE_SNAKE 4
+#define LOW_SIZE_SNAKE 7 // 1612180
 
 extern int HEIGHT_CONSOLE, WIDTH_CONSOLE;
 extern int CHAR_LOCK, MOVING, SPEED;
@@ -25,8 +25,9 @@ extern POINT food[MAX_SIZE_FOOD];
 extern POINT my_gate[SIZE_GATE];
 extern int FOOD_INDEX, SIZE_SNAKE;
 extern int TEMP_SNAKE;
-extern bool STATE;
-extern bool GATE_STATE;
+extern int STATE;
+extern int GATE_STATE;
+extern char MSSV[8];
 
 void FixConsoleWindow();
 void GotoXY(int x, int y);
@@ -44,28 +45,32 @@ void ExitGame(HANDLE t);
 void PauseGame(HANDLE t);
 
 void Eat();
+
 bool TouchRightBody();
-bool TouchRightGate();
-void MoveRight();
-
 bool TouchLeftBody();
-bool TouchLeftGate();
-void MoveLeft();
-
 bool TouchDownBody();
-bool TouchDownGate();
-void MoveDown();
-
 bool TouchUpBody();
+
+bool TouchRightGate();
+bool TouchLeftGate();
+bool TouchDownGate();
 bool TouchUpGate();
+
+void MoveRight();
+void MoveLeft();
+void MoveDown();
 void MoveUp();
 
-void DrawSnakeAndFood(char* draw_snake, char *draw_food);
+void DrawSnakeFoodGate(char char_snake, char char_food);
+void DrawFood(char char_food);
+void DrawSnake(char char_snake);
 void ThreadFunc();
 
 void SaveGame(char *filename);
 void LoadGame(char *filename);
 
+void CreateGate();
+bool CheckGate();
 void DrawGate();
 void CloseGate();
 void PassGate();

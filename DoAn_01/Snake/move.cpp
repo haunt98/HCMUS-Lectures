@@ -79,11 +79,25 @@ void MoveUp()
 		if (SIZE_SNAKE == 0)
 		{
 			CloseGate();
-			CHAR_LOCK = 'A', MOVING = 'D', SPEED = SPEED += 2;
-			FOOD_INDEX = 0, SIZE_SNAKE = TEMP_SNAKE;
-			for (int i = 0; i < SIZE_SNAKE; ++i)
+			CHAR_LOCK = 'A', MOVING = 'D';
+			SPEED = SPEED += 2;
+			FOOD_INDEX = 0;
+			if (SPEED == MAX_SPEED)
 			{
-				snake[i] = { 10 + i, 5 };
+				SIZE_SNAKE = LOW_SIZE_SNAKE;
+				SPEED = LOW_SPEED;
+				for (int i = 0; i < SIZE_SNAKE; ++i)
+				{
+					snake[i] = { 10 + i, 5 };
+				}
+			}
+			else
+			{
+				SIZE_SNAKE = TEMP_SNAKE;
+				for (int i = 0; i < SIZE_SNAKE; ++i)
+				{
+					snake[i] = { 10 + i, 5 };
+				}
 			}
 			GenerateFood();
 		}
@@ -112,21 +126,10 @@ void Eat()
 	if (FOOD_INDEX == MAX_SIZE_FOOD - 1)
 	{
 		FOOD_INDEX = 0;
-		// max level
-		if (SPEED == MAX_SPEED)
+		if (!GATE_STATE)
 		{
-			SIZE_SNAKE = LOW_SIZE_SNAKE;
-			SPEED = LOW_SPEED;
-			GenerateFood();
-		}
-		// level up
-		else
-		{
-			if (!GATE_STATE)
-			{
-				DrawGate();
-				SIZE_SNAKE++;
-			}
+			CreateGate();
+			SIZE_SNAKE++;
 		}
 	}
 	else

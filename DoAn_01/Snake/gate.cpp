@@ -1,10 +1,10 @@
 #include "xuly.h"
 
 POINT my_gate[SIZE_GATE];
-bool STATE;
-bool GATE_STATE = false;
+int STATE;
+int GATE_STATE = 0;
 
-void DrawGate()
+void CreateGate()
 {
 	// XXX
 	// X X
@@ -16,30 +16,40 @@ void DrawGate()
 		my_gate[2] = { my_gate[0].x + 1, my_gate[0].y - 1 };
 		my_gate[3] = { my_gate[0].x + 2, my_gate[0].y - 1 };
 		my_gate[4] = { my_gate[0].x + 2, my_gate[0].y };
-	} while (!IsValid(my_gate[0].x, my_gate[0].y) ||
-		!IsValid(my_gate[1].x, my_gate[1].y) ||
-		!IsValid(my_gate[2].x, my_gate[2].y) ||
-		!IsValid(my_gate[3].x, my_gate[3].y) ||
-		!IsValid(my_gate[4].x, my_gate[4].y) ||
-		(my_gate[0].x == food[FOOD_INDEX].x &&
-		my_gate[0].y == food[FOOD_INDEX].y) ||
-		(my_gate[1].x == food[FOOD_INDEX].x &&
-		my_gate[1].y == food[FOOD_INDEX].y) ||
-		(my_gate[2].x == food[FOOD_INDEX].x &&
-		my_gate[2].y == food[FOOD_INDEX].y) ||
-		(my_gate[3].x == food[FOOD_INDEX].x &&
-		my_gate[3].y == food[FOOD_INDEX].y) ||
-		(my_gate[4].x == food[FOOD_INDEX].x &&
-		my_gate[4].y == food[FOOD_INDEX].y) ||
-		my_gate[0].y == HEIGHT_CONSOLE - 1 ||
-		my_gate[0].x == WIDTH_CONSOLE - 2);
-	// draw
+	} while (!CheckGate());
+	GATE_STATE = 1;
+}
+
+bool CheckGate()
+{
 	for (int i = 0; i < SIZE_GATE; ++i)
 	{
-		GotoXY(my_gate[i].x, my_gate[i].y);
-		cout << "X";
+		if (!IsValid(my_gate[i].x, my_gate[i].y))
+			return false;
 	}
-	GATE_STATE = true;
+	for (int i = 0; i < SIZE_GATE; ++i)
+	{
+		if (my_gate[i].x == food[FOOD_INDEX].x && my_gate[i].y == food[FOOD_INDEX].y)
+			return false;
+	}
+	// Cong khong trung hang rao
+	if (my_gate[0].x<4 || my_gate[0].y>WIDTH_CONSOLE - 4)
+		return false;
+	if (my_gate[0].y<4 || my_gate[0].y>HEIGHT_CONSOLE - 4)
+		return false;
+	return true;
+}
+
+void DrawGate()
+{
+	if (GATE_STATE)
+	{
+		for (int i = 0; i < SIZE_GATE; ++i)
+		{
+			GotoXY(my_gate[i].x, my_gate[i].y);
+			cout << "X";
+		}
+	}
 }
 
 void CloseGate()
@@ -49,5 +59,5 @@ void CloseGate()
 		GotoXY(my_gate[i].x, my_gate[i].y);
 		cout << " ";
 	}
-	GATE_STATE = false;
+	GATE_STATE = 0;
 }

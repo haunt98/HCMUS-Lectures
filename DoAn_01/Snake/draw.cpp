@@ -19,19 +19,42 @@ void DrawBoard(int x, int y, int width, int height,
 	GotoXY(curPosX, curPosY);
 }
 
-void DrawSnakeAndFood(char* draw_snake, char *draw_food)
+void DrawSnakeFoodGate(char char_snake, char char_food)
+{
+	DrawFood(char_food);
+	DrawSnake(char_snake);
+	DrawGate();
+	GotoXY(WIDTH_CONSOLE + 1, 2);
+	cout << " SPEED : " << SPEED;
+	//GotoXY(WIDTH_CONSOLE + 1, 3);
+	//cout << " GATE : " << GATE_STATE;
+}
+
+void DrawFood(char char_food)
 {
 	if (!GATE_STATE)
 	{
 		GotoXY(food[FOOD_INDEX].x, food[FOOD_INDEX].y);
-		cout << draw_food;
+		cout << char_food;
 	}
-	for (int i = 0; i < SIZE_SNAKE; i++)
+}
+
+void DrawSnake(char char_snake)
+{
+	if (char_snake == ' ')
 	{
-		GotoXY(snake[i].x, snake[i].y);
-		cout << draw_snake;
+		for (int i = 0; i < SIZE_SNAKE; i++)
+		{
+			GotoXY(snake[i].x, snake[i].y);
+			cout << char_snake;
+		}
 	}
-	GotoXY(WIDTH_CONSOLE + 1, 2);
-	cout << " SPEED : " << SPEED;
-	//cout << SIZE_SNAKE;
+	else
+	{
+		for (int i = 0; i < SIZE_SNAKE; i++)
+		{
+			GotoXY(snake[i].x, snake[i].y);
+			cout << MSSV[i % 7];
+		}
+	}
 }

@@ -10,10 +10,21 @@ void SaveGame(char *filename)
 		fprintf(f, "%d %d ", snake[i].x, snake[i].y);
 	}
 	fprintf(f, "\n");
-	for (int i = 0; i < FOOD_INDEX; ++i)
+	if (FOOD_INDEX)
 	{
-		fprintf(f, "%d %d ", food[i].x, food[i].y);
+		for (int i = 0; i < FOOD_INDEX; ++i)
+		{
+			fprintf(f, "%d %d ", food[i].x, food[i].y);
+		}
+		fprintf(f, "\n");
 	}
+	fprintf(f, "%d\n", GATE_STATE);
+	if (GATE_STATE)
+	{
+		for (int i = 0; i < SIZE_GATE; ++i)
+			fprintf(f, "%d %d ", my_gate[i].x, my_gate[i].y);
+	}
+	fclose(f);
 }
 
 void LoadGame(char *filename)
@@ -25,8 +36,18 @@ void LoadGame(char *filename)
 	{
 		fscanf(f, "%d %d", &snake[i].x, &snake[i].y);
 	}
-	for (int i = 0; i < FOOD_INDEX; ++i)
+	if (FOOD_INDEX)
 	{
-		fscanf(f, "%d %d", &food[i].x, &food[i].y);
+		for (int i = 0; i < FOOD_INDEX; ++i)
+		{
+			fscanf(f, "%d %d", &food[i].x, &food[i].y);
+		}
 	}
+	fscanf(f, "%d", &GATE_STATE);
+	if (GATE_STATE)
+	{
+		for (int i = 0; i < SIZE_GATE; ++i)
+			fscanf(f, "%d %d", &my_gate[i].x, &my_gate[i].y);
+	}
+	fclose(f);
 }
