@@ -24,10 +24,6 @@ void DrawSnakeFoodGate(char char_snake, char char_food)
 	DrawFood(char_food);
 	DrawSnake(char_snake);
 	DrawGate();
-	GotoXY(WIDTH_CONSOLE + 1, 2);
-	cout << " SPEED : " << SPEED;
-	//GotoXY(WIDTH_CONSOLE + 1, 3);
-	//cout << " GATE : " << GATE_STATE;
 }
 
 void DrawFood(char char_food)
@@ -57,4 +53,12 @@ void DrawSnake(char char_snake)
 			cout << MSSV[i % 7];
 		}
 	}
+}
+
+void DrawSpeed()
+{
+	GotoXY(WIDTH_CONSOLE + 1, 2);
+	cout << " SPEED : " << SPEED;
+	//GotoXY(WIDTH_CONSOLE + 1, 3);
+	//cout << " GATE : " << GATE_STATE;
 }

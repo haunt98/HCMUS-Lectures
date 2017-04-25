@@ -79,10 +79,6 @@ void ExitGame(HANDLE t)
 	TerminateThread(t, 0);
 	exit(0);
 }
-void PauseGame(HANDLE t)
-{
-	SuspendThread(t);
-}
 
 void ThreadFunc()
 {
@@ -107,6 +103,7 @@ void ThreadFunc()
 				break;
 			}
 			DrawSnakeFoodGate('O', 'F');
+			DrawSpeed();
 			Sleep(1000 / SPEED);
 		}
 	}

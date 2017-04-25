@@ -42,7 +42,6 @@ void DrawBoard(int x, int y, int width, int height,
 	int curPosX = 0, int curPosY = 0);
 void ProcessDead();
 void ExitGame(HANDLE t);
-void PauseGame(HANDLE t);
 
 void Eat();
 
@@ -64,6 +63,7 @@ void MoveUp();
 void DrawSnakeFoodGate(char char_snake, char char_food);
 void DrawFood(char char_food);
 void DrawSnake(char char_snake);
+void DrawSpeed();
 void ThreadFunc();
 
 void SaveGame(char *filename);

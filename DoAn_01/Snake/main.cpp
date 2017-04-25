@@ -3,10 +3,27 @@
 void main()
 {
 	FixConsoleWindow();
-	StartGame();
 	ShowCur(false);
 	thread main_thread(ThreadFunc);
 	HANDLE handle_main_thread = main_thread.native_handle();
+
+	cout << "Press t to load saved games or anykey to start" << endl;
+	int temp = toupper(_getch());
+	StartGame();
+	if (temp == 'T')
+	{
+		SuspendThread(handle_main_thread);
+		DrawSnakeFoodGate(' ', ' ');
+		GotoXY(0, HEIGHT_CONSOLE + 2);
+		cout << "Where saved game?" << endl;
+		char filename[20];
+		cin >> filename;
+		LoadGame(filename);
+		GotoXY(0, HEIGHT_CONSOLE + 2);
+		for (int i = 0; i < 150; ++i)
+			cout << " ";
+		ResumeThread(handle_main_thread);
+	}
 	while (true)
 	{
 		int temp = toupper(_getch());
@@ -14,7 +31,7 @@ void main()
 		{
 			if (temp == 'P')
 			{
-				PauseGame(handle_main_thread);
+				SuspendThread(handle_main_thread);
 			}
 			else if (temp == 'R')
 			{
@@ -25,31 +42,28 @@ void main()
 				ExitGame(handle_main_thread);
 				break;
 			}
-			// Luu game
 			else if (temp == 'L')
 			{
-				PauseGame(handle_main_thread);
+				SuspendThread(handle_main_thread);
 				GotoXY(0, HEIGHT_CONSOLE + 2);
 				cout << "Input filename to save game" << endl;
-				char p[20];
-				cin >> p;
-				SaveGame(p);
+				char filename[20];
+				cin >> filename;
+				SaveGame(filename);
 				GotoXY(0, HEIGHT_CONSOLE + 2);
 				for (int i = 0; i < 150; ++i)
 					cout << " ";
-				//cout << "Game Saved";
 				ResumeThread(handle_main_thread);
 			}
-			// Tai game da luu
 			else if (temp == 'T')
 			{
-				PauseGame(handle_main_thread);
+				SuspendThread(handle_main_thread);
 				DrawSnakeFoodGate(' ', ' ');
 				GotoXY(0, HEIGHT_CONSOLE + 2);
 				cout << "Where saved game?" << endl;
-				char p[20];
-				cin >> p;
-				LoadGame(p);
+				char filename[20];
+				cin >> filename;
+				LoadGame(filename);
 				GotoXY(0, HEIGHT_CONSOLE + 2);
 				for (int i = 0; i < 150; ++i)
 					cout << " ";

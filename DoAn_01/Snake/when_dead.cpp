@@ -108,6 +108,6 @@ bool TouchDownGate()
 void ProcessDead()
 {
 	STATE = 0;
-	GotoXY(0, HEIGHT_CONSOLE + 2);
+	GotoXY(0, HEIGHT_CONSOLE + 1);
 	cout << "Dead, type y to continue or anykey to exit" << endl;
 }
