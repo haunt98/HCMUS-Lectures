@@ -58,6 +58,14 @@ void Initialize(SNode *&head)
 	head = NULL;
 }
 
+void addFirst(SNode *&head, int x)
+{
+	SNode *temp = new SNode;
+	temp->data = x;
+	temp->next = head;
+	head = temp;
+}
+
 void addTail(SNode *&head, int x)
 {
 	if (head == NULL)

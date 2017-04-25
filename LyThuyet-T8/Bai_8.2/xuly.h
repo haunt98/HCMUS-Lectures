@@ -16,6 +16,8 @@ void insert_into_ordered_list(SNode *&head, int x);
 // test
 void Initialize(SNode *&head);
 
+void addFirst(SNode *&head, int x);
+
 void addTail(SNode *&head, int x);
 
 void createSNode(SNode *&head);

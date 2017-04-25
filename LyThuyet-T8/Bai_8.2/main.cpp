@@ -2,10 +2,9 @@
 
 int main(void)
 {
-	SNode *head;
-	createSNode(head);
-	insert_into_ordered_list(head, -20);
-	//reverseSNode(head);
+	SNode *head = NULL;
+	//createSNode(head);
+	addFirst(head, -2);
 	printSNode(head);
 	return 0;
 }
