@@ -1,6 +1,6 @@
 #include "xuly.h"
 
-int HEIGHT_CONSOLE = 20, WIDTH_CONSOLE = 70;
+int HEIGHT_CONSOLE = 20, WIDTH_CONSOLE = 60;
 int CHAR_LOCK, MOVING, SPEED;
 POINT snake[MAX_SIZE_SNAKE];
 POINT food[MAX_SIZE_FOOD];
@@ -69,6 +69,7 @@ void ResetData()
 void StartGame()
 {
 	system("cls");
+	CloseGate();
 	ResetData();
 	DrawBoard(0, 0, WIDTH_CONSOLE, HEIGHT_CONSOLE);
 	STATE = 1;

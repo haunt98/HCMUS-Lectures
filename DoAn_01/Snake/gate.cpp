@@ -54,10 +54,13 @@ void DrawGate()
 
 void CloseGate()
 {
-	for (int i = 0; i < SIZE_GATE; ++i)
+	if (GATE_STATE)
 	{
-		GotoXY(my_gate[i].x, my_gate[i].y);
-		cout << " ";
+		for (int i = 0; i < SIZE_GATE; ++i)
+		{
+			GotoXY(my_gate[i].x, my_gate[i].y);
+			cout << " ";
+		}
+		GATE_STATE = 0;
 	}
-	GATE_STATE = 0;
 }
