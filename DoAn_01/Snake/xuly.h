@@ -8,7 +8,7 @@
 #include <conio.h>
 using namespace std;
 
-#define MAX_SIZE_SNAKE 20
+#define MAX_SIZE_SNAKE 100
 #define MAX_SIZE_FOOD 4
 #define MAX_SPEED 20
 #define SIZE_GATE 5
