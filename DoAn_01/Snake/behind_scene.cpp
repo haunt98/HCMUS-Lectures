@@ -46,11 +46,9 @@ void GenerateFood()
 	for (int i = 0; i < MAX_SIZE_FOOD; i++)
 	{
 		do {
-			x = rand() % (WIDTH_CONSOLE - 1) + 1;
-			y = rand() % (HEIGHT_CONSOLE - 1) + 1;
-		} while (!IsValid(x, y) ||
-			x <2 || x > WIDTH_CONSOLE - 2 ||
-			y < 2 || y > HEIGHT_CONSOLE - 2);
+			x = rand() % (WIDTH_CONSOLE - 4) + 2;
+			y = rand() % (HEIGHT_CONSOLE - 4) + 2;
+		} while (!IsValid(x, y));
 		food[i] = { x, y };
 	}
 }
