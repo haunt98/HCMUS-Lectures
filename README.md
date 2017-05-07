@@ -1,4 +1,4 @@
 # Lectures Programming
 
-My homework when I was studying programming in HCMUS.
+My homework when I was studying C programming in HCMUS.
 
