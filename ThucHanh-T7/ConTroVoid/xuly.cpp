@@ -1,5 +1,13 @@
 #include "xuly.h"
 
+Data *getData(void *key, int dSize)
+{
+	Data *DT = (Data *)malloc(sizeof(Data));
+	DT->dSize = dSize;
+	DT->key = key;
+	return DT;
+}
+
 Node *getNode(Data *DT)
 {
 	Node *p = (Node *)malloc(sizeof(Node));
@@ -57,7 +65,7 @@ void addTail(List *LL, Data *DT)
 	if (p != NULL)
 	{
 		if (LL->head == NULL)
-			LL->head = p;
+			LL->head = LL->tail = p;
 		LL->tail->next = p;
 		LL->tail = p;
 		LL->size++;

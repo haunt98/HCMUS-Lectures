@@ -20,6 +20,11 @@ struct Data{
 	int dSize;
 };
 
+struct PhanSo{
+	int tu, mau;
+};
+
+Data *getData(void *, int dSize);
 Node *getNode(Data *DT);
 List *initList();
 int count(List *LL);
