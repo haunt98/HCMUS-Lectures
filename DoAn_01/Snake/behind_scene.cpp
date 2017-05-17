@@ -22,7 +22,7 @@ void GotoXY(int x, int y)
 	SetConsoleCursorPosition(hConsoleOutput, cursor_pos);
 }
 
-// An con tro nhap nhay
+// An con tro nhap nhay (Copy tren mang)
 void ShowCur(bool CursorVisibility)
 {
 	HANDLE handle = GetStdHandle(STD_OUTPUT_HANDLE);
