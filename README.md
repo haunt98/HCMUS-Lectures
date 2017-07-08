@@ -1,5 +1,4 @@
 # Lectures Programming
 
-First Year (2017)
-My homework when I was studying C programming in HCMUS.
+My homework when I was studying C programming in HCMUS (2016-2020)
 
