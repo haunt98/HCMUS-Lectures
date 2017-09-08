@@ -1,6 +1,0 @@
-Makefile
-*.*
-!*.c
-!*.cpp
-!*.h
-!*.py
