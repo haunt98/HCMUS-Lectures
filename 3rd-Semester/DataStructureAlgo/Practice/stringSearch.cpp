@@ -36,7 +36,7 @@ vector<int> fixWord(char *word) {
             i++;
         } else {
             if (len != 0) {
-                len = temp[len - 1];  // somehow I don't understand through
+                len = temp[len - 1];  // I don't know
                 // do not increment i here
             } else {
                 temp[i] = 0;
