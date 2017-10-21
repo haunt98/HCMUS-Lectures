@@ -17,11 +17,14 @@ public:
     explicit thread_guard(thread &t) : m_t(t) {}
     ~thread_guard()
     {
-        if (m_t.joinable())
+        if (m_t.joinable()) // join() only call once
         {
             m_t.join();
         }
     }
+    // ensure not provide by compiler
+    thread_guard(thread_guard const &) = delete;
+    thread_guard &operator=(thread_guard const &) = delete;
 };
 
 int main()
