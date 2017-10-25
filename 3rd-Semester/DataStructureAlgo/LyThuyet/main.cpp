@@ -5,10 +5,9 @@
 #include <iostream>
 using namespace std;
 
-#define MAXSIZE 1000
+#define MAXSIZE 10
 
 int main()
 {
-    cout << bruteForce("ababababc", "abc") << endl;
     return 0;
 }

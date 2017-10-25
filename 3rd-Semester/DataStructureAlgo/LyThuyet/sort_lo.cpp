@@ -144,3 +144,29 @@ bool shakeBot(int *arr, int &low, int &high)
     low = last_swap; // shake tiep theo bat dau tu swap cuoi cung
     return flag;
 }
+
+// Giong bubble sort nhung thay doi moi lan duyet,
+// Tu tren xuong va duoi len
+void shakerSort(int *arr, int size)
+{
+    for (int i = 0; i < size;)
+    {
+        // tu tren xuong
+        for (int j = i + 1; j < size; ++j)
+        {
+            if (arr[j - 1] > arr[j])
+                myswap(arr[j - 1], arr[j]);
+        }
+        // max -> cuoi mang nen bo di
+        --size;
+
+        // tu duoi len
+        for (int j = size - 1; j > i; --j)
+        {
+            if (arr[j - 1] > arr[j])
+                myswap(arr[j - 1], arr[j]);
+        }
+        // min -> dau mang nen bo di
+        ++i;
+    }
+}

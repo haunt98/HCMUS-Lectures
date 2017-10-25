@@ -218,7 +218,7 @@ void radixSortMSD(int *arr, int size)
 
 void flashSortLect(int *arr, int size)
 {
-    // Giai do?n 1
+    // Giai doan 1
     int min = arr[0];
     int max = arr[0];
     for (int i = 1; i < size; ++i)
@@ -232,7 +232,7 @@ void flashSortLect(int *arr, int size)
     if (min == max)
         return;
 
-    int m = 0.43 * size; // Chia làm m l?p
+    int m = 0.43 * size; // Chia lam m lop
     float c = (float)(m - 1) / (max - min);
 
     int *L = new int[m + 1];
@@ -243,18 +243,18 @@ void flashSortLect(int *arr, int size)
     for (int i = 0; i < size; ++i)
     {
         int k = c * (arr[i] - min) + 1;
-        ++L[k]; // L[k]: s? ph?n t? c?a l?p k
+        ++L[k]; // L[k]: so phan tu cua lop k
     }
     for (int k = 2; k <= m; ++k)
     {
-        L[k] += L[k - 1]; // L[k]: biên trên c?a l?p k
+        L[k] += L[k - 1]; // L[k]: bien tren cua lop k
     }
 
-    // Giai do?n 2
-    int move = 0; // s? bu?c di chuy?n
+    // Giai doan 2
+    int move = 0; // so buoc di chuyen
     int j = 0;
     int k = m;
-    while (move < size - 1) // Ch? c?n di chuy?n size-1 ph?n t?
+    while (move < size - 1) // Chi can di chuyen size - 1 phan tu
     {
         while (j >= L[k]) // arr[j] dúng l?p c?a nó
         {
@@ -262,7 +262,7 @@ void flashSortLect(int *arr, int size)
             k = c * (arr[j] - min) + 1;
         }
         int flash = arr[j];
-        while (j < L[k]) // d?ng khi thay d?i l?i arr[j]
+        while (j < L[k]) // dung khi thay doi lai arr[j]
         {
             k = c * (flash - min) + 1;
             myswap(flash, arr[--L[k]]);
@@ -270,10 +270,9 @@ void flashSortLect(int *arr, int size)
         }
     }
 
-    // Giai do?n 3
-    // S? d?ng Insertion sort cho t?ng phân l?p
-    // Không c?n sort cho phân l?p m,
-    // vì phân l?p m toàn là max c?a m?ng
+    // Giai doan 3
+    // Insertion sort cho tung phan lop
+    // Bo qua phan lop m, vi chua toan max
     for (int k = 1; k < m; ++k)
     {
         for (int i = L[k] + 1; i < L[k + 1]; ++i)

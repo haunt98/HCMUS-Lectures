@@ -9,6 +9,7 @@ void insertionSort(int *arr, int size);
 void insertionSortBinary(int *arr, int size);
 void bubbleSort(int *arr, int size);
 void shakeSort(int *arr, int size);
+void shakerSort(int *arr, int size);
 
 // sap xep bac cao O(nlogn)
 void heapSort(int *arr, int size);
