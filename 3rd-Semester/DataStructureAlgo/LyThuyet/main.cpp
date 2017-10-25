@@ -1,7 +1,7 @@
 #include "random.h"
 #include "search.h"
 #include "sort.h"
-#include "string_search.h"
+#include "strmatch.h"
 #include <iostream>
 using namespace std;
 
