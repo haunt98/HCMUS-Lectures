@@ -149,3 +149,46 @@ int kmpMatch(const char *T, const char *P)
     delete[] pi;
     return -1;
 }
+
+// Thuat toan Horspool
+// Dac diem la xet tu phai qua
+void hpTable(const char *P, int *shift)
+{
+    int m = strlen(P);
+    for (int i = 0; i < ALPHABET_NUM; ++i)
+    {
+        shift[i] = m;
+    }
+    for (int i = 0; i < m - 1; ++i)
+    {
+        // Lay khoang cach tu vi tri phai nhat -> end char
+        // Khoach cach vi tri phai nhat -> end char la
+        // ngan nhat tu char dang xet -> end char
+        shift[(int)P[i]] = m - 1 - i;
+    }
+}
+
+int hpMatch(const char *T, const char *P)
+{
+    int n = strlen(T);
+    int m = strlen(P);
+
+    // Preprocess tao mang shift
+    int *shift = new int[ALPHABET_NUM];
+    hpTable(P, shift);
+
+    int i = m - 1;
+    while (i < n)
+    {
+        int k = 0;                                // reset moi lan duyet
+        while (k < m && P[m - 1 - k] == T[i - k]) // Duyet phai -> trai
+            ++k;
+        if (k == m)
+            return i - m + 1;
+
+        // Dich con tro dang xet sang phai
+        // Hy vong T[i] tiep theo la end char cua P
+        i += shift[(int)T[i]];
+    }
+    return -1;
+}
