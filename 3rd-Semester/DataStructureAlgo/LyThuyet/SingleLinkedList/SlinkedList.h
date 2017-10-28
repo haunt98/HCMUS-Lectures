@@ -21,6 +21,9 @@ void insertBefore(ref &head, ref &tail, ref q, int k);
 
 void delNode(ref &head, ref &tail, ref &q);
 
+// Them node van giu tang dan
+void addNodeKeepOrder(ref &head, ref &tail, int k);
+
 void delList(ref &head, ref &tail);
 void priList(ref head);
 

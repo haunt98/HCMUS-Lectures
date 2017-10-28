@@ -122,6 +122,42 @@ void delNode(ref &head, ref &tail, ref &q)
     }
 }
 
+void addNodeKeepOrder(ref &head, ref &tail, int k)
+{
+    if (!head) // empty
+    {
+        head = getNode(k);
+        tail = head;
+        return;
+    }
+
+    ref temp = getNode(-1); // -1 only temp, no meaning
+    temp->next = head;
+
+    ref sentinel = getNode(k); // linh canh
+    tail->next = sentinel;
+
+    ref prev = temp;
+    ref cur = prev->next;
+    while (cur->key < k) // dont need to check cur != NULL
+    {
+        prev = cur;
+        cur = cur->next;
+    }
+    ref p = getNode(k);
+    prev->next = p;
+    p->next = cur;
+
+    if (p->next == head)
+        head = p;
+    if (p->next == sentinel)
+        tail = p;
+
+    delete temp;
+    tail->next = NULL;
+    delete sentinel;
+}
+
 void delList(ref &head, ref &tail)
 {
     while (head)

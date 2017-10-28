@@ -7,18 +7,17 @@ int main()
     ref head = NULL;
     ref tail = NULL;
 
-    int arr[] = {1, 3, 5, 7};
-    int size = sizeof(arr) / sizeof(arr[0]);
-    for (int i = 0; i < size; ++i)
-    {
-        addHead(head, tail, arr[i]);
-    }
-
-    delNode(head, tail, head->next->next->next);
+    // int arr[] = {1};
+    // int size = sizeof(arr) / sizeof(arr[0]);
+    // for (int i = 0; i < size; ++i)
+    // {
+    //     addHead(head, tail, arr[i]);
+    // }
 
     priList(head);
-    cout << tail->key << endl;
-
+    addNodeKeepOrder(head, tail, 7);
+    addNodeKeepOrder(head, tail, 0);
+    priList(head);
     delList(head, tail);
 
     return 0;
