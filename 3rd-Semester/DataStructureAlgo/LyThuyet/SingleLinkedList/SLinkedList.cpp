@@ -158,6 +158,29 @@ void addNodeKeepOrder(ref &head, ref &tail, int k)
     delete sentinel;
 }
 
+void reverseList(ref &head, ref &tail)
+{
+    if (head && head->next) // >= 2 elements
+    {
+        ref prev = head;
+        ref cur = head->next;
+
+        tail = head;
+
+        ref temp = NULL;
+        while (cur)
+        {
+            // temp..prev->cur tro thanh temp<-prev..cur
+            prev->next = temp;
+            temp = prev;
+            prev = cur;
+            cur = cur->next;
+        }
+        prev->next = temp;
+        head = prev;
+    }
+}
+
 void delList(ref &head, ref &tail)
 {
     while (head)

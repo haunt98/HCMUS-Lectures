@@ -24,6 +24,9 @@ void delNode(ref &head, ref &tail, ref &q);
 // Them node van giu tang dan
 void addNodeKeepOrder(ref &head, ref &tail, int k);
 
+// Dao nguoc danh sach
+void reverseList(ref &head, ref &tail);
+
 void delList(ref &head, ref &tail);
 void priList(ref head);
 

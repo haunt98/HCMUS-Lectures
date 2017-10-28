@@ -15,9 +15,17 @@ int main()
     // }
 
     priList(head);
+
     addNodeKeepOrder(head, tail, 7);
     addNodeKeepOrder(head, tail, 0);
+    addNodeKeepOrder(head, tail, 3);
     priList(head);
+
+    reverseList(head, tail);
+    priList(head);
+    cout << head->key << endl;
+    cout << tail->key << endl;
+
     delList(head, tail);
 
     return 0;
