@@ -1,30 +1,27 @@
 #include "SlinkedList.h"
+#include "sort.h"
 #include <iostream>
+#include <stdlib.h>
+#include <time.h>
+
 using namespace std;
 
 int main()
 {
-    ref head = NULL;
-    ref tail = NULL;
+    ref_n head = NULL;
+    ref_n tail = NULL;
 
-    // int arr[] = {1};
-    // int size = sizeof(arr) / sizeof(arr[0]);
-    // for (int i = 0; i < size; ++i)
-    // {
-    //     addHead(head, tail, arr[i]);
-    // }
+    int size = 4;
+    srand(time(NULL));
+    for (int i = 0; i < size; ++i)
+    {
+        addHead(head, tail, rand() % 100);
+    }
 
-    priList(head);
+    priList(head, tail);
 
-    addNodeKeepOrder(head, tail, 7);
-    addNodeKeepOrder(head, tail, 0);
-    addNodeKeepOrder(head, tail, 3);
-    priList(head);
-
-    reverseList(head, tail);
-    priList(head);
-    cout << head->key << endl;
-    cout << tail->key << endl;
+    quickSort(head, tail);
+    priList(head, tail);
 
     delList(head, tail);
 

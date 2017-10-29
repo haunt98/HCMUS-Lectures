@@ -2,9 +2,9 @@
 #include <iostream>
 using namespace std;
 
-ref getNode(int k)
+ref_n getNode(int k)
 {
-    ref p = new Node;
+    ref_n p = new Node;
     if (!p)
         cout << "New NULL node ERROR\n";
     p->key = k;
@@ -12,9 +12,9 @@ ref getNode(int k)
     return p;
 }
 
-void addHead(ref &head, ref &tail, int k)
+void addHead(ref_n &head, ref_n &tail, int k)
 {
-    ref p = getNode(k);
+    ref_n p = getNode(k);
     if (!head) // empty list
         head = tail = p;
     else
@@ -24,9 +24,9 @@ void addHead(ref &head, ref &tail, int k)
     }
 }
 
-void addTail(ref &head, ref &tail, int k)
+void addTail(ref_n &head, ref_n &tail, int k)
 {
-    ref p = getNode(k);
+    ref_n p = getNode(k);
     if (!head) // empty list
         addHead(head, tail, k);
     else
@@ -36,7 +36,7 @@ void addTail(ref &head, ref &tail, int k)
     }
 }
 
-void delHead(ref &head, ref &tail)
+void delHead(ref_n &head, ref_n &tail)
 {
     if (head) // not empty
     {
@@ -47,14 +47,14 @@ void delHead(ref &head, ref &tail)
         }
         else
         {
-            ref p = head;
+            ref_n p = head;
             head = head->next;
             delete p;
         }
     }
 }
 
-void delTail(ref &head, ref &tail)
+void delTail(ref_n &head, ref_n &tail)
 {
     if (head) // not empty
     {
@@ -64,7 +64,7 @@ void delTail(ref &head, ref &tail)
         }
         else
         {
-            ref p = head;
+            ref_n p = head;
             while (p->next != tail)
             {
                 p = p->next;
@@ -76,14 +76,14 @@ void delTail(ref &head, ref &tail)
     }
 }
 
-void insertAfter(ref &head, ref &tail, ref q, int k)
+void insertAfter(ref_n &head, ref_n &tail, ref_n q, int k)
 {
     // -> q -> tro thanh -> q -> p ->
     if (q == tail)
         addTail(head, tail, k);
     else
     {
-        ref p = getNode(k);
+        ref_n p = getNode(k);
         p->next = q->next;
         q->next = p;
         if (!p->next)
@@ -91,21 +91,21 @@ void insertAfter(ref &head, ref &tail, ref q, int k)
     }
 }
 
-void insertBefore(ref &head, ref &tail, ref q, int k)
+void insertBefore(ref_n &head, ref_n &tail, ref_n q, int k)
 {
     // -> q -> tro thanh -> p -> q ->
     if (q == head)
         addHead(head, tail, k);
     else
     {
-        ref p = getNode(k);
+        ref_n p = getNode(k);
         *p = *q;
         q->next = p;
         q->key = k;
     }
 }
 
-void delNode(ref &head, ref &tail, ref &q)
+void delNode(ref_n &head, ref_n &tail, ref_n &q)
 {
     if (q == head)
         delHead(head, tail);
@@ -114,7 +114,7 @@ void delNode(ref &head, ref &tail, ref &q)
     else
     {
         // q -> p -> tro thanh q ->
-        ref p = q->next;
+        ref_n p = q->next;
         *q = *p;
         delete p;
         if (!q->next) // new tail
@@ -122,7 +122,7 @@ void delNode(ref &head, ref &tail, ref &q)
     }
 }
 
-void addNodeKeepOrder(ref &head, ref &tail, int k)
+void addNodeKeepOrder(ref_n &head, ref_n &tail, int k)
 {
     if (!head) // empty
     {
@@ -131,20 +131,20 @@ void addNodeKeepOrder(ref &head, ref &tail, int k)
         return;
     }
 
-    ref temp = getNode(-1); // -1 only temp, no meaning
+    ref_n temp = getNode(-1); // -1 only temp, no meaning
     temp->next = head;
 
-    ref sentinel = getNode(k); // linh canh
+    ref_n sentinel = getNode(k); // linh canh
     tail->next = sentinel;
 
-    ref prev = temp;
-    ref cur = prev->next;
+    ref_n prev = temp;
+    ref_n cur = prev->next;
     while (cur->key < k) // dont need to check cur != NULL
     {
         prev = cur;
         cur = cur->next;
     }
-    ref p = getNode(k);
+    ref_n p = getNode(k);
     prev->next = p;
     p->next = cur;
 
@@ -158,16 +158,16 @@ void addNodeKeepOrder(ref &head, ref &tail, int k)
     delete sentinel;
 }
 
-void reverseList(ref &head, ref &tail)
+void reverseList(ref_n &head, ref_n &tail)
 {
     if (head && head->next) // >= 2 elements
     {
-        ref prev = head;
-        ref cur = head->next;
+        ref_n prev = head;
+        ref_n cur = head->next;
 
         tail = head;
 
-        ref temp = NULL;
+        ref_n temp = NULL;
         while (cur)
         {
             // temp..prev->cur tro thanh temp<-prev..cur
@@ -181,7 +181,7 @@ void reverseList(ref &head, ref &tail)
     }
 }
 
-void delList(ref &head, ref &tail)
+void delList(ref_n &head, ref_n &tail)
 {
     while (head)
     {
@@ -189,10 +189,10 @@ void delList(ref &head, ref &tail)
     }
 }
 
-void priList(ref head)
+void priList(ref_n head, ref_n tail)
 {
-    ref p = head;
-    while (p)
+    ref_n p = head;
+    while (p != tail->next)
     {
         cout << p->key << " ";
         p = p->next;

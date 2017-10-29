@@ -6,28 +6,28 @@ struct Node
     int key;
     Node *next;
 };
-typedef Node *ref;
+typedef Node *ref_n;
 
-ref getNode(int k);
+ref_n getNode(int k);
 
-void addHead(ref &head, ref &tail, int k);
-void addTail(ref &head, ref &tail, int k);
+void addHead(ref_n &head, ref_n &tail, int k);
+void addTail(ref_n &head, ref_n &tail, int k);
 
-void delHead(ref &head, ref &tail);
-void delTail(ref &head, ref &tail);
+void delHead(ref_n &head, ref_n &tail);
+void delTail(ref_n &head, ref_n &tail);
 
-void insertAfter(ref &head, ref &tail, ref q, int k);
-void insertBefore(ref &head, ref &tail, ref q, int k);
+void insertAfter(ref_n &head, ref_n &tail, ref_n q, int k);
+void insertBefore(ref_n &head, ref_n &tail, ref_n q, int k);
 
-void delNode(ref &head, ref &tail, ref &q);
+void delNode(ref_n &head, ref_n &tail, ref_n &q);
 
 // Them node van giu tang dan
-void addNodeKeepOrder(ref &head, ref &tail, int k);
+void addNodeKeepOrder(ref_n &head, ref_n &tail, int k);
 
 // Dao nguoc danh sach
-void reverseList(ref &head, ref &tail);
+void reverseList(ref_n &head, ref_n &tail);
 
-void delList(ref &head, ref &tail);
-void priList(ref head);
+void delList(ref_n &head, ref_n &tail);
+void priList(ref_n head, ref_n tail);
 
 #endif
