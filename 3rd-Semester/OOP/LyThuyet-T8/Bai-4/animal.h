@@ -3,52 +3,58 @@
 
 #include "an.h"
 #include "dichuyen.h"
+#include "sinhsan.h"
 
-class Animal
+class LopCa : public ThuBoi
+{
+public:
+    LopCa deTrung();
+};
+
+class LopBoSat : public ThuBo, public ThuAnTap
+{
+public:
+    LopBoSat deTrung();
+};
+
+class ConCaMap : public LopCa
 {
 };
 
-class CaMap : public Animal, public AnTap, public Boi
+class ConCaChep : public LopCa
 {
 };
 
-class CaChep : public Animal, public AnPhieuSinh, public Boi
+class ConSuTu : public ThuAnTap, public ThuDeCon
 {
 };
 
-class SuTu : public Animal, public AnTap, public Chay
+class ConBo : public ThuDeCon
 {
 };
 
-class ConBo : public Animal, public AnCo, public Chay
+class ConCaVoi : public ThuBoi, public ThuDeTrung
 {
 };
 
-class CaVoi : public Animal, public AnPhieuSinh, public Boi
+class ConChimSe : public ThuBay, public ThuDeCon
 {
 };
 
-class ChimSe : public Animal, public AnSaubo, public Bay
+class ConDaiBang : public ThuBoi, public ThuDeCon
 {
 };
 
-class DaiBang : public Animal, public AnTap, public Bay
+class ConCaSau : public LopBoSat
 {
 };
 
-class CaSau : public Animal, public AnTap, public Bo, public Boi
+class ConTacKe : public LopBoSat
 {
 };
 
-class TacKe : public Animal, public AnTap, public Bo
+class Doi : public ThuBay, public ThuDeCon
 {
 };
-
-class Doi : public Animal, public AnTap, public Bay
-{
-};
-
-void thiBoi(Boi *dv1, Boi *dv2);
-void thiBay(Bay *dv1, Bay *dv2);
 
 #endif

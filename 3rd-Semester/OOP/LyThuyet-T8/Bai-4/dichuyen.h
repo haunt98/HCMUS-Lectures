@@ -1,25 +1,19 @@
 #ifndef DICHUYEN_H
 #define DICHUYEN_H
 
-class Boi
+class ThuBay
+{
+public:
+    void bay();
+};
+
+class ThuBoi
 {
 public:
     virtual void boi();
 };
 
-class Chay
-{
-public:
-    virtual void chay();
-};
-
-class Bay
-{
-public:
-    virtual void bay();
-};
-
-class Bo
+class ThuBo
 {
 public:
     virtual void bo();

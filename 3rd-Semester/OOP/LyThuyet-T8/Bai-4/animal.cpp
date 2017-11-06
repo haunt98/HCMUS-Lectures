@@ -1,16 +1,13 @@
 #include "animal.h"
-#include <iostream>
 
-using namespace std;
-
-void thiBoi(Boi *dv1, Boi *dv2)
+LopCa LopCa::deTrung()
 {
-    dv1->boi();
-    dv2->boi();
+    LopCa con;
+    return con;
 }
 
-void thiBay(Bay *dv1, Bay *dv2)
+LopBoSat LopBoSat::deTrung()
 {
-    dv1->bay();
-    dv2->bay();
+    LopBoSat con;
+    return con;
 }

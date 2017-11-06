@@ -1,18 +1,16 @@
 #ifndef SINHSAN_H
 #define SINHSAN_H
 
-#include "animal.h"
-
-class DeTrung
+class ThuDeCon
 {
 public:
-    vỉtual Animal deTrung();
+    ThuDeCon deCon();
 };
 
-class DeCon
+class ThuDeTrung
 {
-public
-    virtual Animal deCon();
+public:
+    ThuDeTrung deTrung();
 };
 
 #endif

@@ -1,6 +1,13 @@
 #include "sinhsan.h"
 
-Animal DeTrung::deTrung()
+ThuDeCon ThuDeCon::deCon()
 {
-    
+    ThuDeCon con;
+    return con;
+}
+
+ThuDeTrung ThuDeTrung::deTrung()
+{
+    ThuDeTrung con;
+    return con;
 }

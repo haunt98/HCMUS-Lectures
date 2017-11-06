@@ -1,17 +1,23 @@
+#include "an.h"
 #include "animal.h"
+#include "dichuyen.h"
+#include "sinhsan.h"
+#include "xuly.h"
 #include <iostream>
 
 using namespace std;
 
 int main()
 {
-    CaMap a1;
-    CaChep a2;
-    thiBoi(&a1, &a2);
+    ConCaMap a;
+    ConCaMap b;
 
-    ChimSe b1;
-    DaiBang b2;
-    thiBay(&b1, &b2);
+    thiBoi(&a, &b);
+
+    nuoiCa(&a);
+
+    ConCaSau c;
+    nuoiBoSat(&c);
 
     return 0;
 }

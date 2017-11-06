@@ -3,21 +3,17 @@
 
 using namespace std;
 
-void Boi::boi()
+void ThuBay::bay()
 {
-    cout << "boi" << endl;
+    return;
 }
 
-void Chay::chay()
+void ThuBoi::boi()
 {
-    cout << "chay" << endl;
+    return;
 }
 
-void Bay::bay()
+void ThuBo::bo()
 {
-    cout << "bay" << endl;
-}
-void Bo::bo()
-{
-    cout << "bo" << endl;
+    return;
 }
