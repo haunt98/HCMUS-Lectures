@@ -1,5 +1,4 @@
 #include "SlinkedList.h"
-#include "sort.h"
 #include <iostream>
 #include <stdlib.h>
 #include <time.h>
@@ -18,9 +17,6 @@ int main()
         addHead(head, tail, rand() % 100);
     }
 
-    priList(head, tail);
-
-    quickSort(head, tail);
     priList(head, tail);
 
     delList(head, tail);
