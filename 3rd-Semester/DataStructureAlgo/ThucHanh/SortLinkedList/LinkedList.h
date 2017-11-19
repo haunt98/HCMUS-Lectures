@@ -1,5 +1,5 @@
-#ifndef LINKEDLIST_H
-#define LINKEDLIST_H
+#ifndef _LINKEDLIST_H
+#define _LINKEDLIST_H
 
 // Typdef before use is OK
 // because forward declaration
@@ -17,8 +17,16 @@ struct List
     pNode pTail;
 };
 
-void initList(List &);
-bool isEmptyList(List);
+void initList(List &l);
+bool isEmptyList(List l);
 pNode getNode(int k);
+
+void addHead(List &l, int k);
+void delHead(List &l, int k);
+void addTail(List &l, int k);
+
+void delList(List &l);
+void printList(List l);
+void randList(List &l, int size);
 
 #endif
