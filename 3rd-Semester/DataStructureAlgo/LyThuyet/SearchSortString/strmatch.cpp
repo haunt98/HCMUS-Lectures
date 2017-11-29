@@ -1,5 +1,8 @@
 #include "strmatch.h"
+#include <iostream>
 #include <string.h>
+
+using namespace std;
 
 // Brute-force
 int naiveMatch(const char *T, const char *P)
@@ -127,7 +130,7 @@ int kmpMatch(const char *T, const char *P)
     int *pi = new int[m];
     kmpTable(P, pi);
 
-    int q = 0; // num of char matched in P
+    int q = 0; // num of char *matched* in P
     // look like kmpTable but change P[i] -> T[i]
     for (int i = 0; i < n; ++i)
     {
@@ -143,6 +146,7 @@ int kmpMatch(const char *T, const char *P)
         {
             delete[] pi;
             return i - m + 1;
+            // this is for searching all, not the first one
             // q = pi[q];
         }
     }
@@ -162,8 +166,6 @@ void hpTable(const char *P, int *shift)
     for (int i = 0; i < m - 1; ++i)
     {
         // Lay khoang cach tu vi tri phai nhat -> end char
-        // Khoach cach vi tri phai nhat -> end char la
-        // ngan nhat tu char dang xet -> end char
         shift[(int)P[i]] = m - 1 - i;
     }
 }
@@ -189,6 +191,69 @@ int hpMatch(const char *T, const char *P)
         // Dich con tro dang xet sang phai
         // Hy vong T[i] tiep theo la end char cua P
         i += shift[(int)T[i]];
+    }
+    return -1;
+}
+
+// Thuat toan Rabin Karp
+// Y tuong: tu P[0..m-1] -> tao ra p
+// tuong tu cho T[0..m-1] -> t0, T[1..m] -> t1
+// roi so sanh p va t0 t1 t2
+// p co the rat lon nen ta su dung mod q
+// nhung khong dam bao chinh xac nen phai check lai
+// vi a = b (mod q) khong co nghia a = b
+int rkMatch(const char *T, const char *P)
+{
+    int n = strlen(T);
+    int m = strlen(P);
+
+    const int d = sizeof(char); // size of all char
+    const int mod = 10;         // for modulo
+    int h = 1;                  // d^(m-1) mod q
+    for (int i = 0; i < m - 1; ++i)
+    {
+        h = (h * d) % mod;
+    }
+
+    int hash_p = 0; // for pattern
+    int hash_t = 0; // for text
+    for (int i = 0; i < m; ++i)
+    {
+        // Giong nhu co so (base), tu trai qua
+        hash_p = (d * hash_p + P[i]) % mod;
+        hash_t = (d * hash_t + T[i]) % mod;
+    }
+
+    for (int i = 0; i <= n - m; ++i)
+    {
+        if (hash_p == hash_t)
+        {
+            bool match = true;
+            for (int j = 0; j < n; ++j)
+            {
+                if (P[j] != T[i + j])
+                {
+                    match = false;
+                    break;
+                }
+            }
+            if (match)
+            {
+                return i;
+            }
+        }
+        // Compute for next compare,
+        // but not check when i==n-m, because there is no next
+        // remember else if because only do this when hash_p != hash_t
+        else if (i < n - m)
+        {
+            // i..i+m-1 -> i+1..i+m
+            hash_t = (d * (hash_t - T[i] * h) + T[i + m]) & mod;
+            if (hash_t < 0)
+            {
+                hash_t += mod;
+            }
+        }
     }
     return -1;
 }

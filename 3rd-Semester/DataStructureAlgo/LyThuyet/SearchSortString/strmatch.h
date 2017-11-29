@@ -21,6 +21,7 @@ public:
 int naiveMatch(const char *T, const char *P);
 int dfaMatch(const char *T, const char *P);
 int kmpMatch(const char *T, const char *P);
-int hpMatch(const char *T,const char *P);
+int hpMatch(const char *T, const char *P);
+int rkMatch(const char *T, const char *P);
 
 #endif
