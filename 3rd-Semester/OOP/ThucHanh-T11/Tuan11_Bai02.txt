@@ -1,0 +1,5 @@
+Câu c
+Để quản lý lịch sử của bệnh nhân, dùng hàm  writeHistory(float) để ghi lịch sử
+các hoạt động vào file. Tên file là MSBN của bệnh nhân. Với bệnh nhân 
+ngoại trú, chỉ ghi ngày khám bệnh và giá tiền. Còn bệnh nhân nội trú ghi ngày 
+nhập viên và xuất viện cùng với giá tiền mỗi ngày và loại phòng. 
