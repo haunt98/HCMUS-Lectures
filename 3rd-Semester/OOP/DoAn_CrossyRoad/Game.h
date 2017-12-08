@@ -2,19 +2,11 @@
 #define GAME_H
 
 // Background
-#include "Console.h"
-#include "GlobalVar.h"
 #include "ThreadGuard.h"
 
 // Game element
 #include "Animal.h"
 #include "People.h"
-
-// C++ stuff
-#include <condition_variable>
-#include <conio.h>
-#include <mutex>
-#include <string>
 
 using namespace std;
 
@@ -52,6 +44,9 @@ private:
     void CreObj(int level);
     void DelObj();
 
+    // Something add in the end
+    bool withSound;
+
 public:
     bool run;
 
@@ -73,6 +68,9 @@ public:
     void NextLevel();
     void Save(const string &saveFile);
     void Load(const string &loadFile);
+    // tra ve -1 dung lai, tra ve 1 mute am thanh
+    int Menu();
+    void Logo();
 
     // Game specific
     void Start();

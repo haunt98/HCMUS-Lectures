@@ -1,10 +1,22 @@
+#pragma comment(lib, "winmm.lib")
+#include "Console.h"
 #include "Game.h"
+#include "GlobalVar.h"
+#include <conio.h>
+
+// C++ stuff
+#include <conio.h>
+#include <fstream>
+#include <iostream>
+#include <string>
 
 using namespace std;
 
 // Global var
 char MOVING;
+const int ESC = 27;
 Game CR;
+int temp_menu_glo;
 
 // Thread function
 void GameThread();
@@ -16,66 +28,59 @@ int main()
     hideCursor();
     clearScreen();
 
+    // Loading screen
+    // clang-format off
+	cout << endl;
+	cout<<"   #####                                 ######                      "<<endl;
+	cout<<"  #     # #####   ####   ####   ####     #     #  ####    ##   ##### "<<endl;
+	cout<<"  #       #    # #    # #      #         #     # #    #  #  #  #    #"<<endl;
+	cout<<"  #       #    # #    #  ####   ####     ######  #    # #    # #    #"<<endl;
+	cout<<"  #       #####  #    #      #      #    #   #   #    # ###### #    #"<<endl;
+	cout<<"  #     # #   #  #    # #    # #    #    #    #  #    # #    # #    #"<<endl;
+	cout<<"   #####  #    #  ####   ####   ####     #     #  ####  #    # ##### "<<endl;
+    // clang-format on
+    ToaDo(2, 9).GotoXY();
+    cout << "Loading [";
+    for (int i = 0; i < 56; ++i)
+    {
+        ToaDo(11, 9).GotoXY();
+        int j;
+        for (j = 0; j < i; ++j)
+        {
+            cout << "#";
+        }
+        ToaDo(67, 9).GotoXY();
+        cout << "]";
+        ToaDo(25, 10).GotoXY();
+        cout << "        " << endl;
+        ToaDo(25, 10).GotoXY();
+        cout << "[" << (i + 1) * 100 / 57 << "%]" << endl;
+        Sleep(45);
+    }
+    clearScreen();
+
     // Need variable
-    static const int ESC = 27;
     int input;
     bool isPause = false;
 
     // Menu
-    bool validInput = false;
-    while (!validInput)
+    temp_menu_glo = CR.Menu();
+    if (temp_menu_glo == -1)
+    {
+        return 0;
+    }
+    if (temp_menu_glo == 1)
     {
         clearScreen();
-        ToaDo(0, 0).GotoXY();
-        cout << "********************************\n";
-        cout << "*   Press any key to New game  *\n";
-        cout << "*   Press L to Load game       *\n";
-        cout << "*   Press S to Settings        *\n";
-        cout << "*   Press ESC to exit          *\n";
-        cout << "********************************\n";
-        input = _getch();
-        input = toupper(input);
-        if (input == 'L')
-        {
-            clearScreen();
-            cout << "Input name of saved file: ";
-            string saveFile;
-            cin >> saveFile;
-            ifstream saveStream(saveFile, ios::in);
-            if (!saveStream.is_open())
-            {
-                clearScreen();
-                cout << "Can find saved file\n";
-                cout << "Please press any key to back menu\n";
-                input = _getch();
-                input = toupper(input);
-            }
-            else
-            {
-                CR.Load(saveFile);
-                validInput = true;
-            }
-        }
-        else if (input == 'S')
-        {
-            clearScreen();
-            cout << "This feature is under construction\n";
-            cout << "Please press any key to back menu\n";
-            input = _getch();
-            input = toupper(input);
-        }
-        else if (input == ESC)
-        {
-            clearScreen();
-            return 0;
-        }
-        else
-        {
-            CR.Start();
-            validInput = true;
-        }
+        CR.Start();
     }
-
+    else
+    {
+        // clang-format off
+        PlaySound(TEXT("D:\\Project\\1612180_CrossyRoad\\CrossyRoad\\Background.wav"),
+			NULL, SND_ASYNC | SND_LOOP);
+        // clang-format on
+    }
     // Create thread
     thread t(GameThread);
     ThreadGuard g_t(t);
@@ -89,15 +94,21 @@ int main()
         {
             if (input == ESC)
             {
-                CR.Exit(t);
-                return 0;
+                CR.Pause(handle_t);
+                int temp_menu_loc = CR.Menu();
+                if (temp_menu_loc == -1)
+                {
+                    CR.Exit(t);
+                    return 0;
+                }
+                CR.Resume(handle_t);
             }
 
             else if (input == 'P')
             {
                 CR.Pause(handle_t);
                 ToaDo(0, HEIGHT_BOARD).GotoXY();
-                cout << "Pause game, press any key to resume\n";
+                cout << "Pause game, press any key to resume" << endl;
                 isPause = true;
             }
 
@@ -108,10 +119,10 @@ int main()
                 cout << "Input name of saved file: ";
                 string saveFile;
                 cin >> saveFile;
-                if (!ifstream(saveFile, ios::in).is_open())
+                if (!ifstream(saveFile, ios::in | ios::binary).is_open())
                 {
-                    cout << "Can find saved file\n";
-                    cout << "Press any key to resume\n";
+                    cout << "Can find saved file" << endl;
+                    cout << "Press any key to resume" << endl;
                     isPause = true;
                 }
                 else
@@ -155,6 +166,13 @@ int main()
             // Player choose to Reset or Exit
             if (input == 'Y')
             {
+                if (temp_menu_glo != 1)
+                {
+                    // clang-format off
+                    PlaySound(TEXT("D:\\Project\\1612180_CrossyRoad\\CrossyRoad\\Background.wav"),
+                              NULL, SND_ASYNC | SND_LOOP);
+                    // clang-format on
+                }
                 CR.Start();
             }
             else
@@ -175,7 +193,7 @@ void GameThread()
         while (!CR.isLive() && CR.run)
         {
             // Sleep to wait for user input
-            Sleep(200);
+            Sleep(100);
         }
 
         // Make sure the loop don't run again
@@ -199,12 +217,19 @@ void GameThread()
         // Check touch
         if (CR.isHit())
         {
+            if (temp_menu_glo != 1)
+            {
+                // clang-format off
+				PlaySound(TEXT("D:\\Project\\1612180_CrossyRoad\\CrossyRoad\\Omae.wav"),
+					NULL, SND_SYNC);
+                // clang-format on
+            }
             CR.Lose();
         }
         if (CR.getPeople().isWin())
         {
             CR.Win();
         }
-        Sleep(200);
+        Sleep(150);
     }
 }

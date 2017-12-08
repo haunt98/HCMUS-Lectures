@@ -1,4 +1,12 @@
+#include "Console.h"
 #include "Game.h"
+#include "GlobalVar.h"
+
+// C++ stuff
+#include <condition_variable>
+#include <conio.h>
+#include <mutex>
+#include <string>
 
 // Create and Del obj
 void Game::CreObj(int level)
@@ -149,6 +157,7 @@ People Game::getPeople()
 void Game::DrawObj(int ch)
 {
     // Dinasour
+    setColor(CYAN);
     if (m_klong)
     {
         for (int i = 0; i < LINE_DINA; ++i)
@@ -163,6 +172,7 @@ void Game::DrawObj(int ch)
         }
     }
     // Bird
+    setColor(MAGENTA);
     if (m_chim)
     {
         for (int i = 0; i < LINE_BIRD; ++i)
@@ -177,6 +187,7 @@ void Game::DrawObj(int ch)
         }
     }
     // Truck
+    setColor(CYAN);
     if (m_xetai)
     {
         for (int i = 0; i < LINE_TRUCK; ++i)
@@ -191,6 +202,7 @@ void Game::DrawObj(int ch)
         }
     }
     // Car
+    setColor(MAGENTA);
     if (m_xehoi)
     {
         for (int i = 0; i < LINE_CAR; ++i)
@@ -202,6 +214,7 @@ void Game::DrawObj(int ch)
                 }
         }
     }
+    setColor(WHITE);
 }
 
 void Game::ClearObj()
@@ -219,13 +232,10 @@ void Game::DrawConstinous()
     m_nvat.Draw(CHAR_PEOPLE);
     setColor(WHITE);
 
-    setColor(MAGENTA);
     DrawObj(CHAR_OBJ);
-    setColor(WHITE);
 
     // Draw traffic light
     const int CHAR_TRAFFIC = 219;
-    ToaDo(WIDTH_BOARD + 2, 5).GotoXY();
     if (m_greenLight)
     {
         setColor(GREEN);
@@ -234,6 +244,9 @@ void Game::DrawConstinous()
     {
         setColor(RED);
     }
+    ToaDo(1, 9).GotoXY();
+    cout << (char)CHAR_TRAFFIC;
+    ToaDo(1, 12).GotoXY();
     cout << (char)CHAR_TRAFFIC;
     setColor(WHITE);
 }
@@ -244,9 +257,6 @@ void Game::DrawOnly()
     // Draw level
     ToaDo(WIDTH_BOARD + 2, 2).GotoXY();
     cout << "Level: " << m_level;
-    // Draw traffic light text
-    ToaDo(WIDTH_BOARD + 2, 4).GotoXY();
-    cout << "Traffic light";
     // Instruction
     ToaDo(WIDTH_BOARD + 2, 7).GotoXY();
     cout << "Move: W S A D";
@@ -463,7 +473,7 @@ void Game::NextLevel()
 
 void Game::Save(const string &saveFile)
 {
-    ofstream outF(saveFile, ios::out);
+    ofstream outF(saveFile, ios::out | ios::binary);
     outF << m_nvat;
     outF << m_greenLight << " " << m_clockLight << endl;
     outF << m_level << endl;
@@ -535,7 +545,7 @@ void Game::Save(const string &saveFile)
 
 void Game::Load(const string &saveFile)
 {
-    ifstream inF(saveFile, ios::in);
+    ifstream inF(saveFile, ios::in | ios::binary);
     if (!inF.is_open())
     {
         return;
@@ -594,6 +604,140 @@ void Game::Load(const string &saveFile)
     run = true;
 }
 
+int Game::Menu()
+{
+    setColor(WHITE);
+    // Dau game
+    if (!run)
+    {
+        bool validInput = false;
+        int input;
+        while (!validInput)
+        {
+            clearScreen();
+            ToaDo(0, 0).GotoXY();
+            cout << "********************************" << endl;
+            cout << "*   Press any key to New game  *" << endl;
+            cout << "*   Press T to       Load game *" << endl;
+            cout << "*   Press S to       Settings  *" << endl;
+            cout << "*   Press ESC to     Exit      *" << endl;
+            cout << "********************************" << endl;
+            input = _getch();
+            input = toupper(input);
+            if (input == 'T')
+            {
+                clearScreen();
+                cout << "Input name of saved file: ";
+                string saveFile;
+                cin >> saveFile;
+                ifstream saveStream(saveFile, ios::in | ios::binary);
+                if (!saveStream.is_open())
+                {
+                    clearScreen();
+                    cout << "Can find saved file" << endl;
+                    cout << "Please press any key to back menu" << endl;
+                    input = _getch();
+                    input = toupper(input);
+                }
+                else
+                {
+                    Load(saveFile);
+                    validInput = true;
+                }
+            }
+            else if (input == 'S')
+            {
+                clearScreen();
+                cout << "Please press M to Mute sound or anykey to return menu"
+                     << endl;
+                input = _getch();
+                input = toupper(input);
+                if (input == 'M')
+                {
+                    return 1;
+                }
+            }
+            else if (input == ESC)
+            {
+                clearScreen();
+                return -1;
+            }
+            else
+            {
+                Start();
+                validInput = true;
+            }
+        }
+    }
+    // Trong game
+    else
+    {
+        bool validInput = false;
+        int input;
+        while (!validInput)
+        {
+            clearScreen();
+            ToaDo(0, 0).GotoXY();
+            cout << "**********************************" << endl;
+            cout << "*   Press any key to Resume game *" << endl;
+            cout << "*   Press T to       Load game   *" << endl;
+            cout << "*   Press L to       Save game   *" << endl;
+            cout << "*   Press ESC to     Exit        *" << endl;
+            cout << "**********************************" << endl;
+            input = _getch();
+            input = toupper(input);
+            if (input == 'T')
+            {
+                clearScreen();
+                cout << "Input name of saved file: ";
+                string saveFile;
+                cin >> saveFile;
+                ifstream saveStream(saveFile, ios::in | ios::binary);
+                if (!saveStream.is_open())
+                {
+                    clearScreen();
+                    cout << "Can find saved file" << endl;
+                    cout << "Please press any key to back menu" << endl;
+                    input = _getch();
+                    input = toupper(input);
+                }
+                else
+                {
+                    Load(saveFile);
+                    validInput = true;
+                }
+            }
+            else if (input == 'L')
+            {
+                clearScreen();
+                cout << "Input name to save game: ";
+                string saveFile;
+                cin >> saveFile;
+                Save(saveFile);
+                validInput = true;
+                clearScreen();
+                setColor(WHITE);
+                DrawOnly();
+            }
+            else if (input == ESC)
+            {
+                clearScreen();
+                return -1;
+            }
+            else
+            {
+                clearScreen();
+                setColor(WHITE);
+                DrawOnly();
+                validInput = true;
+            }
+        }
+    }
+    return 0;
+}
+
+void Game::Logo() {}
+
 // Game specific
 void Game::Start()
 {
@@ -607,6 +751,7 @@ void Game::Start()
 void Game::Exit(thread &t)
 {
     run = false;
+    TerminateThread(t.native_handle(), 0);
     if (t.joinable())
     {
         t.join();

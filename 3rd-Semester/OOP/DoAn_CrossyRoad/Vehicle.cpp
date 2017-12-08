@@ -136,7 +136,7 @@ void Truck::Draw(int ch)
 void Truck::MoveLeft()
 {
     ToaDo endrpos = m_root + m_rpos[SIZE_TRUCK - 1];
-    if (endrpos.X > 1)
+    if (endrpos.X > 2)
     {
         m_root = m_root.Left();
     }
@@ -262,7 +262,7 @@ void Car::Draw(int ch)
 void Car::MoveLeft()
 {
     ToaDo endrpos = m_root + m_rpos[SIZE_CAR - 1];
-    if (endrpos.X > 1)
+    if (endrpos.X > 2)
     {
         m_root = m_root.Left();
     }
