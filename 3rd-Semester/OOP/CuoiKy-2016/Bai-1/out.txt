@@ -1,0 +1,14 @@
+construct Shape
+construct Ellipse
+ellipse:
+Ellipse(a=0.33, b=3)
+3.1415
+Ellipse
+Ellipse
+shape = &ellipse:
+Ellipse(a=0.33, b=3)
+3.1415
+Shape
+Ellipse
+destruct Ellipse
+destruct Shape
