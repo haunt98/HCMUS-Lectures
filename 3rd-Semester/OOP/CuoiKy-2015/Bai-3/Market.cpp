@@ -41,10 +41,10 @@ Market::~Market()
 
 float Market::tongTien()
 {
-    float sum=0;
-    for(size_t i=0;i<ds_sap.size();++i)
+    float sum = 0;
+    for (size_t i = 0; i < ds_sap.size(); ++i)
     {
-	sum+=ds_sap[i]->tienCuoiNam();
+        sum += ds_sap[i]->tienCuoiNam();
     }
     return sum;
 }
