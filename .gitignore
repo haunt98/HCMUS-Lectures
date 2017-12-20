@@ -2,5 +2,4 @@
 *.exe
 *.h.gch
 *.stackdump
-.clang-format
 tags

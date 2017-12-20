@@ -1,0 +1,12 @@
+AccessModifierOffset: -4
+AlignAfterOpenBracket: Align
+AlwaysBreakTemplateDeclarations: true
+AllowShortBlocksOnASingleLine: false
+AllowShortCaseLabelsOnASingleLine: false
+AllowShortFunctionsOnASingleLine: Inline
+AllowShortIfStatementsOnASingleLine: false
+AllowShortLoopsOnASingleLine: false
+BreakBeforeBraces: Allman
+ColumnLimit: 80
+IndentWidth: 4
+KeepEmptyLinesAtTheStartOfBlocks: false
