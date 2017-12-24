@@ -254,7 +254,8 @@ void insertionRecursive(pNode &root, pNode parent, int k)
 
 void transplant(pNode &root, pNode &u, pNode &v)
 {
-    // replace subtree at node u with subtree at node v
+    // replace subtree at node u with subtree at node v,
+    // but dont change u (only change v)
     // u is root
     if (!u->parent)
     {
