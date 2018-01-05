@@ -1,20 +1,18 @@
-//MSSV: 1612180
-//Ho ten: Nguyen Tran Hau
-//Bai 32
+// MSSV: 1612180
+// Ho ten: Nguyen Tran Hau
+// Bai 32
 #include <stdio.h>
 int main(void)
 {
-	int n,state;
+	int n, state;
 	printf("Bai 32\n");
-	do{
+	do {
 		printf("Nhap n = ");
 		scanf_s("%d", &n);
 	} while (n < 1);
 	state = 0;
-	for (int i = 0; i <= n/2+1; ++i)
-	{
-		if (i*i == n)
-		{
+	for (int i = 0; i <= n / 2 + 1; ++i) {
+		if (i * i == n) {
 			state = 1;
 			break;
 		}

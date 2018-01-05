@@ -1,6 +1,6 @@
-//MSSV: 1612180
-//Ho ten: Nguyen Tran Hau
-//Bai 14
+// MSSV: 1612180
+// Ho ten: Nguyen Tran Hau
+// Bai 14
 #include <stdio.h>
 int main(void)
 {
@@ -18,11 +18,14 @@ int main(void)
 	else if (chi_so >= 101 && chi_so <= 200)
 		tien_dien = 50 * 1484 + 50 * 1533 + (chi_so - 100) * 1786;
 	else if (chi_so >= 201 && chi_so <= 300)
-		tien_dien = 50 * 1484 + 50 * 1533 + 100 * 1786 + (chi_so - 200) * 2242;
+		tien_dien =
+		    50 * 1484 + 50 * 1533 + 100 * 1786 + (chi_so - 200) * 2242;
 	else if (chi_so >= 301 && chi_so <= 400)
-		tien_dien = 50 * 1484 + 50 * 1533 + 100 * 1786 + 100 * 2242 + (chi_so - 300) * 2503;
+		tien_dien = 50 * 1484 + 50 * 1533 + 100 * 1786 + 100 * 2242 +
+			    (chi_so - 300) * 2503;
 	else
-		tien_dien = 50 * 1484 + 50 * 1533 + 100 * 1786 + 100 * 2242 + 100 * 2503 + (chi_so - 400) * 2587;
+		tien_dien = 50 * 1484 + 50 * 1533 + 100 * 1786 + 100 * 2242 +
+			    100 * 2503 + (chi_so - 400) * 2587;
 	tien_dien *= 1.1;
 	printf("Tien dien phai tra: %.1f dong.\n", tien_dien);
 	return 0;

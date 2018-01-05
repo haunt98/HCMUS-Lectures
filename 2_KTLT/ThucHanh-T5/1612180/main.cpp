@@ -9,7 +9,7 @@ int main()
 	cout << "Them mot phan so vao cuoi danh sach" << endl;
 	PhanSo k;
 	cout << "Nhap phan so can them : ";
-	do{
+	do {
 		cin >> k.TuSo >> k.MauSo;
 	} while (k.MauSo == 0);
 	addLast(head, tail, k);
@@ -17,7 +17,7 @@ int main()
 
 	cout << "Chen phan so tai vi tri xac dinh" << endl;
 	cout << "Nhap phan so can them : ";
-	do{
+	do {
 		cin >> k.TuSo >> k.MauSo;
 	} while (k.MauSo == 0);
 	cout << "Nhap vi tri : ";

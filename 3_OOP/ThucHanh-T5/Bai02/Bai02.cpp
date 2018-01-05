@@ -11,14 +11,14 @@ int DocGia::PHI_VIP = 50000;
 
 int main()
 {
-    DocGia a("abc", "tieu phi");
-    a.xuat();
+	DocGia a("abc", "tieu phi");
+	a.xuat();
 
-    DocGiaThuong b;
-    b.nhap();
-    b.xuat();
+	DocGiaThuong b;
+	b.nhap();
+	b.xuat();
 
-    DocGiaVip c("def", "hau");
-    c.xuat();
-    return 0;
+	DocGiaVip c("def", "hau");
+	c.xuat();
+	return 0;
 }

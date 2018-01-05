@@ -3,17 +3,17 @@
 
 class MangSoNguyen
 {
-private:
-    int m_size;
-    int *m_arr;
+      private:
+	int m_size;
+	int *m_arr;
 
-public:
-    void Xuat();
-    MangSoNguyen();
-    MangSoNguyen(int size);
-    MangSoNguyen(int *arr, int size);
-    MangSoNguyen(const MangSoNguyen &mang);
-    ~MangSoNguyen();
+      public:
+	void Xuat();
+	MangSoNguyen();
+	MangSoNguyen(int size);
+	MangSoNguyen(int *arr, int size);
+	MangSoNguyen(const MangSoNguyen &mang);
+	~MangSoNguyen();
 };
 
 #endif

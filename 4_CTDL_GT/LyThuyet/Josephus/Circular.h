@@ -6,16 +6,14 @@
 
 typedef struct CNode *pCNode;
 
-struct CNode
-{
-    int key;
-    pCNode pNext;
+struct CNode {
+	int key;
+	pCNode pNext;
 };
 
-struct CList
-{
-    pCNode pHead;
-    pCNode pTail;
+struct CList {
+	pCNode pHead;
+	pCNode pTail;
 };
 
 void initCList(CList &l);

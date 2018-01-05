@@ -2,13 +2,13 @@
 using namespace std;
 #define MAX 10
 
-struct CNode{
+struct CNode {
 	int data;
 	CNode *next;
 };
 
 // Mang dong
-struct aQueue{
+struct aQueue {
 	int *data;
 	int size;
 	int in;
@@ -28,7 +28,7 @@ void rand_aQueue(aQueue &Q);
 void print_aQueue(aQueue Q);
 
 // Danh sach
-struct lQueue{
+struct lQueue {
 	CNode *head;
 	CNode *tail;
 };

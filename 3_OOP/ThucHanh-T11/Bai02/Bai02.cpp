@@ -10,10 +10,10 @@ using namespace std;
 
 int main()
 {
-    BenhVien a;
-    a.doc("log.txt");
-    a.outMoney();
-    cout << "Ngoai tru: " << a.slNgoaiTru() << ", Noi tru: " << a.slNoiTru()
-         << endl;
-    return 0;
+	BenhVien a;
+	a.doc("log.txt");
+	a.outMoney();
+	cout << "Ngoai tru: " << a.slNgoaiTru() << ", Noi tru: " << a.slNoiTru()
+	     << endl;
+	return 0;
 }

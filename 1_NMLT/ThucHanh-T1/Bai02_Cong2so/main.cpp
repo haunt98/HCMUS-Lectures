@@ -1,6 +1,6 @@
-//MSSV: 1612180
-//Ho va ten: Nguyen Tran Hau
-//Bai 02: Cong 2 so nguyen
+// MSSV: 1612180
+// Ho va ten: Nguyen Tran Hau
+// Bai 02: Cong 2 so nguyen
 #include <stdio.h>
 
 int main(void)

@@ -2,8 +2,7 @@
 
 void towerHanoi(int n, char src, char dest, char temp)
 {
-	if (n == 1)
-	{
+	if (n == 1) {
 		cout << "Move 1 disk from " << src << " to " << dest << endl;
 		return;
 	}

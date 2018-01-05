@@ -3,16 +3,13 @@
 void replaceChar(char *filename, char ch_old, char ch_new)
 {
 	fstream f(filename, ios::in | ios::out);
-	if (!f)
-	{
+	if (!f) {
 		cout << "No File" << endl;
 		return;
 	}
 	char c;
-	while (f.get(c))
-	{
-		if (c == ch_old)
-		{
+	while (f.get(c)) {
+		if (c == ch_old) {
 			// point to read
 			int64_t pos = f.tellg();
 			pos--;
@@ -33,24 +30,23 @@ void copyFile(char *file_from, char *file_to)
 	char c;
 	while (f_from.get(c))
 		f_to.put(c);
-	f_from.close(); f_to.close();
+	f_from.close();
+	f_to.close();
 }
 
 bool isBigger(PhanSo A, PhanSo B)
 {
 	PhanSo TempA = A, TempB = B;
-	if (TempA.mau < 0)
-	{
+	if (TempA.mau < 0) {
 		TempA.tu = -TempA.tu;
 		TempA.mau = -TempA.mau;
 	}
-	if (TempB.mau<0)
-	{
+	if (TempB.mau < 0) {
 		TempB.tu = -TempB.tu;
 		TempB.mau = -TempB.mau;
 	}
 
-	if (TempA.tu*TempB.mau > TempA.mau*TempB.tu)
+	if (TempA.tu * TempB.mau > TempA.mau * TempB.tu)
 		return true;
 	return false;
 }
@@ -60,8 +56,7 @@ void sortPhanSo(listPhanSo A, ConditionSort Condt_Sort)
 	PhanSo Temp;
 	for (int i = 0; i < A.size - 1; ++i)
 		for (int j = i + 1; j < A.size; ++j)
-			if (Condt_Sort(A.list[i], A.list[j]))
-			{
+			if (Condt_Sort(A.list[i], A.list[j])) {
 				Temp = A.list[i];
 				A.list[i] = A.list[j];
 				A.list[j] = Temp;
@@ -72,11 +67,13 @@ void sortFilePhanSo(char *file_from, char *file_to)
 {
 	ifstream f_from(file_from);
 	ofstream f_to(file_to);
-	listPhanSo Data; Data.size = 0;
-	Data.list = NULL; int m, n;
-	while (f_from >> m >> n)
-	{
-		Data.list = (PhanSo *)realloc(Data.list, (Data.size + 1)*sizeof(PhanSo));
+	listPhanSo Data;
+	Data.size = 0;
+	Data.list = NULL;
+	int m, n;
+	while (f_from >> m >> n) {
+		Data.list = (PhanSo *)realloc(Data.list,
+					      (Data.size + 1) * sizeof(PhanSo));
 		Data.list[Data.size].tu = m;
 		Data.list[Data.size].mau = n;
 		++Data.size;
@@ -88,14 +85,12 @@ void sortFilePhanSo(char *file_from, char *file_to)
 
 void ThongKe(char *file_from, char *file_to)
 {
-	int alphabet[26] = { 0 };
+	int alphabet[26] = {0};
 	ifstream f_from(file_from);
 	ofstream f_to(file_to);
 	char c;
-	while (f_from.get(c))
-	{
-		if (isalpha(c))
-		{
+	while (f_from.get(c)) {
+		if (isalpha(c)) {
 			c = tolower(c);
 			++alphabet[c - 'a'];
 		}

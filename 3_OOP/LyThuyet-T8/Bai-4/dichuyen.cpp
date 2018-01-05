@@ -5,15 +5,15 @@ using namespace std;
 
 void ThuBay::bay()
 {
-    return;
+	return;
 }
 
 void ThuBoi::boi()
 {
-    return;
+	return;
 }
 
 void ThuBo::bo()
 {
-    return;
+	return;
 }

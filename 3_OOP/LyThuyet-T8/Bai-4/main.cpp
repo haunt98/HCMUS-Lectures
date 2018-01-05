@@ -9,15 +9,15 @@ using namespace std;
 
 int main()
 {
-    ConCaMap a;
-    ConCaMap b;
+	ConCaMap a;
+	ConCaMap b;
 
-    thiBoi(&a, &b);
+	thiBoi(&a, &b);
 
-    nuoiCa(&a);
+	nuoiCa(&a);
 
-    ConCaSau c;
-    nuoiBoSat(&c);
+	ConCaSau c;
+	nuoiBoSat(&c);
 
-    return 0;
+	return 0;
 }

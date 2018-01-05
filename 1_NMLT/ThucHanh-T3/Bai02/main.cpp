@@ -1,6 +1,6 @@
-//MSSV: 1612180
-//Ho ten: Nguyen Tran Hau
-//Bai 02
+// MSSV: 1612180
+// Ho ten: Nguyen Tran Hau
+// Bai 02
 #include <stdio.h>
 int main(void)
 {
@@ -19,7 +19,7 @@ int main(void)
 		printf("Hoc luc: Trung binh\n");
 	else if (diem_tb >= 4 && diem_tb < 5)
 		printf("Hoc luc: Yeu\n");
-	else 
+	else
 		printf("Hoc luc: Kem\n");
 	return 0;
 }

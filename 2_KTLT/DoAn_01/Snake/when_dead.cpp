@@ -2,40 +2,36 @@
 
 bool TouchRightBody()
 {
-	for (int i = 0; i < SIZE_SNAKE - 1; ++i)
-	{
+	for (int i = 0; i < SIZE_SNAKE - 1; ++i) {
 		if (snake[i].x == snake[SIZE_SNAKE - 1].x + 1 &&
-			snake[i].y == snake[SIZE_SNAKE - 1].y)
+		    snake[i].y == snake[SIZE_SNAKE - 1].y)
 			return true;
 	}
 	return false;
 }
 bool TouchLeftBody()
 {
-	for (int i = 0; i < SIZE_SNAKE - 1; ++i)
-	{
+	for (int i = 0; i < SIZE_SNAKE - 1; ++i) {
 		if (snake[i].x == snake[SIZE_SNAKE - 1].x - 1 &&
-			snake[i].y == snake[SIZE_SNAKE - 1].y)
+		    snake[i].y == snake[SIZE_SNAKE - 1].y)
 			return true;
 	}
 	return false;
 }
 bool TouchDownBody()
 {
-	for (int i = 0; i < SIZE_SNAKE - 1; ++i)
-	{
+	for (int i = 0; i < SIZE_SNAKE - 1; ++i) {
 		if (snake[i].x == snake[SIZE_SNAKE - 1].x &&
-			snake[i].y == snake[SIZE_SNAKE - 1].y + 1)
+		    snake[i].y == snake[SIZE_SNAKE - 1].y + 1)
 			return true;
 	}
 	return false;
 }
 bool TouchUpBody()
 {
-	for (int i = 0; i < SIZE_SNAKE - 1; ++i)
-	{
+	for (int i = 0; i < SIZE_SNAKE - 1; ++i) {
 		if (snake[i].x == snake[SIZE_SNAKE - 1].x &&
-			snake[i].y == snake[SIZE_SNAKE - 1].y - 1)
+		    snake[i].y == snake[SIZE_SNAKE - 1].y - 1)
 			return true;
 	}
 	return false;
@@ -43,16 +39,14 @@ bool TouchUpBody()
 
 bool TouchRightGate()
 {
-	//XXX
-	//X X
-	if (GATE_STATE)
-	{
-		for (int i = 0; i < SIZE_GATE; ++i)
-		{
-			if (i == 0 || i == 1 || i == 4)
-			{
-				if (my_gate[i].x == snake[SIZE_SNAKE - 1].x + 1 &&
-					my_gate[i].y == snake[SIZE_SNAKE - 1].y)
+	// XXX
+	// X X
+	if (GATE_STATE) {
+		for (int i = 0; i < SIZE_GATE; ++i) {
+			if (i == 0 || i == 1 || i == 4) {
+				if (my_gate[i].x ==
+					snake[SIZE_SNAKE - 1].x + 1 &&
+				    my_gate[i].y == snake[SIZE_SNAKE - 1].y)
 					return true;
 			}
 		}
@@ -61,16 +55,14 @@ bool TouchRightGate()
 }
 bool TouchLeftGate()
 {
-	//XXX
-	//X X
-	if (GATE_STATE)
-	{
-		for (int i = 0; i < SIZE_GATE; ++i)
-		{
-			if (i == 0 || i == 3 || i == 4)
-			{
-				if (my_gate[i].x == snake[SIZE_SNAKE - 1].x - 1 &&
-					my_gate[i].y == snake[SIZE_SNAKE - 1].y)
+	// XXX
+	// X X
+	if (GATE_STATE) {
+		for (int i = 0; i < SIZE_GATE; ++i) {
+			if (i == 0 || i == 3 || i == 4) {
+				if (my_gate[i].x ==
+					snake[SIZE_SNAKE - 1].x - 1 &&
+				    my_gate[i].y == snake[SIZE_SNAKE - 1].y)
 					return true;
 			}
 		}
@@ -79,16 +71,13 @@ bool TouchLeftGate()
 }
 bool TouchUpGate()
 {
-	//XXX
-	//X X
-	if (GATE_STATE)
-	{
-		for (int i = 0; i < SIZE_GATE; ++i)
-		{
-			if (i == 0 || i == 4)
-			{
+	// XXX
+	// X X
+	if (GATE_STATE) {
+		for (int i = 0; i < SIZE_GATE; ++i) {
+			if (i == 0 || i == 4) {
 				if (my_gate[i].x == snake[SIZE_SNAKE - 1].x &&
-					my_gate[i].y == snake[SIZE_SNAKE - 1].y - 1)
+				    my_gate[i].y == snake[SIZE_SNAKE - 1].y - 1)
 					return true;
 			}
 		}
@@ -97,16 +86,13 @@ bool TouchUpGate()
 }
 bool TouchDownGate()
 {
-	//XXX
-	//X X
-	if (GATE_STATE)
-	{
-		for (int i = 0; i < SIZE_GATE; ++i)
-		{
-			if (i == 1 || i == 2 || i == 3)
-			{
+	// XXX
+	// X X
+	if (GATE_STATE) {
+		for (int i = 0; i < SIZE_GATE; ++i) {
+			if (i == 1 || i == 2 || i == 3) {
 				if (my_gate[i].x == snake[SIZE_SNAKE - 1].x &&
-					my_gate[i].y == snake[SIZE_SNAKE - 1].y + 1)
+				    my_gate[i].y == snake[SIZE_SNAKE - 1].y + 1)
 					return true;
 			}
 		}

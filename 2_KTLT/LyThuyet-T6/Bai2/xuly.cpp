@@ -39,9 +39,8 @@ bool isPrime(int x)
 {
 	if (x < 2)
 		return false;
-	for (int i = 2; i*i <= x; ++i)
-	{
-		if (x%i == 0)
+	for (int i = 2; i * i <= x; ++i) {
+		if (x % i == 0)
 			return false;
 	}
 	return true;
@@ -50,8 +49,7 @@ bool isPrime(int x)
 // Trich ra cac so nguyen to trong mang
 void Prime_in_Array(int *a, int left, int right)
 {
-	if (left == right)
-	{
+	if (left == right) {
 		if (isPrime(a[left]))
 			cout << a[left] << endl;
 		return;

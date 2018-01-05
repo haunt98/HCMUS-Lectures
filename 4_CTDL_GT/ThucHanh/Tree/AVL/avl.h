@@ -2,13 +2,12 @@
 #define _avl_h
 
 typedef struct Node *pNode;
-struct Node
-{
-    int key;
-    pNode left;
-    pNode right;
-    pNode parent;
-    int height;
+struct Node {
+	int key;
+	pNode left;
+	pNode right;
+	pNode parent;
+	int height;
 };
 
 pNode getNode(int k);

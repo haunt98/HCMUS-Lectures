@@ -29,23 +29,29 @@ int tong_cheo_phu(int arr[MAX][MAX], int hang, int cot); // Bai 6 TB
 
 void tang_hang(int arr[MAX][MAX], int hang, int cot); // Bai 7 TB
 
-int tong_matran(int arr1[MAX][MAX], int hang1, int cot1, int arr2[MAX][MAX], int hang2, int cot2,
-	int kqua[MAX][MAX], int &kqua_hang, int &kqua_cot); // Bai 8-tong TB
+int tong_matran(int arr1[MAX][MAX], int hang1, int cot1, int arr2[MAX][MAX],
+		int hang2, int cot2, int kqua[MAX][MAX], int &kqua_hang,
+		int &kqua_cot); // Bai 8-tong TB
 
-int tich_matran(int arr1[MAX][MAX], int hang1, int cot1, int arr2[MAX][MAX], int hang2, int cot2,
-	int kqua[MAX][MAX], int &kqua_hang, int &kqua_cot); // Bai 8-tich TB
+int tich_matran(int arr1[MAX][MAX], int hang1, int cot1, int arr2[MAX][MAX],
+		int hang2, int cot2, int kqua[MAX][MAX], int &kqua_hang,
+		int &kqua_cot); // Bai 8-tich TB
 
 void phai_90(int arr[MAX][MAX], int &hang, int &cot); // Bai 4 xoay phai K
 
 void trai_90(int arr[MAX][MAX], int &hang, int &cot); // Bai 4 xoay trai K
 
-void xoay(int arr[MAX][MAX], int &hang, int &cot, int huong, int n); // Bai 5 xoay n buoc K
+void xoay(int arr[MAX][MAX], int &hang, int &cot, int huong,
+	  int n); // Bai 5 xoay n buoc K
 
-void xoa_hang(int vt_hang, int arr[MAX][MAX], int &hang, int &cot); // Bai 6 xoa hang K
+void xoa_hang(int vt_hang, int arr[MAX][MAX], int &hang,
+	      int &cot); // Bai 6 xoa hang K
 
-void xoa_cot(int vt_cot, int arr[MAX][MAX], int hang, int &cot); // Bai 6 xoa cot K
+void xoa_cot(int vt_cot, int arr[MAX][MAX], int hang,
+	     int &cot); // Bai 6 xoa cot K
 
-void xoa_trung(int arr1[MAX][MAX], int hang1, int cot1, int arr2[MAX][MAX], int hang2, int cot2); // Bai 7 K
+void xoa_trung(int arr1[MAX][MAX], int hang1, int cot1, int arr2[MAX][MAX],
+	       int hang2, int cot2); // Bai 7 K
 
 void lon_nhat(int arr[MAX][MAX], int hang, int cot); // Bai 11 K
 
@@ -55,11 +61,13 @@ void matran_tong(int arr[MAX][MAX], int &hang, int &cot); // Bai 8 K
 
 void matran_tich(int arr[MAX][MAX], int &hang, int &cot); // Bai 9 K
 
-int tong1(int arr1[MAX][MAX], int hang1, int cot1, int arr2[MAX][MAX], int hang2, int cot2);
+int tong1(int arr1[MAX][MAX], int hang1, int cot1, int arr2[MAX][MAX],
+	  int hang2, int cot2);
 
 int tong_n_mtran(int result[MAX][MAX], int &hang, int &cot); // Bai 3 K
 
-int tich1(int arr1[MAX][MAX], int &hang1, int &cot1, int arr2[MAX][MAX], int hang2, int cot2);
+int tich1(int arr1[MAX][MAX], int &hang1, int &cot1, int arr2[MAX][MAX],
+	  int hang2, int cot2);
 
 int tich_n_mtran(int result[MAX][MAX], int &hang, int &cot); // Bai 3K
 

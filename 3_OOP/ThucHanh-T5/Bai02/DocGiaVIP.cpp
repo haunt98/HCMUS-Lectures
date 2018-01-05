@@ -2,16 +2,16 @@
 
 void DocGiaVip::nhap()
 {
-    DocGia::nhap();
+	DocGia::nhap();
 }
 
 void DocGiaVip::xuat()
 {
-    DocGia::xuat();
-    cout << "Le phi: " << lePhi() << endl;
+	DocGia::xuat();
+	cout << "Le phi: " << lePhi() << endl;
 }
 
 int DocGiaVip::lePhi()
 {
-    return DocGia::PHI_VIP;
+	return DocGia::PHI_VIP;
 }

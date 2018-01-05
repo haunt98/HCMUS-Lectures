@@ -1,5 +1,5 @@
-#include <stdio.h>
 #include "kwh_tieu_thu.h"
+#include <stdio.h>
 int kwh_tieu_thu(int chi_so, int chan_duoi, int chan_tren)
 {
 	if (chi_so < chan_duoi)

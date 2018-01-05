@@ -5,7 +5,7 @@ using namespace std;
 // dest : destination
 // src : source
 
-//work
+// work
 char *StringNCopy(char *dest, char *src, int num_char_copy);
 char *StringCopy(char *dest, char *src);
 void DeleteSubString(char *src, int startPos, int num_char_del);
@@ -14,5 +14,5 @@ bool IsSubString(char *src, char *sub);
 int CountMatches(char *src, char *sub);
 
 // test
-void CopySubString(char* dest, char* src, int startPos, int numChars);
-void InsertSubString(char* str, char* substr, int startPos);
+void CopySubString(char *dest, char *src, int startPos, int numChars);
+void InsertSubString(char *str, char *substr, int startPos);

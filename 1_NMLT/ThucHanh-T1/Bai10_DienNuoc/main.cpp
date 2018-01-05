@@ -1,6 +1,6 @@
-//MSSV: 1612180
-//Ho va ten: Nguyen Tran Hau
-//Bai 10: Tinh so KWh dien da su dung trong thang
+// MSSV: 1612180
+// Ho va ten: Nguyen Tran Hau
+// Bai 10: Tinh so KWh dien da su dung trong thang
 #include <stdio.h>
 int main(void)
 {

@@ -11,17 +11,17 @@ int NhanVien::LuongNgay = 300000;
 
 int main()
 {
-    NhanVien a;
-    a.nhap();
-    a.xuat();
+	NhanVien a;
+	a.nhap();
+	a.xuat();
 
-    NVSanXuat b;
-    b.nhap();
-    b.xuat();
+	NVSanXuat b;
+	b.nhap();
+	b.xuat();
 
-    NVCongNhat c;
-    c.nhap();
-    c.xuat();
+	NVCongNhat c;
+	c.nhap();
+	c.xuat();
 
-    return 0;
+	return 0;
 }

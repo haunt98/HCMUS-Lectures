@@ -1,6 +1,6 @@
-//MSSV: 1612180
-//Ho va ten: Nguyen Tran Hau
-//Bai 17: Tinh tham nien cua giang vien
+// MSSV: 1612180
+// Ho va ten: Nguyen Tran Hau
+// Bai 17: Tinh tham nien cua giang vien
 #include <stdio.h>
 #define nam_hientai 2016
 

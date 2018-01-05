@@ -8,23 +8,35 @@ using namespace std;
 
 class Base
 {
-public:
-    Base() { cout << "Base cto" << endl; }
-    virtual ~Base() { cout << "Base dto" << endl; }
+      public:
+	Base()
+	{
+		cout << "Base cto" << endl;
+	}
+	virtual ~Base()
+	{
+		cout << "Base dto" << endl;
+	}
 };
 
 class Derived : public Base
 {
-public:
-    Derived() { cout << "Derived cto" << endl; }
-    ~Derived() { cout << "Derived dto" << endl; }
+      public:
+	Derived()
+	{
+		cout << "Derived cto" << endl;
+	}
+	~Derived()
+	{
+		cout << "Derived dto" << endl;
+	}
 };
 
 int main()
 {
-    Base *a = new Derived();
-    delete a;
-    return 0;
+	Base *a = new Derived();
+	delete a;
+	return 0;
 }
 
 // Nếu trong class Base, hàm hủy không có virtual thì khi delete a

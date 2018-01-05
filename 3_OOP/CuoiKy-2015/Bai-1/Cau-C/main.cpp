@@ -7,33 +7,35 @@ using namespace std;
 
 class Singleton
 {
-private:
-    Singleton() { cout << "create" << endl; }
-    static Singleton *m_exist;
+      private:
+	Singleton()
+	{
+		cout << "create" << endl;
+	}
+	static Singleton *m_exist;
 
-public:
-    static Singleton *init()
-    {
-        if (!m_exist)
-        {
-            m_exist = new Singleton();
-        }
-        return m_exist;
-    }
-    ~Singleton()
-    {
-        m_exist = NULL;
-        cout << "del" << endl;
-    }
+      public:
+	static Singleton *init()
+	{
+		if (!m_exist) {
+			m_exist = new Singleton();
+		}
+		return m_exist;
+	}
+	~Singleton()
+	{
+		m_exist = NULL;
+		cout << "del" << endl;
+	}
 };
 
 Singleton *Singleton::m_exist = NULL;
 
 int main()
 {
-    Singleton *a = Singleton::init();
-    delete a;
-    Singleton *b = Singleton::init();
-    delete b;
-    return 0;
+	Singleton *a = Singleton::init();
+	delete a;
+	Singleton *b = Singleton::init();
+	delete b;
+	return 0;
 }

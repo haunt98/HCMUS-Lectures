@@ -15,7 +15,8 @@ double tinh_S3(int n);
 // S4(n,x) =  x + x^2 + x^3 + .. + x^n
 double tinh_S4(int n, double x);
 
-// S5(n,x) =  x + (x2/ (1 + 2)) + (x3/ (1 + 2 + 3)) + .. + (xn/ (1 + 2 + .. + n))
+// S5(n,x) =  x + (x2/ (1 + 2)) + (x3/ (1 + 2 + 3)) + .. + (xn/ (1 + 2 + .. +
+// n))
 double tinh_S5(int n, double x);
 
 double x_mu_n(int n, double x);

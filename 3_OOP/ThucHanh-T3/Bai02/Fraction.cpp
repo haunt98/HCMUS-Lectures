@@ -23,24 +23,24 @@ Fraction &Fraction::operator=(const Fraction &ps)
 Fraction Fraction::operator+(const Fraction &ps) const
 {
 	Fraction tong;
-	tong.m_tu = m_tu*ps.m_mau + m_mau*ps.m_tu;
-	tong.m_mau = m_mau*ps.m_mau;
+	tong.m_tu = m_tu * ps.m_mau + m_mau * ps.m_tu;
+	tong.m_mau = m_mau * ps.m_mau;
 	return tong;
 }
 
 Fraction Fraction::operator-(const Fraction &ps) const
 {
 	Fraction hieu;
-	hieu.m_tu = m_tu*ps.m_mau - m_mau*ps.m_tu;
-	hieu.m_mau = m_mau*ps.m_mau;
+	hieu.m_tu = m_tu * ps.m_mau - m_mau * ps.m_tu;
+	hieu.m_mau = m_mau * ps.m_mau;
 	return hieu;
 }
 
 Fraction Fraction::operator*(const Fraction &ps) const
 {
 	Fraction tich;
-	tich.m_tu = m_tu*ps.m_tu;
-	tich.m_mau = m_mau*ps.m_mau;
+	tich.m_tu = m_tu * ps.m_tu;
+	tich.m_mau = m_mau * ps.m_mau;
 	return tich;
 }
 
@@ -49,8 +49,8 @@ Fraction Fraction::operator/(const Fraction &ps) const
 	if (ps.m_tu == 0)
 		cout << "Loi chia cho 0" << endl;
 	Fraction thuong;
-	thuong.m_tu = m_tu*ps.m_mau;
-	thuong.m_mau = m_mau*ps.m_tu;
+	thuong.m_tu = m_tu * ps.m_mau;
+	thuong.m_mau = m_mau * ps.m_tu;
 	return thuong;
 }
 
@@ -107,11 +107,10 @@ Fraction Fraction::operator--(int)
 	return temp;
 }
 
-
 // so sanh
 bool Fraction::operator==(const Fraction &ps)
 {
-	return m_tu*ps.m_mau == m_mau*ps.m_tu;
+	return m_tu * ps.m_mau == m_mau * ps.m_tu;
 }
 
 bool Fraction::operator!=(const Fraction &ps)
@@ -122,7 +121,7 @@ bool Fraction::operator!=(const Fraction &ps)
 bool Fraction::operator>=(const Fraction &ps)
 {
 	Fraction hieu = (*this) - ps;
-	if (hieu.m_tu*hieu.m_mau < 0)
+	if (hieu.m_tu * hieu.m_mau < 0)
 		return false;
 	return true;
 }
@@ -130,7 +129,7 @@ bool Fraction::operator>=(const Fraction &ps)
 bool Fraction::operator>(const Fraction &ps)
 {
 	Fraction hieu = (*this) - ps;
-	if (hieu.m_tu*hieu.m_mau > 0)
+	if (hieu.m_tu * hieu.m_mau > 0)
 		return true;
 	return false;
 }
@@ -138,7 +137,7 @@ bool Fraction::operator>(const Fraction &ps)
 bool Fraction::operator<=(const Fraction &ps)
 {
 	Fraction hieu = (*this) - ps;
-	if (hieu.m_tu*hieu.m_mau > 0)
+	if (hieu.m_tu * hieu.m_mau > 0)
 		return false;
 	return true;
 }
@@ -146,7 +145,7 @@ bool Fraction::operator<=(const Fraction &ps)
 bool Fraction::operator<(const Fraction &ps)
 {
 	Fraction hieu = (*this) - ps;
-	if (hieu.m_tu*hieu.m_mau < 0)
+	if (hieu.m_tu * hieu.m_mau < 0)
 		return true;
 	return false;
 }
@@ -166,12 +165,12 @@ Fraction operator+(const int &m, const Fraction &ps)
 Fraction operator*(const Fraction &ps, const int &m)
 {
 	Fraction temp(m, 1);
-	return ps*temp;
+	return ps * temp;
 }
 
 Fraction operator*(const int &m, const Fraction &ps)
 {
-	return ps*m;
+	return ps * m;
 }
 
 Fraction operator-(const Fraction &ps, const int &m)
@@ -184,7 +183,7 @@ Fraction operator-(const Fraction &ps, const int &m)
 istream &operator>>(istream &in, Fraction &ps)
 {
 	in >> ps.m_tu;
-	do{
+	do {
 		in >> ps.m_mau;
 	} while (ps.m_mau == 0);
 	return in;

@@ -22,8 +22,7 @@ bool Full_aQueue(aQueue Q)
 
 bool push_aQueue(aQueue &Q, int x)
 {
-	if (!Full_aQueue(Q))
-	{
+	if (!Full_aQueue(Q)) {
 		Q.data[Q.in] = x;
 		Q.in = (Q.in + 1) % Q.size;
 		Q.count++;
@@ -34,8 +33,7 @@ bool push_aQueue(aQueue &Q, int x)
 
 bool pop_aQueue(aQueue &Q, int &x)
 {
-	if (!Empty_aQueue(Q))
-	{
+	if (!Empty_aQueue(Q)) {
 		x = Q.data[Q.out];
 		Q.out = (Q.out + 1) % Q.size;
 		Q.count--;
@@ -46,8 +44,7 @@ bool pop_aQueue(aQueue &Q, int &x)
 
 bool peek_aQueue(aQueue Q, int &x)
 {
-	if (!Empty_aQueue(Q))
-	{
+	if (!Empty_aQueue(Q)) {
 		x = Q.data[Q.out];
 		return true;
 	}
@@ -56,32 +53,25 @@ bool peek_aQueue(aQueue Q, int &x)
 
 void rand_aQueue(aQueue &Q)
 {
-	for (int i = 0; i < MAX; ++i)
-	{
-		push_aQueue(Q, i*i);
+	for (int i = 0; i < MAX; ++i) {
+		push_aQueue(Q, i * i);
 	}
 }
 
 void print_aQueue(aQueue Q)
 {
-	if (!Empty_aQueue(Q))
-	{
-		if (Q.out < Q.in)
-		{
-			for (int i = Q.out; i < Q.in; ++i)
-			{
+	if (!Empty_aQueue(Q)) {
+		if (Q.out < Q.in) {
+			for (int i = Q.out; i < Q.in; ++i) {
 				cout << Q.data[i] << endl;
 			}
 		}
 
-		else
-		{
-			for (int i = Q.out; i < Q.size; ++i)
-			{
+		else {
+			for (int i = Q.out; i < Q.size; ++i) {
 				cout << Q.data[i] << endl;
 			}
-			for (int i = 0; i < Q.in; ++i)
-			{
+			for (int i = 0; i < Q.in; ++i) {
 				cout << Q.data[i] << endl;
 			}
 		}
@@ -105,14 +95,11 @@ void push_lQueue(lQueue &Q, int x)
 	CNode *temp = new CNode;
 	temp->data = x;
 	temp->next = NULL;
-	if (Q.head == NULL)
-	{
+	if (Q.head == NULL) {
 		Q.head = temp;
 		temp->next = Q.head;
 		Q.tail = temp;
-	}
-	else
-	{
+	} else {
 		temp->next = Q.head;
 		Q.head = temp;
 		Q.tail->next = Q.head;
@@ -121,11 +108,9 @@ void push_lQueue(lQueue &Q, int x)
 
 bool pop_lQueue(lQueue &Q, int &x)
 {
-	if (!Empty_lQueue(Q))
-	{
+	if (!Empty_lQueue(Q)) {
 		CNode *temp = Q.head;
-		for (; temp; temp = temp->next)
-		{
+		for (; temp; temp = temp->next) {
 			if (temp->next == Q.tail)
 				break;
 		}
@@ -140,8 +125,7 @@ bool pop_lQueue(lQueue &Q, int &x)
 
 bool peek_lQueue(lQueue Q, int &x)
 {
-	if (!Empty_lQueue(Q))
-	{
+	if (!Empty_lQueue(Q)) {
 		x = Q.tail->data;
 		return true;
 	}
@@ -150,17 +134,15 @@ bool peek_lQueue(lQueue Q, int &x)
 
 void rand_lQueue(lQueue &Q)
 {
-	for (int i = 0; i < MAX; ++i)
-	{
-		push_lQueue(Q, i*i);
+	for (int i = 0; i < MAX; ++i) {
+		push_lQueue(Q, i * i);
 	}
 }
 
 void print_lQueue(lQueue Q)
 {
 	CNode *temp = Q.head;
-	while (temp)
-	{
+	while (temp) {
 		cout << temp->data << endl;
 		temp = temp->next;
 		if (temp == Q.head)

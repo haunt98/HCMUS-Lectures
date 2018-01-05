@@ -5,19 +5,20 @@
 
 enum xeploai { gioi, kha, tb, yeu };
 
-class HocSinh {
-   private:
-    char m_Ten[MAXTEN];
-    float m_DiemVan, m_DiemToan;
+class HocSinh
+{
+      private:
+	char m_Ten[MAXTEN];
+	float m_DiemVan, m_DiemToan;
 
-   public:
-    void nhap();
-    void xuat();
-    char *layTen();
-    float layDiemVan();
-    float layDiemToan();
-    float layDiemTB();
-    xeploai layXepLoai();
+      public:
+	void nhap();
+	void xuat();
+	char *layTen();
+	float layDiemVan();
+	float layDiemToan();
+	float layDiemTB();
+	xeploai layXepLoai();
 };
 
 #endif

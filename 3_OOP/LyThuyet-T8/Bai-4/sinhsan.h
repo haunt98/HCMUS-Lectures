@@ -3,14 +3,14 @@
 
 class ThuDeCon
 {
-public:
-    ThuDeCon deCon();
+      public:
+	ThuDeCon deCon();
 };
 
 class ThuDeTrung
 {
-public:
-    ThuDeTrung deTrung();
+      public:
+	ThuDeTrung deTrung();
 };
 
 #endif

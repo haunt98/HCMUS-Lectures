@@ -3,19 +3,21 @@
 
 class Bike
 {
-private:
-    char *m_brand; // hiệu xe
-public:
-    Bike(char *brand);
-    ~Bike();
-    virtual void move(int t1);
+      private:
+	char *m_brand; // hiệu xe
+      public:
+	Bike(char *brand);
+	~Bike();
+	virtual void move(int t1);
 };
 
 class EBike : public Bike
 {
-public:
-    EBike(char *brand) : Bike(brand) {}
-    void move(int t2);
+      public:
+	EBike(char *brand) : Bike(brand)
+	{
+	}
+	void move(int t2);
 };
 
 void display(Bike &a, EBike &b);

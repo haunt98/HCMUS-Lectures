@@ -6,25 +6,27 @@ using namespace std;
 
 class IntArray
 {
-private:
-    int m_size;
-    int *m_arr;
+      private:
+	int m_size;
+	int *m_arr;
 
-public:
-    IntArray() : m_size(0), m_arr(NULL) {}
-    IntArray(int size);
-    IntArray(int *arr, const int &size);
-    IntArray(const IntArray &mang);
-    ~IntArray();
+      public:
+	IntArray() : m_size(0), m_arr(NULL)
+	{
+	}
+	IntArray(int size);
+	IntArray(int *arr, const int &size);
+	IntArray(const IntArray &mang);
+	~IntArray();
 
-    // toan tu
-    IntArray &operator=(const IntArray &mang);
-    int &operator[](int i);
-    operator int();
+	// toan tu
+	IntArray &operator=(const IntArray &mang);
+	int &operator[](int i);
+	operator int();
 
-    // nhap xuat
-    friend istream &operator>>(istream &in, IntArray &mang);
-    friend ostream &operator<<(ostream &out, const IntArray &mang);
+	// nhap xuat
+	friend istream &operator>>(istream &in, IntArray &mang);
+	friend ostream &operator<<(ostream &out, const IntArray &mang);
 };
 
 #endif

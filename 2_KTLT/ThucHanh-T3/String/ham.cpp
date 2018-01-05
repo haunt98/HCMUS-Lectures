@@ -25,24 +25,21 @@ char *StringCopy(char *dest, char *src)
 void DeleteSubString(char *src, int startPos, int num_char_del)
 {
 	int len_src = strlen(src);
-	if (startPos + num_char_del - 1 >= len_src)
-	{
+	if (startPos + num_char_del - 1 >= len_src) {
 		src[startPos] = '\0';
 		return;
 	}
 	char *temp = new char[len_src - num_char_del - startPos + 1];
 	StringCopy(temp, src + startPos + num_char_del);
 	StringCopy(src + startPos, temp);
-	delete[]temp;
+	delete[] temp;
 }
 int FindSubString(char *src, char *sub, int startPos)
 {
 	int i, j, len_src = strlen(src), len_sub = strlen(sub), flag = NO_FIND;
-	for (i = startPos; i < len_src - len_sub + 1; ++i)
-	{
+	for (i = startPos; i < len_src - len_sub + 1; ++i) {
 		flag = i - startPos;
-		for (j = 0; j < len_sub; ++j)
-		{
+		for (j = 0; j < len_sub; ++j) {
 			if (src[i + j] != sub[j])
 				flag = NO_FIND;
 		}
@@ -59,12 +56,11 @@ bool IsSubString(char *src, char *sub)
 }
 int CountMatches(char *src, char *sub)
 {
-	int i, j, len_src = strlen(src), len_sub = strlen(sub), flag = NO_FIND, count = 0;
-	for (i = 0; i < len_src - len_sub + 1; ++i)
-	{
+	int i, j, len_src = strlen(src), len_sub = strlen(sub), flag = NO_FIND,
+		  count = 0;
+	for (i = 0; i < len_src - len_sub + 1; ++i) {
 		flag = i;
-		for (j = 0; j < len_sub; ++j)
-		{
+		for (j = 0; j < len_sub; ++j) {
 			if (src[i + j] != sub[j])
 				flag = NO_FIND;
 		}
@@ -75,23 +71,20 @@ int CountMatches(char *src, char *sub)
 }
 
 // test
-void CopySubString(char* dest, char* src, int startPos, int numChars)
+void CopySubString(char *dest, char *src, int startPos, int numChars)
 {
 	StringNCopy(dest, src + startPos, numChars);
 	dest[numChars] = '\0';
 }
-void InsertSubString(char* str, char* substr, int startPos)
+void InsertSubString(char *str, char *substr, int startPos)
 {
 	int length = strlen(str);
 	int sublength = strlen(substr);
-	char* temp;
-	if (startPos >= length)
-	{
+	char *temp;
+	if (startPos >= length) {
 		startPos = length;
 		StringCopy(str + startPos, substr);
-	}
-	else
-	{
+	} else {
 		temp = new char[length - startPos + 1];
 		StringCopy(temp, str + startPos);
 		StringCopy(str + startPos, substr);

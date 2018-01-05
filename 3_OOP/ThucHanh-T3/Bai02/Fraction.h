@@ -4,15 +4,21 @@
 #include <iostream>
 using namespace std;
 
-class Fraction{
-private:
+class Fraction
+{
+      private:
 	int m_tu, m_mau;
-public:
-	Fraction() :m_tu(0), m_mau(1){}
+
+      public:
+	Fraction() : m_tu(0), m_mau(1)
+	{
+	}
 	Fraction(int tu, int mau);
 	Fraction(const Fraction &ps);
-	~Fraction(){}
-	
+	~Fraction()
+	{
+	}
+
 	// so hoc
 	Fraction &operator=(const Fraction &ps);
 	Fraction operator+(const Fraction &ps) const;
@@ -25,10 +31,10 @@ public:
 	Fraction &operator/=(const Fraction &ps);
 
 	// tien to hau to
-	Fraction &operator++(); // prefix
+	Fraction &operator++();   // prefix
 	Fraction operator++(int); // postfix
-	Fraction &operator--(); 
-	Fraction operator--(int); 
+	Fraction &operator--();
+	Fraction operator--(int);
 
 	// so sanh
 	bool operator==(const Fraction &ps);
@@ -51,7 +57,6 @@ public:
 
 	// ep kieu
 	operator float();
-	
 };
 
 #endif

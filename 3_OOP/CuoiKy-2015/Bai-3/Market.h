@@ -6,13 +6,13 @@
 
 class Market
 {
-private:
-    vector<SAP *> ds_sap;
+      private:
+	vector<SAP *> ds_sap;
 
-public:
-    void nhap();
-    float tongTien();
-    ~Market();
+      public:
+	void nhap();
+	float tongTien();
+	~Market();
 };
 
 #endif

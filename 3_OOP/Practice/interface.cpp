@@ -4,32 +4,35 @@ using namespace std;
 
 class Animal
 {
-public:
-    // if not use virtual, xuly(cat) act like animal not meow
-    virtual void talk() const = 0;
+      public:
+	// if not use virtual, xuly(cat) act like animal not meow
+	virtual void talk() const = 0;
 };
 
 class Cat : public Animal
 {
-public:
-    void talk() const { cout << "Meow\n"; }
+      public:
+	void talk() const
+	{
+		cout << "Meow\n";
+	}
 };
 
 void xuly(const Animal *p)
 {
-    p->talk();
+	p->talk();
 }
 
 int main()
 {
-    Animal a;
-    xuly(&a);
+	Animal a;
+	xuly(&a);
 
-    Cat b;
-    xuly(&b);
+	Cat b;
+	xuly(&b);
 
-    Cat *c;
-    c = &b;
-    xuly(c);
-    return 0;
+	Cat *c;
+	c = &b;
+	xuly(c);
+	return 0;
 }

@@ -11,24 +11,20 @@ Data *getData(void *key, int dSize)
 Node *getNode(Data *DT)
 {
 	Node *p = (Node *)malloc(sizeof(Node));
-	if (p == NULL)
-	{
+	if (p == NULL) {
 		printf("Khong du bo nho\n");
 		exit(0);
 	}
 	p->key = malloc(DT->dSize);
-	if (p->key == NULL)
-	{
+	if (p->key == NULL) {
 		free(p);
 		return NULL;
 	}
 	// replace memcpy
-	for (int i = 0; i < DT->dSize; i++)
-	{
+	for (int i = 0; i < DT->dSize; i++) {
 		*((char *)p->key + i) = *((char *)DT->key + i);
 	}
 	p->next = NULL;
-
 }
 List *initList()
 {
@@ -48,8 +44,7 @@ void addHead(List *LL, Data *DT)
 	if (DT->key == NULL)
 		return;
 	Node *p = getNode(DT);
-	if (p != NULL)
-	{
+	if (p != NULL) {
 		if (LL->head == NULL)
 			LL->tail = p;
 		p->next = LL->head;
@@ -62,8 +57,7 @@ void addTail(List *LL, Data *DT)
 	if (DT->key == NULL)
 		return;
 	Node *p = getNode(DT);
-	if (p != NULL)
-	{
+	if (p != NULL) {
 		if (LL->head == NULL)
 			LL->head = LL->tail = p;
 		LL->tail->next = p;
@@ -79,8 +73,7 @@ void addMid(List *LL, Data *DT, int pos)
 		addHead(LL, DT);
 	else if (pos == LL->size)
 		addTail(LL, DT);
-	else
-	{
+	else {
 		Node *p = getNode(DT);
 		Node *temp = LL->head;
 		for (int i = 0; i < pos - 1; i++, temp = temp->next)
@@ -89,13 +82,12 @@ void addMid(List *LL, Data *DT, int pos)
 		temp->next = p;
 		LL->size++;
 	}
-
 }
-Node *addAfter(List *LL, Data *X, Data *Add, bool(*cmp)(void *, void *, int dSize))
+Node *addAfter(List *LL, Data *X, Data *Add,
+	       bool (*cmp)(void *, void *, int dSize))
 {
 	Node *p = findList(LL, X, cmp);
-	if (p != NULL)
-	{
+	if (p != NULL) {
 		Node *temp = getNode(Add);
 		temp->next = p->next;
 		p->next = temp;
@@ -109,8 +101,7 @@ Node *addAfter(List *LL, Data *X, Data *Add, bool(*cmp)(void *, void *, int dSiz
 
 void removeHead(List *LL)
 {
-	if (LL->head != NULL)
-	{
+	if (LL->head != NULL) {
 		Node *temp = LL->head;
 		if (temp == LL->tail)
 			LL->head = LL->tail = NULL;
@@ -125,12 +116,10 @@ void removeHead(List *LL)
 }
 void removeTail(List *LL)
 {
-	if (LL->head != NULL)
-	{
+	if (LL->head != NULL) {
 		if (LL->head == LL->tail)
 			removeHead(LL);
-		else
-		{
+		else {
 			Node *p = LL->head;
 			while (p->next != LL->tail)
 				p = p->next;
@@ -152,8 +141,7 @@ void removeMid(List *LL, int pos)
 		removeHead(LL);
 	else if (pos == LL->size)
 		removeTail(LL);
-	else
-	{
+	else {
 		Node *p = LL->head;
 		for (int i = 0; i < pos - 1; i++, p = p->next)
 			;
@@ -172,20 +160,17 @@ void removeList(List *LL)
 
 bool cmpVoid(void *A, void *B, int dSize)
 {
-	for (int i = 0; i < dSize; i++)
-	{
+	for (int i = 0; i < dSize; i++) {
 		if (*((char *)A + i) != *((char *)B + i))
 			return false;
 	}
 	return true;
 }
-Node *findList(List *LL, Data *DT, bool(*cmp)(void *, void*, int dSize))
+Node *findList(List *LL, Data *DT, bool (*cmp)(void *, void *, int dSize))
 {
 	Node *p = LL->head;
-	for (p; p != NULL; p = p->next)
-	{
-		if (cmp(p->key, DT->key, DT->dSize))
-		{
+	for (p; p != NULL; p = p->next) {
+		if (cmp(p->key, DT->key, DT->dSize)) {
 			return p;
 			break;
 		}
@@ -196,8 +181,7 @@ Node *findList(List *LL, Data *DT, bool(*cmp)(void *, void*, int dSize))
 void printList(List *LL)
 {
 	Node *p = LL->head;
-	while (p != LL->tail && p)
-	{
+	while (p != LL->tail && p) {
 		printf("%d->", p->key);
 		p = p->next;
 	}

@@ -1,12 +1,12 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-struct phan_so{
+struct phan_so {
 	int tu_so, mau_so;
 };
 
 typedef struct phan_so PHANSO;
-typedef PHANSO * CONTROPHANSO;
+typedef PHANSO *CONTROPHANSO;
 
 void NhapMotPhanSo(CONTROPHANSO A);
 

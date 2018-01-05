@@ -10,15 +10,15 @@ float GiaoVien::PHU_CAP_CN = 500000;
 
 int main()
 {
-    GiaoVien a;
-    a.nhap();
-    a.xuat();
+	GiaoVien a;
+	a.nhap();
+	a.xuat();
 
-    GVCN b;
-    b.nhap();
-    b.xuat();
+	GVCN b;
+	b.nhap();
+	b.xuat();
 
-    GVCN c(b);
-    c.xuat();
-    return 0;
+	GVCN c(b);
+	c.xuat();
+	return 0;
 }

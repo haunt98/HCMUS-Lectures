@@ -1,6 +1,6 @@
-//MSSV: 1612180
-//Ho ten: Nguyen Tran Hau
-//Bai tap tuan 08
+// MSSV: 1612180
+// Ho ten: Nguyen Tran Hau
+// Bai tap tuan 08
 
 #include "xuly.h"
 
@@ -12,29 +12,37 @@ int main(void)
 
 	nhap_mang(arr, hang, cot);
 	xuat_mang(arr, hang, cot);
-	
-	printf("Tong cac phan tu cua mang: %d\n", tong(arr, hang, cot)); // Bai 1 TB
+
+	printf("Tong cac phan tu cua mang: %d\n",
+	       tong(arr, hang, cot)); // Bai 1 TB
 
 	printf("Nhap x can tim tan suat: ");
 	scanf("%d", &x);
-	printf("Tan suat cua x: %d lan xuat hien.\n", tan_suat(x, arr, hang, cot)); // Bai 2 TB
+	printf("Tan suat cua x: %d lan xuat hien.\n",
+	       tan_suat(x, arr, hang, cot)); // Bai 2 TB
 
-	printf("So lan xuat hien cua cac so nguyen duong: %d\n", tan_suat_duong(arr, hang, cot)); // Bai 3 TB
-	
-	printf("Tong cac phan tu khong am: %d\n", tong_khong_am(arr, hang, cot)); // Bai 4 TB
+	printf("So lan xuat hien cua cac so nguyen duong: %d\n",
+	       tan_suat_duong(arr, hang, cot)); // Bai 3 TB
 
-	printf("Tong cac phan tu tren duong cheo chinh: %d\n", tong_cheo_chinh(arr, hang, cot)); // Bai 5 TB
+	printf("Tong cac phan tu khong am: %d\n",
+	       tong_khong_am(arr, hang, cot)); // Bai 4 TB
 
-	printf("Tong cac phan tu tren duong cheo phu: %d\n", tong_cheo_phu(arr, hang, cot)); // Bai 6 TB
+	printf("Tong cac phan tu tren duong cheo chinh: %d\n",
+	       tong_cheo_chinh(arr, hang, cot)); // Bai 5 TB
+
+	printf("Tong cac phan tu tren duong cheo phu: %d\n",
+	       tong_cheo_phu(arr, hang, cot)); // Bai 6 TB
 
 	nhap_mang(arr2, hang2, cot2);
 
 	printf("Tong 2 mang da nhap:\n");
-	tong_matran(arr, hang, cot, arr2, hang2, cot2, kqua, kqua_hang, kqua_cot); // Bai 8-tong TB
+	tong_matran(arr, hang, cot, arr2, hang2, cot2, kqua, kqua_hang,
+		    kqua_cot); // Bai 8-tong TB
 	xuat_mang(kqua, kqua_hang, kqua_cot);
 
 	printf("Tich 2 ma tran da nhap:\n");
-	tich_matran(arr, hang, cot, arr2, hang2, cot2, kqua, kqua_hang, kqua_cot); // Bai 8-tich TB
+	tich_matran(arr, hang, cot, arr2, hang2, cot2, kqua, kqua_hang,
+		    kqua_cot); // Bai 8-tich TB
 	xuat_mang(kqua, kqua_hang, kqua_cot);
 
 	printf("Mang tang dan tren hang:\n");
@@ -92,31 +100,26 @@ int main(void)
 	{
 		printf("Tong n ma tran da nhap\n");
 		xuat_mang(kqua, kqua_hang, kqua_cot);
-	}
-	else
+	} else
 		printf("Khong cong duoc\n");
-		
+
 	if (tich_n_mtran(kqua, kqua_hang, kqua_cot)) // Bai 3 K
 	{
 		printf("Tich n ma tran da nhap\n");
 		xuat_mang(kqua, kqua_hang, kqua_cot);
-	}
-	else
+	} else
 		printf("Khong nhan duoc\n");
-
 
 	printf("Nhap ma tran can tim nghich dao\n");
 	nhap_mang_r(r_arr, hang, cot);
 	if (hang != cot)
 		printf("Khong co nghich dao\n");
-	else
-	{
+	else {
 		if (nghich_dao(r_arr, hang, r_kqua)) // Bai 10 K
 		{
 			printf("Nghich dao:\n");
 			xuat_mang_r(r_kqua, hang, hang);
-		}
-		else
+		} else
 			printf("Khong co nghich dao\n");
 	}
 	return 0;

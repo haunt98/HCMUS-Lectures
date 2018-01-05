@@ -2,7 +2,7 @@
 using namespace std;
 #define MAX 10
 
-struct SNode{
+struct SNode {
 	int data;
 	SNode *next;
 };
@@ -10,7 +10,7 @@ struct SNode{
 SNode *makeSNode(int x);
 
 // mang dong
-struct aStack{
+struct aStack {
 	int *data;
 	int top;
 	int size;
@@ -26,8 +26,7 @@ bool peek_aStack(aStack S, int &x);
 void rand_aStack(aStack &S);
 void print_aStack(aStack S);
 // lien ket
-struct lStack
-{
+struct lStack {
 	SNode *head;
 };
 

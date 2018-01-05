@@ -3,8 +3,8 @@
 
 class ThuAnTap
 {
-public:
-    virtual void anTap();
+      public:
+	virtual void anTap();
 };
 
 #endif

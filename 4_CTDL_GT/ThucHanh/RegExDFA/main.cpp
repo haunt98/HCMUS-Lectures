@@ -16,25 +16,24 @@ bool isAABB(const char *);
 
 int main()
 {
-    cout << isAABB("aaababbb") << endl;
-    return 0;
+	cout << isAABB("aaababbb") << endl;
+	return 0;
 }
 
 bool isAABB(const char *P) // P la Pattern
 {
-    // cot: a b
-    // hang: state -1 0 1 2 3 4
-    // table[state i][char j] la state tiep theo
-    // -1 la state bi loai
-    const int table[5][2] = {{1, -1}, {2, -1}, {2, 3}, {2, 4}, {2, 4}};
-    int state = 0; // state dau tien la 0
-    for (int i = 0; P[i] != '\0'; ++i)
-    {
-        state = table[state][P[i] - 'a'];
-        if (state == -1)
-            return false;
-    }
-    if (state == 4)
-        return true;
-    return false;
+	// cot: a b
+	// hang: state -1 0 1 2 3 4
+	// table[state i][char j] la state tiep theo
+	// -1 la state bi loai
+	const int table[5][2] = {{1, -1}, {2, -1}, {2, 3}, {2, 4}, {2, 4}};
+	int state = 0; // state dau tien la 0
+	for (int i = 0; P[i] != '\0'; ++i) {
+		state = table[state][P[i] - 'a'];
+		if (state == -1)
+			return false;
+	}
+	if (state == 4)
+		return true;
+	return false;
 }

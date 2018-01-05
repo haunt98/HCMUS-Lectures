@@ -2,12 +2,12 @@
 
 LopCa LopCa::deTrung()
 {
-    LopCa con;
-    return con;
+	LopCa con;
+	return con;
 }
 
 LopBoSat LopBoSat::deTrung()
 {
-    LopBoSat con;
-    return con;
+	LopBoSat con;
+	return con;
 }

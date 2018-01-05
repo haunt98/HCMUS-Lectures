@@ -2,11 +2,10 @@
 #define _SEARCH_TREE_H
 
 typedef struct Node *pNode;
-struct Node
-{
-    int key;
-    pNode pLeft;
-    pNode pRight;
+struct Node {
+	int key;
+	pNode pLeft;
+	pNode pRight;
 };
 
 // Tim trong cay nhi phan tim kiem

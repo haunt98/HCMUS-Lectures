@@ -9,12 +9,12 @@ using namespace std;
 
 int main()
 {
-    char T[] = "abcbabcab";
-    char P[] = "ababcdabcdea";
-    cout << naiveMatch(T, P) << endl;
-    cout << dfaMatch(T, P) << endl;
-    cout << kmpMatch(T, P) << endl;
-    cout << hpMatch(T, P) << endl;
-    cout << rkMatch(T, P) << endl;
-    return 0;
+	char T[] = "abcbabcab";
+	char P[] = "ababcdabcdea";
+	cout << naiveMatch(T, P) << endl;
+	cout << dfaMatch(T, P) << endl;
+	cout << kmpMatch(T, P) << endl;
+	cout << hpMatch(T, P) << endl;
+	cout << rkMatch(T, P) << endl;
+	return 0;
 }

@@ -1,24 +1,18 @@
+#include <ctype.h>
 #include <stdio.h>
 #include <string.h>
-#include <ctype.h>
 
 #define MAX 100
 
-enum g_tinh
-{
-	nam,
-	nu
-};
+enum g_tinh { nam, nu };
 
-struct n_sinh
-{
+struct n_sinh {
 	int ngay;
 	int thang;
 	int nam;
 };
 
-enum n_tuoi
-{
+enum n_tuoi {
 	than,
 	dau,
 	tuat,
@@ -33,8 +27,7 @@ enum n_tuoi
 	mui,
 };
 
-struct tt_sinh_vien
-{
+struct tt_sinh_vien {
 	int MSSV;
 	char ho[20];
 	char ten_lot[20];
@@ -50,7 +43,7 @@ struct tt_sinh_vien
 
 int so_sanh(char s[], char t[]);
 
-void nhap_sv(tt_sinh_vien &sv); 
+void nhap_sv(tt_sinh_vien &sv);
 
 void xuat_sv(tt_sinh_vien sv);
 
@@ -80,7 +73,7 @@ void lke_nu(tt_sinh_vien sv[], int sl); // Bai 11
 
 void lke_nam(tt_sinh_vien sv[], int sl); // Bai 12
 
-void them_sv(tt_sinh_vien sv[], int &sl); // Bai 9 
+void them_sv(tt_sinh_vien sv[], int &sl); // Bai 9
 
 void xoa_sv(tt_sinh_vien sv[], int &sl); // Bai 10
 

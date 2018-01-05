@@ -1,6 +1,6 @@
-//MSSV: 1612180
-//Ho va ten: Nguyen Tran Hau
-//Bai 11: Tinh tuoi
+// MSSV: 1612180
+// Ho va ten: Nguyen Tran Hau
+// Bai 11: Tinh tuoi
 #include <stdio.h>
 #define nam_hientai 2016
 int main(void)

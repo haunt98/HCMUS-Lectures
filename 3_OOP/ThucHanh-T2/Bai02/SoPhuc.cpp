@@ -32,4 +32,4 @@ void SoPhuc::Xuat()
 	cout << this->m_thuc << " + " << this->m_ao << "i" << endl;
 }
 
-//SoPhuc::~SoPhuc(){}
+// SoPhuc::~SoPhuc(){}

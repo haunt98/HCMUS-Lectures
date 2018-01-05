@@ -2,21 +2,18 @@
 #define LINKEDLIST_H
 
 // Danh sách liên kết (DSLK) đơn
-typedef struct
-{
-    int x;
+typedef struct {
+	int x;
 } Data;
 
-typedef struct tagNode
-{
-    Data info;
-    struct tagNode *pNext;
+typedef struct tagNode {
+	Data info;
+	struct tagNode *pNext;
 } Node;
 
-typedef struct tagList
-{
-    Node *pHead;
-    Node *pTail;
+typedef struct tagList {
+	Node *pHead;
+	Node *pTail;
 } List;
 
 // 01. Hàm so sánh 2 biến kiểu cấu trúc cho trước

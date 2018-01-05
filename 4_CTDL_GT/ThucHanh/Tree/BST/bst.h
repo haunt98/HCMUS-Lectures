@@ -2,12 +2,11 @@
 #define _BST_H
 
 typedef struct Node *pNode;
-struct Node
-{
-    int key;
-    pNode left;
-    pNode right;
-    pNode parent;
+struct Node {
+	int key;
+	pNode left;
+	pNode right;
+	pNode parent;
 };
 
 void printPreOrder(pNode root, int indent);

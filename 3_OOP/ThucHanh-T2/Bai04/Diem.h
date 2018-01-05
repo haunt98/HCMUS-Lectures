@@ -3,14 +3,14 @@
 
 class Diem
 {
-private:
-    int m_x, m_y;
+      private:
+	int m_x, m_y;
 
-public:
-    Diem();
-    Diem(int x, int y);
-    void Xuat();
-    ~Diem();
+      public:
+	Diem();
+	Diem(int x, int y);
+	void Xuat();
+	~Diem();
 };
 
 #endif

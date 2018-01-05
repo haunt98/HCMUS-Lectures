@@ -1,8 +1,8 @@
 #ifndef _MANGSOTHUC_H_
 #define _MANGSOTHUC_H_
 
-#include <stdio.h>
 #include <math.h>
+#include <stdio.h>
 #define MAX 100
 
 void nhap_mang(float arr[], int &len_mang); // Bai 128
@@ -77,9 +77,11 @@ void lke_khong_duy_nhat(float arr[], int len_mang); // Bai 232
 
 void lke_tan_suat(float arr[], int len_mang); // Bai 233
 
-int dem_gia_tri_xuat_hien(float arr1[], int len_1, float arr2[], int len_2); // Bai 234
+int dem_gia_tri_xuat_hien(float arr1[], int len_1, float arr2[],
+			  int len_2); // Bai 234
 
-void lke_gia_tri_xuat_hien(float arr1[], int len_1, float arr2[], int len_2); // Bai 235
+void lke_gia_tri_xuat_hien(float arr1[], int len_1, float arr2[],
+			   int len_2); // Bai 235
 
 int tang_dan(float arr[], int len_mang); // Bai 248
 
@@ -129,5 +131,6 @@ void lke_con_lon_nhat(float arr[], int &len_mang);
 
 void tao_mang_am(float arr1[], int len1, float arr2[], int &len2); // Bai 308
 
-void tao_mang_lan_can(float arr1[], int len1, float arr2[], int &len2); // Bai 309
+void tao_mang_lan_can(float arr1[], int len1, float arr2[],
+		      int &len2); // Bai 309
 #endif

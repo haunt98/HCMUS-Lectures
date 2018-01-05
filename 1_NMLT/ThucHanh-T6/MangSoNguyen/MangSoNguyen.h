@@ -1,7 +1,7 @@
 #ifndef _MANGSONGUYEN_H_
 #define _MANGSONGUYEN_H_
-#include <stdio.h>
 #include <math.h>
+#include <stdio.h>
 #define MAX 100
 
 void nhap_mang(int arr[], int &len_mang); // Bai 129
@@ -66,13 +66,13 @@ int tuong_quan_chan_le(int arr[], int len_mang); // Bai 221
 
 void dem_cuc_tri(int arr[], int len_mang); // Bai 222
 
-int dem_nguyento(int arr[], int len_mang); //Bai 223
+int dem_nguyento(int arr[], int len_mang); // Bai 223
 
 int dem_trai_dau(int arr[], int len_mang); // Bai 227
 
 int dem_gia_tri(int arr[], int len_mang); // Bai 228
 
-int tan_suat(int x, int arr[], int len_mang); 
+int tan_suat(int x, int arr[], int len_mang);
 
 int dem_phan_biet(int arr[], int len_mang); // Bai 229
 

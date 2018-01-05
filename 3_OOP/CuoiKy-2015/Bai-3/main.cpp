@@ -2,7 +2,7 @@
 
 int main()
 {
-    Market cho;
-    cho.nhap();
-    return 0;
+	Market cho;
+	cho.nhap();
+	return 0;
 }

@@ -10,8 +10,7 @@ void main()
 	cout << "Press t to load saved games or anykey to start" << endl;
 	int temp = toupper(_getch());
 	StartGame();
-	if (temp == 'T')
-	{
+	if (temp == 'T') {
 		SuspendThread(handle_main_thread);
 		DrawSnakeFoodGate(' ', ' ');
 		GotoXY(0, HEIGHT_CONSOLE + 2);
@@ -24,26 +23,17 @@ void main()
 			cout << " ";
 		ResumeThread(handle_main_thread);
 	}
-	while (true)
-	{
+	while (true) {
 		int temp = toupper(_getch());
-		if (STATE)
-		{
-			if (temp == 'P')
-			{
+		if (STATE) {
+			if (temp == 'P') {
 				SuspendThread(handle_main_thread);
-			}
-			else if (temp == 'R')
-			{
+			} else if (temp == 'R') {
 				ResumeThread(handle_main_thread);
-			}
-			else if (temp == ESC)
-			{
+			} else if (temp == ESC) {
 				ExitGame(handle_main_thread);
 				break;
-			}
-			else if (temp == 'L')
-			{
+			} else if (temp == 'L') {
 				SuspendThread(handle_main_thread);
 				GotoXY(0, HEIGHT_CONSOLE + 2);
 				cout << "Input filename to save game" << endl;
@@ -54,9 +44,7 @@ void main()
 				for (int i = 0; i < 150; ++i)
 					cout << " ";
 				ResumeThread(handle_main_thread);
-			}
-			else if (temp == 'T')
-			{
+			} else if (temp == 'T') {
 				SuspendThread(handle_main_thread);
 				DrawSnakeFoodGate(' ', ' ');
 				GotoXY(0, HEIGHT_CONSOLE + 2);
@@ -68,13 +56,11 @@ void main()
 				for (int i = 0; i < 150; ++i)
 					cout << " ";
 				ResumeThread(handle_main_thread);
-			}
-			else
-			{
+			} else {
 				ResumeThread(handle_main_thread);
-				if ((temp != CHAR_LOCK) && (temp == 'D' || temp == 'A'
-					|| temp == 'W' || temp == 'S'))
-				{
+				if ((temp != CHAR_LOCK) &&
+				    (temp == 'D' || temp == 'A' ||
+				     temp == 'W' || temp == 'S')) {
 					if (temp == 'D')
 						CHAR_LOCK = 'A';
 					else if (temp == 'W')
@@ -86,13 +72,10 @@ void main()
 					MOVING = temp;
 				}
 			}
-		}
-		else
-		{
+		} else {
 			if (temp == 'Y')
 				StartGame();
-			else
-			{
+			else {
 				ExitGame(handle_main_thread);
 				break;
 			}

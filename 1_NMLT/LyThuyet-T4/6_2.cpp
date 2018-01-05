@@ -1,11 +1,11 @@
-#include <stdio.h>
 #include "6_2.h"
-#include "nhap_pso.h"
 #include "cong_pso.h"
 #include "nhan_pso.h"
+#include "nhap_pso.h"
+#include <stdio.h>
 void baitap_6_2()
 {
-	int a, b, c, d ;
+	int a, b, c, d;
 	char phep_tinh;
 	printf("Nhap phan so thu I: \n");
 	nhap_pso(a, b);
@@ -16,14 +16,14 @@ void baitap_6_2()
 	if (phep_tinh == '+')
 		cong_pso(a, b, c, d);
 	else if (phep_tinh == '-')
-		cong_pso(a, b, -c, d); //phep tru la phep cong voi so doi
+		cong_pso(a, b, -c, d); // phep tru la phep cong voi so doi
 	else if (phep_tinh == '*')
 		nhan_pso(a, b, c, d);
-	else
-	{
+	else {
 		if (c == 0)
 			printf("\nKhong thuc hien duoc.\n");
 		else
-			nhan_pso(a, b, d, c); //phep chia la phep nhan voi so nghich dao
+			nhan_pso(a, b, d,
+				 c); // phep chia la phep nhan voi so nghich dao
 	}
 }

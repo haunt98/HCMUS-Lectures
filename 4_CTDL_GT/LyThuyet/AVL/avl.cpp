@@ -42,39 +42,33 @@ using namespace std;
 
 void findAdd(pNode &root, int k)
 {
-    ;
+	;
 }
 
 void printTree(pNode root, int indent)
 {
-    if (root)
-    {
-        // print in preorder
-        for (int i = 0; i < indent; ++i)
-        {
-            cout << ' ';
-        }
-        cout << root->key << endl;
+	if (root) {
+		// print in preorder
+		for (int i = 0; i < indent; ++i) {
+			cout << ' ';
+		}
+		cout << root->key << endl;
 
-        printTree(root->pLeft, indent + 4);
-        printTree(root->pRight, indent + 4);
-    }
-    else
-    {
-        for (int i = 0; i < indent; ++i)
-        {
-            cout << ' ';
-        }
-        cout << "NULL" << endl;
-    }
+		printTree(root->pLeft, indent + 4);
+		printTree(root->pRight, indent + 4);
+	} else {
+		for (int i = 0; i < indent; ++i) {
+			cout << ' ';
+		}
+		cout << "NULL" << endl;
+	}
 }
 
 void delTree(pNode &root)
 {
-    if (root)
-    {
-        delTree(root->pLeft);
-        delTree(root->pRight);
-        delete root;
-    }
+	if (root) {
+		delTree(root->pLeft);
+		delTree(root->pRight);
+		delete root;
+	}
 }

@@ -3,20 +3,20 @@
 
 class ThuBay
 {
-public:
-    void bay();
+      public:
+	void bay();
 };
 
 class ThuBoi
 {
-public:
-    virtual void boi();
+      public:
+	virtual void boi();
 };
 
 class ThuBo
 {
-public:
-    virtual void bo();
+      public:
+	virtual void bo();
 };
 
 #endif

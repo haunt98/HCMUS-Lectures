@@ -5,18 +5,18 @@ float SAP::DON_GIA = 40000; // 40 trieu
 
 istream &operator>>(istream &in, SAP &sap)
 {
-    cout << "Nhap thu tu, dien tich, doanh thu: ";
-    in >> sap.mThuTu >> sap.mDienTich >> sap.mDoanhThu;
-    return in;
+	cout << "Nhap thu tu, dien tich, doanh thu: ";
+	in >> sap.mThuTu >> sap.mDienTich >> sap.mDoanhThu;
+	return in;
 }
 
 ostream &operator<<(ostream &out, const SAP &sap)
 {
-    out << "Thu tu: " << sap.mThuTu << endl;
-    out << "Dien tich: " << sap.mDienTich << endl;
-    out << "Doanh thu: " << sap.mDoanhThu << endl;
-    out << "Tien cuoi nam: " << sap.tienCuoiNam() << "kVND"<<endl;
-    return out;
+	out << "Thu tu: " << sap.mThuTu << endl;
+	out << "Dien tich: " << sap.mDienTich << endl;
+	out << "Doanh thu: " << sap.mDoanhThu << endl;
+	out << "Tien cuoi nam: " << sap.tienCuoiNam() << "kVND" << endl;
+	return out;
 }
 
 // derived class

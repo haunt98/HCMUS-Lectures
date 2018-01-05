@@ -1,11 +1,11 @@
 #ifndef XULY_H
 #define XULY_H
 #define _CRT_SECURE_NO_WARNINGS
-#include <iostream>
 #include <Windows.h>
-#include <time.h>
-#include <thread>
 #include <conio.h>
+#include <iostream>
+#include <thread>
+#include <time.h>
 using namespace std;
 
 #define MAX_SIZE_SNAKE 100
@@ -38,8 +38,8 @@ void GenerateFood();
 void ResetData();
 
 void StartGame();
-void DrawBoard(int x, int y, int width, int height,
-	int curPosX = 0, int curPosY = 0);
+void DrawBoard(int x, int y, int width, int height, int curPosX = 0,
+	       int curPosY = 0);
 void ProcessDead();
 void ExitGame(HANDLE t);
 

@@ -25,45 +25,43 @@
 // buoc 2, bo di A[cuoi], dua A[0] vao mang con lai theo heap
 void heapShift(int *arr, int index, int size)
 {
-    // dat arr[index] vao arr[index+1..size-1] theo heap
-    int i = index;
-    int j = 2 * i + 1; // vi i co the = 0
-    while (j < size)
-    {
-        if (j != size - 1) // j chua di den cuoi mang
-        {
-            if (arr[j + 1] > arr[j]) // chon so lon hon arr[j], arr[j+1]
-                j++;
-        }
-        if (arr[i] > arr[j]) // so can sap lon hon thi stop
-            break;
-        swap(arr[i], arr[j]);
-        // di chuyen i,j
-        i = j;
-        j = i * 2 + 1;
-    }
+	// dat arr[index] vao arr[index+1..size-1] theo heap
+	int i = index;
+	int j = 2 * i + 1; // vi i co the = 0
+	while (j < size) {
+		if (j != size - 1) // j chua di den cuoi mang
+		{
+			if (arr[j + 1] >
+			    arr[j]) // chon so lon hon arr[j], arr[j+1]
+				j++;
+		}
+		if (arr[i] > arr[j]) // so can sap lon hon thi stop
+			break;
+		swap(arr[i], arr[j]);
+		// di chuyen i,j
+		i = j;
+		j = i * 2 + 1;
+	}
 }
 
 void heapSort(int *arr, int size)
 {
-    clock_t begin = clock();
-    // tao thanh mang heap O(nlogn)
-    int low = size / 2;
-    while (low >= 0)
-    {
-        heapShift(arr, low, size);
-        low--;
-    }
-    // bat dau sap xep O(nlogn)
-    int high = size - 1;
-    while (high >= 0)
-    {
-        swap(arr[0], arr[high]); // dua so lon nhat ve cuoi cung
-        heapShift(arr, 0, high);
-        high--;
-    }
-    clock_t end = clock();
-    cout << "Heap sort: " << (double)(end - begin) / CLOCKS_PER_SEC << endl;
+	clock_t begin = clock();
+	// tao thanh mang heap O(nlogn)
+	int low = size / 2;
+	while (low >= 0) {
+		heapShift(arr, low, size);
+		low--;
+	}
+	// bat dau sap xep O(nlogn)
+	int high = size - 1;
+	while (high >= 0) {
+		swap(arr[0], arr[high]); // dua so lon nhat ve cuoi cung
+		heapShift(arr, 0, high);
+		high--;
+	}
+	clock_t end = clock();
+	cout << "Heap sort: " << (double)(end - begin) / CLOCKS_PER_SEC << endl;
 }
 
 // Thuat toan quick sort
@@ -73,35 +71,35 @@ void heapSort(int *arr, int size)
 // * Sau do de quy nua ben trai va nua ben phai
 int parition(int *arr, int low, int high)
 {
-    int pivot = high;                 // chon pivot cuoi mang
-    int i = low - 1;                  // i chi den phan tu lon hon pivot
-    for (int j = low; j < pivot; j++) // j chi den phan tu be hon pivot
-    {
-        if (arr[j] < arr[pivot]) // don nho hon ve ben trai
-        {
-            i++;
-            swap(arr[i], arr[j]);
-        }
-    }
-    swap(arr[i + 1], arr[pivot]); // chuyen pivot den giua mang
-    pivot = i + 1;                // vi tri pivot hien tai
-    return pivot;
+	int pivot = high;		  // chon pivot cuoi mang
+	int i = low - 1;		  // i chi den phan tu lon hon pivot
+	for (int j = low; j < pivot; j++) // j chi den phan tu be hon pivot
+	{
+		if (arr[j] < arr[pivot]) // don nho hon ve ben trai
+		{
+			i++;
+			swap(arr[i], arr[j]);
+		}
+	}
+	swap(arr[i + 1], arr[pivot]); // chuyen pivot den giua mang
+	pivot = i + 1;		      // vi tri pivot hien tai
+	return pivot;
 }
 
 void quickSort(int *arr, int low, int high)
 {
-    if (low < high)
-    {
-        int pivot = parition(arr, low, high);
-        quickSort(arr, low, pivot - 1);
-        quickSort(arr, pivot + 1, high);
-    }
+	if (low < high) {
+		int pivot = parition(arr, low, high);
+		quickSort(arr, low, pivot - 1);
+		quickSort(arr, pivot + 1, high);
+	}
 }
 
 void quickSortTime(int *arr, int size)
 {
-    clock_t begin = clock();
-    quickSort(arr, 0, size - 1);
-    clock_t end = clock();
-    cout << "Quick sort: " << (double)(end - begin) / CLOCKS_PER_SEC << endl;
+	clock_t begin = clock();
+	quickSort(arr, 0, size - 1);
+	clock_t end = clock();
+	cout << "Quick sort: " << (double)(end - begin) / CLOCKS_PER_SEC
+	     << endl;
 }

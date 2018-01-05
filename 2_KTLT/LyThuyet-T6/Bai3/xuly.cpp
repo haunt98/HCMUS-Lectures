@@ -28,8 +28,7 @@ void upperWord(char *str, int pos)
 {
 	if (str[pos] == '\0')
 		return;
-	if (pos == 0 || str[pos - 1] == ' ')
-	{
+	if (pos == 0 || str[pos - 1] == ' ') {
 		if (str[pos] >= 'a' && str[pos] <= 'z')
 			str[pos] += 'A' - 'a';
 	}
@@ -38,17 +37,17 @@ void upperWord(char *str, int pos)
 
 void swapChar(char &a, char &b)
 {
-	char temp = a; a = b; b = temp;
+	char temp = a;
+	a = b;
+	b = temp;
 }
 
 void printPermutation(char *str, int left, int right)
 {
 	if (left == right)
 		cout << str << endl;
-	else
-	{
-		for (int i = left; i <= right; ++i)
-		{
+	else {
+		for (int i = left; i <= right; ++i) {
 			swapChar(str[i], str[left]);
 			printPermutation(str, left + 1, right);
 			swapChar(str[i], str[left]);

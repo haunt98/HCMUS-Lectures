@@ -4,10 +4,8 @@ int main(void)
 {
 	int chess[NUMB][NUMB];
 
-	for (int row = 0; row < NUMB; ++row)
-	{
-		for (int col = 0; col < NUMB; ++col)
-		{
+	for (int row = 0; row < NUMB; ++row) {
+		for (int col = 0; col < NUMB; ++col) {
 			chess[row][col] = NOTPASS;
 		}
 	}

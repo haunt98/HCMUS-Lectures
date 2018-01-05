@@ -1,15 +1,13 @@
 #include <iostream>
 using namespace std;
 
-struct PhanSo
-{
+struct PhanSo {
 	int TuSo, MauSo;
 };
 
-struct Node
-{
+struct Node {
 	PhanSo key;
-	Node * next;
+	Node *next;
 };
 
 Node *getNode(int k);

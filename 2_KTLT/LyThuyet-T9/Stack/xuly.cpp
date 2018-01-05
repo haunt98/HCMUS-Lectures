@@ -34,8 +34,7 @@ void push_aStack(aStack &S, int x)
 
 bool pop_aStack(aStack &S, int &x)
 {
-	if (!Empty_aStack(S))
-	{
+	if (!Empty_aStack(S)) {
 		x = S.data[S.top - 1];
 		S.top--;
 		return true;
@@ -45,8 +44,7 @@ bool pop_aStack(aStack &S, int &x)
 
 bool peek_aStack(aStack S, int &x)
 {
-	if (!Empty_aStack(S))
-	{
+	if (!Empty_aStack(S)) {
 		x = S.data[S.top - 1];
 		return true;
 	}
@@ -55,17 +53,15 @@ bool peek_aStack(aStack S, int &x)
 
 void rand_aStack(aStack &S)
 {
-	for (int i = 0; i < S.size; ++i)
-	{
-		push_aStack(S, i*i);
+	for (int i = 0; i < S.size; ++i) {
+		push_aStack(S, i * i);
 	}
 }
 
 void print_aStack(aStack S)
 {
 	int temp = S.top - 1;
-	while (temp >= 0)
-	{
+	while (temp >= 0) {
 		cout << S.data[temp] << endl;
 		temp--;
 	}
@@ -96,8 +92,7 @@ void push_lStack(lStack &S, int x)
 
 bool pop_lStack(lStack &S, int &x)
 {
-	if (!Empty_lStack(S))
-	{
+	if (!Empty_lStack(S)) {
 		SNode *temp = S.head;
 		x = temp->data;
 		S.head = S.head->next;
@@ -108,8 +103,7 @@ bool pop_lStack(lStack &S, int &x)
 
 bool peek_lStack(lStack &S, int &x)
 {
-	if (!Empty_lStack(S))
-	{
+	if (!Empty_lStack(S)) {
 		x = S.head->data;
 		return true;
 	}
@@ -118,17 +112,15 @@ bool peek_lStack(lStack &S, int &x)
 
 void rand_lStack(lStack &S)
 {
-	for (int i = 0; i < MAX; ++i)
-	{
-		push_lStack(S, i*i);
+	for (int i = 0; i < MAX; ++i) {
+		push_lStack(S, i * i);
 	}
 }
 
 void print_lStack(lStack S)
 {
 	SNode *temp = S.head;
-	while (temp)
-	{
+	while (temp) {
 		cout << temp->data << endl;
 		temp = temp->next;
 	}

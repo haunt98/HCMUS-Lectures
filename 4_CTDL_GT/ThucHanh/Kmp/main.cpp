@@ -4,9 +4,9 @@ using namespace std;
 
 int main()
 {
-    char T[] = "ababaca";
-    char P[] = "ca";
-    cout << kmpMatch(T, P) << endl;
+	char T[] = "ababaca";
+	char P[] = "ca";
+	cout << kmpMatch(T, P) << endl;
 
-    return 0;
+	return 0;
 }

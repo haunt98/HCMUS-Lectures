@@ -1,8 +1,8 @@
 #ifndef _HAM_H_
 #define _HAM_H_
 
-#include <stdio.h>
 #include <math.h>
+#include <stdio.h>
 
 void nhap_x_n(float &x, int &n);
 void Bai8(int N, int M);

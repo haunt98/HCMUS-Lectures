@@ -2,7 +2,8 @@
 
 using namespace std;
 
-int main() {
+int main()
+{
 	PhanSo a;
 	a.nhap();
 

@@ -9,18 +9,18 @@ using namespace std;
 // So nguyen lon
 class BigNum
 {
-private:
-    bool positive; // âm hay dương
-    List m_digits;
+      private:
+	bool positive; // âm hay dương
+	List m_digits;
 
-public:
-    BigNum(const string &numb);
-    void print();
+      public:
+	BigNum(const string &numb);
+	void print();
 
-    // operator
-    BigNum &operator=(const BigNum &);
-    BigNum &operator+=(const BigNum &);
-    BigNum &operator-=(const BigNum &);
+	// operator
+	BigNum &operator=(const BigNum &);
+	BigNum &operator+=(const BigNum &);
+	BigNum &operator-=(const BigNum &);
 };
 
 #endif

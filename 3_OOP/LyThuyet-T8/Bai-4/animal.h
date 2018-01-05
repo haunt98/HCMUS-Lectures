@@ -7,14 +7,14 @@
 
 class LopCa : public ThuBoi
 {
-public:
-    LopCa deTrung();
+      public:
+	LopCa deTrung();
 };
 
 class LopBoSat : public ThuBo, public ThuAnTap
 {
-public:
-    LopBoSat deTrung();
+      public:
+	LopBoSat deTrung();
 };
 
 class ConCaMap : public LopCa

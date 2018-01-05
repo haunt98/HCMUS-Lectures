@@ -8,16 +8,26 @@ using namespace std;
 
 class P_base
 {
-public:
-    virtual void dosth() { cout << "Base do sth" << endl; }
-    virtual ~P_base() {}
+      public:
+	virtual void dosth()
+	{
+		cout << "Base do sth" << endl;
+	}
+	virtual ~P_base()
+	{
+	}
 };
 
 class P_derived : public P_base
 {
-public:
-    void dosth() { cout << "Derived do sth" << endl; }
-    ~P_derived() {}
+      public:
+	void dosth()
+	{
+		cout << "Derived do sth" << endl;
+	}
+	~P_derived()
+	{
+	}
 };
 
 // Lop thuan ao (pure virtual) co ham virtual .. = 0
@@ -25,9 +35,9 @@ public:
 
 int main()
 {
-    // Vi du da hinh
-    P_base *a = new P_derived;
-    a->dosth();
-    delete a;
-    return 0;
+	// Vi du da hinh
+	P_base *a = new P_derived;
+	a->dosth();
+	delete a;
+	return 0;
 }

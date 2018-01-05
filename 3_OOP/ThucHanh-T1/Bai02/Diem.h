@@ -3,13 +3,13 @@
 
 class Diem
 {
-private:
-    double m_x, m_y;
+      private:
+	double m_x, m_y;
 
-public:
-    void nhap();
-    void xuat();
-    float khoangcach(Diem p);
+      public:
+	void nhap();
+	void xuat();
+	float khoangcach(Diem p);
 };
 
 #endif

@@ -1,23 +1,23 @@
-#include <fstream>
-#include <iostream>
-#include <cstdlib>
 #include <cstdio>
-#include <inttypes.h>
+#include <cstdlib>
 #include <ctype.h>
+#include <fstream>
+#include <inttypes.h>
+#include <iostream>
 using namespace std;
 
-struct PhanSo{
+struct PhanSo {
 	int tu, mau;
 };
 
-typedef PhanSo * ConTroPhanSo;
+typedef PhanSo *ConTroPhanSo;
 
-struct listPhanSo{
+struct listPhanSo {
 	ConTroPhanSo list;
 	int size;
 };
 
-typedef bool(*ConditionSort)(PhanSo, PhanSo);
+typedef bool (*ConditionSort)(PhanSo, PhanSo);
 
 void replaceChar(char *filename, char ch_old, char ch_new);
 

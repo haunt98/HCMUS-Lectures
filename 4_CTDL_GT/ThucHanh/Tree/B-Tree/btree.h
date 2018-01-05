@@ -4,12 +4,11 @@
 extern const int T_MIN_DEGREE;
 
 typedef struct Node *pNode;
-struct Node
-{
-    bool leaf;
-    int n;
-    int *key;
-    pNode *children;
+struct Node {
+	bool leaf;
+	int n;
+	int *key;
+	pNode *children;
 };
 
 void B_Tree_Print(pNode root, int indent);

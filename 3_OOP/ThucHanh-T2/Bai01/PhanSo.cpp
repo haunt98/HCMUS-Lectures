@@ -12,8 +12,8 @@ PhanSo::PhanSo()
 PhanSo::PhanSo(int tu, int mau)
 {
 	int d = mau > 0 ? 1 : -1;
-	this->m_tu = tu*d;
-	this->m_mau = mau*d;
+	this->m_tu = tu * d;
+	this->m_mau = mau * d;
 }
 
 PhanSo::PhanSo(int tu)
@@ -36,9 +36,11 @@ void PhanSo::Xuat()
 PhanSo PhanSo::Cong(PhanSo ps)
 {
 	PhanSo tong;
-	tong.m_tu = this->m_tu*ps.m_mau + this->m_mau*ps.m_tu;
-	tong.m_mau = this->m_mau*ps.m_mau;
+	tong.m_tu = this->m_tu * ps.m_mau + this->m_mau * ps.m_tu;
+	tong.m_mau = this->m_mau * ps.m_mau;
 	return tong;
 }
 
-PhanSo::~PhanSo(){}
+PhanSo::~PhanSo()
+{
+}

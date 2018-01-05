@@ -1,27 +1,21 @@
 #ifndef _RED_BLACK_H
 #define _RED_BLACK_H
 
-enum Colors
-{
-    Black,
-    Red
-};
+enum Colors { Black, Red };
 
 typedef struct Node *pNode;
-struct Node
-{
-    int key;
-    pNode left;
-    pNode right;
-    pNode parent;
-    Colors color;
+struct Node {
+	int key;
+	pNode left;
+	pNode right;
+	pNode parent;
+	Colors color;
 };
 
-struct Tree
-{
-    pNode root;
-    pNode NIL;
-    Tree();
+struct Tree {
+	pNode root;
+	pNode NIL;
+	Tree();
 };
 
 pNode getNode(int k, Colors color, pNode NIL);

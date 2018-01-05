@@ -12,20 +12,18 @@
 typedef struct leader *lref;
 typedef struct trailer *tref;
 
-struct leader
-{
-    int key;
-    int count;  // So phan tu leader "dung truoc" leader dang xet
-    lref next;  // Leader tiep theo trong list
-    tref trail; // Con tro quan ly 1 danh sach
-                // nhung phan tu trong danh sach nay la 1 con tro
-                // tro den leader "dung sau" leader dang xet
+struct leader {
+	int key;
+	int count;  // So phan tu leader "dung truoc" leader dang xet
+	lref next;  // Leader tiep theo trong list
+	tref trail; // Con tro quan ly 1 danh sach
+		    // nhung phan tu trong danh sach nay la 1 con tro
+		    // tro den leader "dung sau" leader dang xet
 };
 
-struct trailer
-{
-    lref id;
-    tref next;
+struct trailer {
+	lref id;
+	tref next;
 };
 
 // Chi them vao w chua co trong danh sach

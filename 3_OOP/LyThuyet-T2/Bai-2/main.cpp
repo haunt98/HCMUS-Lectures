@@ -1,11 +1,12 @@
 #include "donthuc.h"
 
-int main() {
-    DonThuc a;
-    a.nhap();
+int main()
+{
+	DonThuc a;
+	a.nhap();
 
-    DonThuc b;
-    b.nhap();
+	DonThuc b;
+	b.nhap();
 
-    return 0;
+	return 0;
 }

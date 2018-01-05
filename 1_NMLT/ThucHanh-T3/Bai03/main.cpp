@@ -1,15 +1,15 @@
-//MSSV: 1612180
-//Ho ten: Nguyen Tran Hau
-//Bai 03
-#include <stdio.h>
+// MSSV: 1612180
+// Ho ten: Nguyen Tran Hau
+// Bai 03
 #include <math.h>
+#include <stdio.h>
 int main(void)
 {
 	float diem_tb;
 	printf("Nhap diem trung binh thang diem 10 cua SV: ");
 	scanf("%f", &diem_tb);
 	diem_tb = roundf(diem_tb * 10) / 10;
-	//lam tron 1 chu so thap phan
+	// lam tron 1 chu so thap phan
 	printf("Thang diem ABCDF cua SV: ");
 	if (diem_tb >= 8.5 && diem_tb <= 10)
 		printf("A\n");

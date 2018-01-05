@@ -10,18 +10,18 @@ using namespace std;
 
 int main()
 {
-    int n = 3;
+	int n = 3;
 
-    pNode root = balancedTree(n);
-    printTree(root, 0);
+	pNode root = balancedTree(n);
+	printTree(root, 0);
 
-    postorder(root);
-    cout << endl;
+	postorder(root);
+	cout << endl;
 
-    postorderStack(root);
-    cout << endl;
+	postorderStack(root);
+	cout << endl;
 
-    delTree(root);
+	delTree(root);
 
-    return 0;
+	return 0;
 }

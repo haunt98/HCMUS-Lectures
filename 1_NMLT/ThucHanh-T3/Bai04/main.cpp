@@ -1,16 +1,15 @@
-//MSSV: 1612180
-//Ho ten: Nguyen Tran Hau
-//Bai 04
+// MSSV: 1612180
+// Ho ten: Nguyen Tran Hau
+// Bai 04
 #include <stdio.h>
 int main(void)
 {
 	int n;
 	printf("Nhap vao mot so nguyen bat ki: ");
 	scanf("%d", &n);
-	if (n<0 || n>9)
+	if (n < 0 || n > 9)
 		printf("khong doc duoc.\n");
-	else
-	{
+	else {
 		if (n == 0)
 			printf("khong\n");
 		else if (n == 1)

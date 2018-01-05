@@ -9,33 +9,32 @@ using namespace std;
 
 void myswap(int &a, int &b)
 {
-    int temp = a;
-    a = b;
-    b = temp;
+	int temp = a;
+	a = b;
+	b = temp;
 }
 
 void randArr(int *&arr, int size)
 {
-    srand(time(NULL));
-    arr = new int[size];
-    for (int i = 0; i < size; i++)
-    {
-        arr[i] = rand() % RANDMAX;
-    }
+	srand(time(NULL));
+	arr = new int[size];
+	for (int i = 0; i < size; i++) {
+		arr[i] = rand() % RANDMAX;
+	}
 }
 
 void printArr(int *arr, int size)
 {
-    for (int i = 0; i < size; i++)
-        cout << arr[i] << " ";
-    cout << endl;
+	for (int i = 0; i < size; i++)
+		cout << arr[i] << " ";
+	cout << endl;
 }
 
 bool isSorted(int *arr, int size)
 {
-    if (size == 1)
-        return true;
-    if (arr[size - 2] > arr[size - 1])
-        return false;
-    return isSorted(arr, size - 1);
+	if (size == 1)
+		return true;
+	if (arr[size - 2] > arr[size - 1])
+		return false;
+	return isSorted(arr, size - 1);
 }

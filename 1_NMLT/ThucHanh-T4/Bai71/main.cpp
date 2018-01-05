@@ -1,6 +1,6 @@
-//MSSV: 1612180
-//Ho ten: Nguyen Tran Hau
-//Bai 71
+// MSSV: 1612180
+// Ho ten: Nguyen Tran Hau
+// Bai 71
 #include <stdio.h>
 int main(void)
 {
@@ -10,17 +10,16 @@ int main(void)
 	float tam_tong = 0;
 	int n;
 	printf("Bai 71\n");
-	do{
+	do {
 		printf("Nhap x = ");
 		scanf_s("%f", &x);
 	} while (x == 0);
-	do{
+	do {
 		printf("Nhap n = ");
 		scanf_s("%d", &n);
 	} while (n < 1);
-	for (int i = 0; i < n; ++i)
-	{
-		tam_x = tam_x*x*(-1);
+	for (int i = 0; i < n; ++i) {
+		tam_x = tam_x * x * (-1);
 		tam_tong += (i + 1);
 		S = S + tam_x / tam_tong;
 	}
