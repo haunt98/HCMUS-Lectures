@@ -4,13 +4,22 @@
 
 int main()
 {
-	pNode head = NULL;
-	addHead(&head, 1);
-	addHead(&head, 2);
-	addHead(&head, 3);
-	addHead(&head, 4);
-	printList(head);
+	pNode p1 = newNode(1);
+	pNode p2 = newNode(2);
+	pNode p3 = newNode(3);
+	pNode p4 = newNode(4);
+	p1->next = p2;
+	p2->next = p3;
+	p3->next = p4;
+	p4->next = p2;
 
-	freeList(&head);
+	pNode p = findBeginCir(p1);
+	if (p)
+		printf("%d\n", p->x);
+
+	free(p1);
+	free(p2);
+	free(p3);
+	free(p4);
 	return 0;
 }

@@ -119,3 +119,39 @@ void removeMid(pNode *head)
 	prev->next = p->next;
 	free(p);
 }
+
+// A->B-C->D->E->C
+// C is the beginning of loop
+pNode findBeginCir(pNode head)
+{
+	if (!head || !head->next)
+		return NULL;
+	pNode n1 = head;
+	pNode n2 = head;
+
+	// Find metting point
+	while (n2->next) {
+		n1 = n1->next;
+		n2 = n2->next;
+		if (n2) {
+			n2 = n2->next;
+		}
+		if (n1 == n2)
+			break;
+	}
+
+	// No meet - no loop
+	if (!n2->next)
+		return NULL;
+
+	/* n1 from head
+	 * when n1 hit n2 again
+	 * n2 is loop
+	 */
+	n1 = head;
+	while (n1 != n2) {
+		n1 = n1->next;
+		n2 = n2->next;
+	}
+	return n2;
+}

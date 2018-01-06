@@ -18,5 +18,6 @@ void addHead(pNode *head, int x);
 void removeDup(pNode *head);
 pNode findLast(pNode head, int i); // ith from tail
 void removeMid(pNode *head);
+pNode findBeginCir(pNode head); // find beginning loop in circular ll
 
 #endif
