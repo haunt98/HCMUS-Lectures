@@ -125,6 +125,15 @@ int isSameTree(pNode p, pNode q);
 int isSubTree(pNode r, pNode q);
 void testSubTree();
 
+// print all path in tree which sum = ...
+void printPath(pNode r, int sum)
+{
+	if (!r)
+		return;
+	printPath(r->left, sum);
+	printPath(r->right, sum);
+}
+
 int main()
 {
 	testSubTree();
