@@ -92,3 +92,30 @@ pNode findLast(pNode head, int i)
 	}
 	return p;
 }
+
+void removeMid(pNode *head)
+{
+	if (!*head)
+		return;
+	if (!(*head)->next) {
+		free(*head);
+		*head = NULL;
+		return;
+	}
+
+	// p move 1, q move 2
+	// q reach tail, p is mid
+	pNode prev = NULL;
+	pNode p = *head;
+	pNode q = *head;
+	while (q) {
+		prev = p;
+		p = p->next;
+		q = q->next;
+		if (q) {
+			q = q->next;
+		}
+	}
+	prev->next = p->next;
+	free(p);
+}
