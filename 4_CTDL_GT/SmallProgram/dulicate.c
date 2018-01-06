@@ -22,6 +22,7 @@ void removeDuplicate(char *str)
 
 	int tail = 1;
 	for (int i = 1; i < n; ++i) {
+		// i run fast than tail
 		int j;
 		for (j = 0; j < tail; ++j) {
 			if (str[i] == str[j])
