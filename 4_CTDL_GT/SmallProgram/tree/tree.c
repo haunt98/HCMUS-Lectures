@@ -118,8 +118,40 @@ pNode sameAncestor(pNode p, pNode q)
 	return r;
 }
 
+void testAncestor();
+
+// check subtree
+int isSameTree(pNode p, pNode q);
+int isSubTree(pNode r, pNode q);
+void testSubTree();
+
 int main()
 {
+	testSubTree();
+	return 0;
+}
+
+int isSameTree(pNode p, pNode q)
+{
+	if (p != q)
+		return 0;
+	if (!p && !q)
+		return 1;
+	return isSameTree(p->left, q->left) && isSameTree(p->right, q->right);
+}
+
+int isSubTree(pNode r, pNode q)
+{
+	if (isSameTree(r, q))
+		return 1;
+	if (!r)
+		return 0;
+	return isSubTree(r->left, q) || isSubTree(r->right, q);
+}
+
+void testAncestor()
+{
+
 	pNode p1 = newNodeX(1);
 	pNode p2 = newNodeX(2);
 	pNode p3 = newNodeX(3);
@@ -142,5 +174,26 @@ int main()
 		printf("No r\n");
 
 	freeTree(&p1);
-	return 0;
+}
+
+void testSubTree()
+{
+	pNode p1 = newNodeX(1);
+	pNode p2 = newNodeX(2);
+	pNode p3 = newNodeX(3);
+	pNode p4 = newNodeX(4);
+	pNode p5 = newNodeX(5);
+
+	p1->left = p2;
+	p2->parent = p1;
+	p1->right = p3;
+	p3->parent = p1;
+	p3->left = p4;
+	p4->parent = p3;
+	p3->right = p5;
+	p5->parent = p3;
+
+	printf("%d\n", isSubTree(p1, p3));
+
+	freeTree(&p1);
 }
