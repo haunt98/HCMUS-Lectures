@@ -1,5 +1,5 @@
 // AVL tree is a BST tree that is also height balanced:
-// for each node x, the height og the left and right subtrees of x
+// for each node x, the height of the left and right subtrees of x
 // differ by at most 1
 #include "avl.h"
 #include <iostream>
