@@ -63,3 +63,32 @@ void removeDup(pNode *head)
 		}
 	}
 }
+
+pNode findLast(pNode head, int i)
+{
+	/* idea is, p and q have i node between
+	 * when q reach tail, p is ith from tail
+	 */
+	if (!head || i < 0)
+		return NULL;
+	if (!head->next) {
+		if (i == 0)
+			return head;
+		else
+			return NULL;
+	}
+	pNode p = head;
+	pNode q = p;
+	while (i > 0 && q->next) {
+		q = q->next;
+		--i;
+	}
+	if (i > 0) // i > size of list
+		return NULL;
+
+	while (q->next) {
+		p = p->next;
+		q = q->next;
+	}
+	return p;
+}

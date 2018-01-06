@@ -16,5 +16,6 @@ void addHead(pNode *head, int x);
 
 // practice make perfect
 void removeDup(pNode *head);
+pNode findLast(pNode head, int i); // ith from tail
 
 #endif
