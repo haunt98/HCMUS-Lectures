@@ -17,7 +17,7 @@ int timNhiPhan(int *arr, int low, int high, int value)
 	if (low > high) {
 		return -1;
 	}
-	int mid = (low + high) / 2;
+	int mid = low + (high - low) / 2;
 	if (arr[mid] == value)
 		return mid;
 	else if (arr[mid] > value)

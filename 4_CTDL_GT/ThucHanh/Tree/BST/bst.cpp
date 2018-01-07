@@ -153,7 +153,7 @@ pNode predecessor(pNode x)
 }
 
 // insertion and deletion
-void insertionRecursive(pNode &root, int k)
+void insertionIterative(pNode &root, int k)
 {
 	pNode z = getNode(k);
 	pNode y = NULL;
