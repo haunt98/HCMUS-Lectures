@@ -20,10 +20,11 @@ void merge(int A[], int n, int B[], int m)
 	// assume A[0..m+n-1]
 	int x = n - 1;
 	int y = m - 1;
-	for (int i = m + n - 1; i >= 0; --i) {
+
+	// stop when done copy B
+	for (int i = m + n - 1; i >= 0 && y >= 0; --i) {
 		if (A[x] > B[y])
 			A[i] = A[x--];
-
 		else
 			A[i] = B[y--];
 	}
