@@ -12,6 +12,7 @@ struct Pos {
 
 int searchArr(int *arr, int size, int x);
 struct Pos searchMatrix(int **matrix, int row, int col, int x);
+struct Pos searchMatNew(int **matrix, int row, int col, int x);
 
 int main()
 {
@@ -28,8 +29,13 @@ int main()
 	}
 
 	printMatrix(m, row, col);
-	struct Pos p = searchMatrix(m, row, col, 0);
-	printf("%d %d\n", p.row, p.col);
+	struct Pos p;
+	for (int i = 1; i <= 9; ++i) {
+		p = searchMatrix(m, row, col, i);
+		printf("%d %d ", p.row, p.col);
+		p = searchMatNew(m, row, col, i);
+		printf("%d %d\n", p.row, p.col);
+	}
 
 	for (int i = 0; i < row; ++i) {
 		free(m[i]);
@@ -61,6 +67,26 @@ struct Pos searchMatrix(int **matrix, int row, int col, int x)
 		if (found != -1) {
 			p.row = i;
 			p.col = found;
+			break;
+		}
+	}
+	return p;
+}
+
+struct Pos searchMatNew(int **matrix, int row, int col, int x)
+{
+	struct Pos p = {-1, -1};
+	int i = 0;
+	int j = col - 1;
+	while (i < row && j >= 0) {
+		if (matrix[i][j] == x) {
+			p.row = i;
+			p.col = j;
+			break;
+		} else if (x > matrix[i][j]) {
+			++i;
+		} else {
+			--j;
 		}
 	}
 	return p;
