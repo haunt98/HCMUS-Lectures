@@ -20,3 +20,6 @@ References
 
 `OSSU Computer Science
 <https://github.com/ossu/computer-science>`_
+
+`Làm an toàn thông tin thì học gì?
+<https://vnhacker.blogspot.com/2012/05/lam-toan-thong-tin-thi-hoc-gi.html>`_
