@@ -17,3 +17,6 @@ References
 `Advanced Data Structures
 <https://ocw.mit.edu/courses/electrical-engineering-and-computer-science/
 6-851-advanced-data-structures-spring-2012/>`_
+
+`OSSU Computer Science
+<https://github.com/ossu/computer-science>`_
