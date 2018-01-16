@@ -23,3 +23,6 @@ References
 
 `Làm an toàn thông tin thì học gì?
 <https://vnhacker.blogspot.com/2012/05/lam-toan-thong-tin-thi-hoc-gi.html>`_
+
+`OSDev - Books
+<http://wiki.osdev.org/Books>`_
