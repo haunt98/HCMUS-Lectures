@@ -1,6 +1,6 @@
-=====================
-Lectures Programming
-=====================
+==============
+HCMUS Lectures
+==============
 
 My homework when I was studying in HCMUS (2016-2020)
 
