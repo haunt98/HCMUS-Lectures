@@ -17,3 +17,6 @@ References
 
 `Learn Assembly Language
 <http://asmtutor.com/>`_
+
+`Introductory Intel x86
+<http://opensecuritytraining.info/IntroX86.html>`_
