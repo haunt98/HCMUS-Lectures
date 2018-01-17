@@ -2,9 +2,18 @@
 Kiến trúc máy tính và hợp ngữ
 =============================
 
-`NASM
-<http://www.nasm.us/index.php>`_ ::
+::
+
+        # [format] can be elf32, elf64 (Linux)
+        # or win32, win64 (Windows)
 
         nasm -f [format] file.asm
 
-[format] can be elf32, elf64 (Linux) or win32, win64 (Windows)
+References
+==========
+
+`NASM
+<http://www.nasm.us/>`_
+
+`Learn Assembly Language
+<http://asmtutor.com/>`_
