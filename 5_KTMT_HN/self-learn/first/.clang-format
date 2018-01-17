@@ -1,7 +1,0 @@
-# Linux kernel style
-BasedOnStyle: LLVM
-# More detail
-AllowShortFunctionsOnASingleLine: None
-BreakBeforeBraces: Linux
-IndentWidth: 8
-UseTab: Always
