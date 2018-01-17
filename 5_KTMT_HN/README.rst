@@ -15,8 +15,5 @@ References
 `NASM
 <http://www.nasm.us/>`_
 
-`Learn Assembly Language
-<http://asmtutor.com/>`_
-
-`Introductory Intel x86
-<http://opensecuritytraining.info/IntroX86.html>`_
+`Learning assembly for linux-x64
+<https://github.com/0xAX/asm>`_
