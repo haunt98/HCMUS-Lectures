@@ -15,5 +15,5 @@ References
 `NASM
 <http://www.nasm.us/>`_
 
-`Learning assembly for linux-x64
-<https://github.com/0xAX/asm>`_
+`Some resources
+<https://www.csee.umbc.edu/portal/help/nasm/>`_
