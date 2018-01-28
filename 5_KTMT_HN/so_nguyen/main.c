@@ -8,11 +8,11 @@ void bu_2(int n, int bit);
 
 int main()
 {
-	int n;
-	scanf("%d", &n);
-	luong_dau(n, 10);
-	bu_1(n, 10);
-	bu_2(n, 10);
+	int n, bit;
+	scanf("%d %d", &n, &bit);
+	luong_dau(n, bit);
+	bu_1(n, bit);
+	bu_2(n, bit);
 	return 0;
 }
 
@@ -26,7 +26,7 @@ void luong_dau(int n, int bit)
 	int temp = n;
 	char *s = malloc(bit + 1);
 
-	if (n > 0) {
+	if (n >= 0) {
 		s[0] = '0';
 	} else {
 		s[0] = '1';
