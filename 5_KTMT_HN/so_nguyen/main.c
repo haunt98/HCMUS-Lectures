@@ -5,14 +5,20 @@
 void luong_dau(int n, int bit);
 void bu_1(int n, int bit);
 void bu_2(int n, int bit);
+void bias(int n, int bit);
 
-int main()
+int main(int argc, char *argv[])
 {
-	int n, bit;
-	scanf("%d %d", &n, &bit);
+	if (argc != 3) {
+		printf("Use: a n bit\n");
+		return 0;
+	}
+	int n = atoi(argv[1]);
+	int bit = atoi(argv[2]);
 	luong_dau(n, bit);
 	bu_1(n, bit);
 	bu_2(n, bit);
+	bias(n, bit);
 	return 0;
 }
 
@@ -111,4 +117,48 @@ void bu_2(int n, int bit)
 	}
 	printf("%d is %s\n", n, s);
 	free(s);
+}
+
+void bias(int n, int bit)
+{
+	if (n == 0) {
+		char *zero = malloc(bit + 1);
+		zero[0] = '0';
+		for (int i = 1; i < bit; ++i) {
+			zero[i] = '1';
+		}
+		zero[bit] = '\0';
+		printf("%d is %s\n", n, zero);
+		free(zero);
+	} else if (n > 0) {
+		int temp = n - 1;
+		char *s = malloc(bit + 1);
+		s[bit] = '\0';
+		s[0] = '1'; // positive bias alwats 1..
+
+		for (int i = bit - 1; i > 0; --i) {
+			s[i] = '0' + temp % 2;
+			temp /= 2;
+		}
+		printf("%d is %s\n", n, s);
+		free(s);
+	} else {
+		// tim luong dau cua -n, sau do zero tru di
+		int temp = -n;
+		char *s = malloc(bit + 1);
+		s[bit] = '\0';
+		s[0] = '0';
+		for (int i = bit - 1; i > 0; --i) {
+			s[i] = '0' + temp % 2;
+			temp /= 2;
+		}
+		for (int i = bit - 1; i > 0; --i) {
+			if (s[i] == '1')
+				s[i] = '0';
+			else
+				s[i] = '1';
+		}
+		printf("%d is %s\n", n, s);
+		free(s);
+	}
 }
