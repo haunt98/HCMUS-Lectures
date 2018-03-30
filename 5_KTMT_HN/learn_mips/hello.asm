@@ -15,3 +15,7 @@ main:
 	la $a0, bye_msg
 	add $v0, $zero, 4
 	syscall
+
+        # exit
+        add $v0, $zero, 10
+        syscall
