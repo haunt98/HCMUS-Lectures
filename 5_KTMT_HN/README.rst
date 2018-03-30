@@ -2,15 +2,32 @@
 Kiến trúc máy tính và hợp ngữ
 =============================
 
+MIPS
+=====
+
+`MARS - MIPS Assembler and Runtime Simulator
+<http://courses.missouristate.edu/KenVollmar/mars/>`_
+
+`SPIM - MIPS simulator
+<https://sourceforge.net/projects/spimsimulator/>`_
+
+NASM
+=====
+
 ::
 
-        # [format] can be elf32, elf64 (Linux)
-        # or win32, win64 (Windows)
-
+        # [format] can be       elf32, elf64 (Linux)
+        #                       win32, win64 (Windows)
         nasm -f [format] file.asm
 
 References
 ==========
+
+`MIPS pseudo instructions
+<https://github.com/MIPT-ILab/mipt-mips/wiki/MIPS-pseudo-instructions>`_
+
+`MARS syscalls
+<https://github.com/MIPT-ILab/mipt-mips/wiki/MARS-syscalls>`_
 
 `NASM
 <http://www.nasm.us/>`_
