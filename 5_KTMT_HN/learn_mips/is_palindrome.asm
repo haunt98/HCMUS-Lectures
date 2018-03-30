@@ -29,7 +29,10 @@ len_loop:
 	addi $t2, $t2, 1
 	j len_loop
 exit_len_loop:
-	addi $t2, $t2, -2	# skip \n and \0
+	addi $t2, $t2, -1	# skip '\0'
+        lb $t3, 0($t2)
+        bne $t3, 10, palin_loop # 10 is '\n'
+        addi $t2, $t2, -1       # skip '\n'
 
 	# compare *A, *B
 palin_loop:
