@@ -94,7 +94,6 @@ incre_b:
         lb $t5, 0($t2)          # get *B
         j skip_b
 
-
 lower_a:
         slt $t3, $t4, 65        # 65 is 'A'
         bne $t3, $zero, lower_b
