@@ -29,6 +29,9 @@ References
 `MARS syscalls
 <https://github.com/MIPT-ILab/mipt-mips/wiki/MARS-syscalls>`_
 
+`Subroutines/Functions in MIPS
+<http://people.cs.pitt.edu/~xujie/cs447/Mips/sub.html>`_
+
 `NASM
 <http://www.nasm.us/>`_
 
