@@ -8,7 +8,7 @@ Network Programming
 `Beej's Guide to Network Programming
 <http://beej.us/guide/bgnet/>`_
 
-`Winsock Programmer’s FAQ
+`Winsock Programmer's FAQ
 <http://tangentsoft.net/wskfaq/>`_
 
 Exam
