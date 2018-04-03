@@ -5,14 +5,14 @@ Mạng máy tính
 Network Programming
 ===================
 
-`Learn Winsock
-<winsock.rst>`_
-
 `Beej's Guide to Network Programming
 <http://beej.us/guide/bgnet/>`_
 
 `Winsock Programmer's FAQ
 <http://tangentsoft.net/wskfaq/>`_
+
+`Using Winsock
+<https://msdn.microsoft.com/en-us/library/windows/desktop/ms740632(v=vs.85).aspx>`_
 
 Exam
 ====
