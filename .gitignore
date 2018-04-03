@@ -1,12 +1,13 @@
 *.exe
-*.out
-*.o
 *.h.gch
+*.o
+*.out
 *.stackdump
 tags
 
 # Visual studio
 Debug/
 Release/
+*.opensdf
 *.sdf
 *.suo
