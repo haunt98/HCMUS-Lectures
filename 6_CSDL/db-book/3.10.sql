@@ -1,16 +1,16 @@
-# employee (employee name, street, city)
-# works (employee name, company name, salary)
-# company (company name, city)
-# manages (employee name, manager name)
+-- employee (employee name, street, city)
+-- works (employee name, company name, salary)
+-- company (company name, city)
+-- manages (employee name, manager name)
 
-# Modify the database so that “Jones” now lives in “Newtown”.
+-- Modify the database so that “Jones” now lives in “Newtown”.
 UPDATE employee
 	SET city = 'Newtown'
 	WHERE employee_name = 'Jones'
 
-# Give all managers of “First Bank Corporation” a 10 percent raise
-# unless the salary becomes greater than $100,000; in such cases, give
-# only a 3 percent raise.
+-- Give all managers of “First Bank Corporation” a 10 percent raise
+-- unless the salary becomes greater than $100,000; in such cases, give
+-- only a 3 percent raise.
 UPDATE works w
 	SET salary = salary * (
 		case
