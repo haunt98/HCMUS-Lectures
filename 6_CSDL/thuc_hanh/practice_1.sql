@@ -269,7 +269,7 @@ GO
 -- Cho biết mã và tên phi công có khả năng lái tất cả các máy bay của hãng "Airbus"
 select n.manv, n.ten
 from nhanvien n
-where not exists ((select maloai
+where n.loainv = 1 and not exists ((select maloai
 		from loaimb
 		where hangsx = 'Airbus')
 		except
@@ -298,6 +298,7 @@ select avg(luong)
 from nhanvien
 where loainv = 1;
 
+-- ???
 -- Với mỗi loại máy bay, cho biết số lượng chuyến bay đã bay trên loại máy bay đó  hạ cánh xuống sân bay ORD. 
 -- Xuất ra mã loại máy bay, số lượng chuyến bay.
 select m.maloai, count(*)
@@ -312,3 +313,154 @@ select distinct n.ten
 from nhanvien n join phancong p on n.manv = p.manv
 	join chuyenbay c on c.macb = p.macb
 where p.macb = '100' and c.sbdi = 'slc'
+
+-- Cho biết lương trung bình của các nhân viên không phải là phi công.
+select avg(luong)
+from nhanvien
+where loainv = 0;
+
+-- Với mỗi sân bay (SBDEN), cho biết số lượng chuyến bay hạ cánh xuống sân bay đó. 
+-- Kết quả được sắp xếp theo thứ tự tăng dần của sân bay đến.
+select sbden, count(macb)
+from chuyenbay 
+group by sbden
+order by count(macb);
+
+-- Cho biết sân bay (SBDI) và 
+-- số lượng chuyến bay có nhiều hơn 2 chuyến bay xuất phát trong khoảng 10 giờ đến 22 giờ.
+select sbdi, count(macb)
+from chuyenbay
+where giodi between '10:00' and '22:00'  
+group by sbdi
+having count(macb) > 2;
+
+-- Cho biết tên nhân viên được phân công đi nhiều chuyến bay nhất.
+select n.ten
+from phancong p join nhanvien n on p.manv = n.manv
+group by p.manv, n.ten
+having count(*) >= all (select count(*)
+						from phancong p2 join nhanvien n2 on p2.manv = n2.manv
+						group by p2.manv);
+
+-- Cho biết ngày đi nào mà có tất cả các loại máy bay của hãng "Boeing" tham gia.
+insert into lichbay (ngaydi, macb, sohieu, maloai) values
+	('2000-10-31', '991', 22, 'B757')
+
+select distinct l.ngaydi
+from lichbay l
+where not exists ((select distinct maloai
+				from loaimb
+				where hangsx = 'Boeing')
+				except
+				(select distinct maloai
+				from lichbay l2
+				where l2.ngaydi = l.ngaydi));
+
+-- Cho biết mã loại và số hiệu máy bay đã từng xuất phát tại sân bay MIA. 
+-- Các dòng dữ liệu xuất ra không được phép trùng lắp.
+select l.maloai, l.sohieu
+from lichbay l join chuyenbay c on l.macb = c.macb 
+where c.sbdi = 'mia'
+
+-- Cho biết thông tin của phi công (tên, địa chỉ, điện thoại) lái nhiều chuyến bay nhất.
+select ten, dchi, dthoai 
+from nhanvien 
+where manv in (
+	select p.manv
+	from phancong p join nhanvien n on p.manv = n.manv
+	where n.loainv = 1
+	group by p.manv
+	having count(*) >= all (select count(*)
+						from phancong p2 join nhanvien n2 on p2.manv = n2.manv
+						where n2.loainv = 1
+						group by p2.manv));
+
+-- Cho biết mã chuyến bay có thời gian bay ít nhất. Xuất ra mã chuyến bay và thời gian bay.
+select macb, datediff(minute, giodi, gioden)
+from chuyenbay
+where datediff(minute, giodi, gioden) <= all(
+	select datediff(minute, giodi, gioden)
+	from chuyenbay
+);
+
+-- Với mỗi sân bay (SBDI), cho biết số lượng chuyến bay xuất phát từ sân bay đó, 
+-- sắp xếp theo thứ tự tăng dần của sân bay xuất phát.
+select sbdi, count(macb)
+from chuyenbay
+group by sbdi
+order by sbdi;
+
+-- Cho biết tên nhân viên (không phải là phi công) được phân công bay vào tất cả các chuyến bay có mã 100.
+select n.ten
+from nhanvien n
+where n.loainv = 0 and not exists (
+	(select ngaydi, macb
+	from lichbay
+	where macb = '100')
+	except
+	(select p.ngaydi, p.macb
+	from phancong p
+	where p.manv = n.manv)
+);
+
+-- Cho biết mã chuyến bay có thời gian bay dài nhất. Xuất ra mã chuyến bay và thời gian bay (tính bằng phút).
+select macb, datediff(minute, giodi, gioden)
+from chuyenbay
+where datediff(minute, giodi, gioden) >= all (
+	select datediff(minute, giodi, gioden)
+	from chuyenbay
+);
+
+-- Cho biết mã chuyến bay, ngày đi, cùng với tên, địa chỉ, điện thoại của tất cả những nhân viên được phân công trong chuyến bay đó. 
+-- Sắp xếp theo thứ tự tăng dần của mã chuyến bay và theo ngày đi giảm dần.
+select p.macb, p.ngaydi, n.ten, n.dchi, n.dthoai
+from nhanvien n join phancong p on n.manv = p.manv
+order by p.macb, p.ngaydi desc
+
+-- Cho biết sân bay (SBDEN) mà số lượng chuyến bay của sân bay có ít chuyến bay đáp xuống nhất.
+select sbden 
+from chuyenbay 
+group by sbden
+having count(macb) <= all(
+	select count(macb)
+	from chuyenbay
+	group by sbden
+); 
+
+-- Cho biết loại máy bay của hãng “Boeing” nào có tham gia vào tất cả các ngày đi.
+select distinct l.maloai 
+from loaimb l
+where l.hangsx = 'Boeing' and not exists
+(
+	(select distinct ngaydi
+	from lichbay)
+	except
+	(select distinct lb.ngaydi
+	from lichbay lb
+	where lb.maloai = l.maloai)
+);
+
+-- Cho biết tên nhân viên được phân công đi nhiều chuyến bay nhất.
+select ten
+from nhanvien n join phancong p on n.manv = p.manv
+group by p.manv, n.ten 
+having count(*) >= all(
+	select count(*)
+	from phancong
+	group by manv
+)
+
+-- Cho biết mã các chuyến bay chỉ bay với máy bay số hiệu 10 và mã loại B747.
+(select distinct macb
+from lichbay
+where sohieu = 10 and maloai = 'B747')
+except
+(select distinct macb
+from lichbay
+where sohieu != 10 or maloai != 'B747')
+
+-- Với mỗi sân bay (SBDI), cho biết số lượng chuyến bay xuất phát theo từng ngày. 
+-- Xuất ra mã sân bay đi, ngày và số lượng.
+select c.sbdi, l.ngaydi, count(l.macb)
+from lichbay l join chuyenbay c on l.macb = c.macb
+group by c.sbdi, l.ngaydi
