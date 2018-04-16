@@ -14,6 +14,9 @@ MIPS
 NASM
 =====
 
+`SASM - simple crossplatform IDE for NASM, MASM, GAS and FASM assembly languages
+<https://github.com/Dman95/SASM>`_
+
 ::
 
         # [format] can be       elf32, elf64 (Linux)
