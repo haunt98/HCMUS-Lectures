@@ -38,5 +38,11 @@ References
 `NASM
 <http://www.nasm.us/>`_
 
-`Some resources
+`Some resources for NASM
 <https://www.csee.umbc.edu/portal/help/nasm/>`_
+
+`x86 Assembly Guide
+<http://www.felixcloutier.com/x86/>`_
+
+`x86 and amd64 instruction reference
+<http://www.felixcloutier.com/x86/>`_
