@@ -126,3 +126,77 @@ begin
 	else
 		print 'Khong the xoa'
 end
+
+-- Kiểm tra quy định của 2 giáo viên a, b: Nếu a là trưởng bộ môn c của b thì lương của a phải cao
+-- hơn lương của b. (a, b: mã giáo viên)
+go
+create procedure sp_check_gv
+	@magv1 char(3),
+	@magv2 char(3)
+as
+begin
+	declare @dung_quy_dinh int
+	set @dung_quy_dinh = 1
+	if(@magv1 in (
+	select b.truongbm
+	from giaovien g join bomon b on g.mabm = b.mabm
+	where g.magv = @magv2))
+	begin
+		declare @luong1 numeric(6, 1), @luong2 numeric(6, 1)
+		select @luong1 = luong
+		from giaovien
+		where magv = @magv1;
+		select @luong2 = luong
+		from giaovien
+		where magv = @magv2;
+		if(@luong1 <= @luong2)
+			set @dung_quy_dinh = 2
+	end
+
+	if(@dung_quy_dinh = 1)
+		print 'Dung quy dinh'
+	else
+		print 'Sai quy dinh'
+end
+go
+exec sp_check_gv '002', '003'
+
+-- Thêm một giáo viên: Kiểm tra các quy định: Không trùng tên, tuổi > 18, lương > 0
+go
+create procedure sp_them_gv
+	@magv char(3),
+	@hoten nvarchar(50),
+	@luong numeric(6,1),
+	@phai nchar(3),
+	@ngsinh date,
+	@diachi nvarchar(100),
+	@gvqlcm char(3),
+	@mabm nchar(4)
+as
+begin
+	declare @dung_quy_dinh int
+	set @dung_quy_dinh = 1
+	if(@hoten in (
+	select hoten
+	from giaovien))
+		set @dung_quy_dinh = 0
+	if(datediff(y, @ngsinh, getdate()) <= 18)
+		set @dung_quy_dinh = 0
+	if(@luong < 0)
+		set @dung_quy_dinh = 0
+	if(@dung_quy_dinh = 1)
+	begin
+		insert into giaovien(magv, hoten, luong, phai, ngsinh, diachi, gvqlcm, mabm) values
+			(@magv, @hoten, @luong, @phai, @ngsinh, @diachi, @gvqlcm, @mabm)
+		print 'Them thanh cong'
+	end
+	else
+		print 'Them that bai'
+end
+go
+exec sp_them_gv '020', N'An', 2000.0, null, '02-03-2009', null, null, null
+select * from giaovien
+
+-- Mã giáo viên được xác định tự động theo quy tắc: Nếu đã có giáo viên 001, 002, 003 thì MAGV
+-- của giáo viên mới sẽ là 004. Nếu đã có giáo viên 001, 002, 005 thì MAGV của giáo viên mới
+-- là 003.
