@@ -14,9 +14,9 @@ VALUES('Basavaraj','Biradar'),
       ('Kalpana','Patil')
 
 go
-CREATE TRIGGER INSERTEDAndDELETEDTableExample
+alter TRIGGER INSERTEDAndDELETEDTableExample
 ON Customer
-FOR INSERT, UPDATE, DELETE
+for INSERT, UPDATE, DELETE
 AS
 BEGIN
 	 print '**OLD table**'
