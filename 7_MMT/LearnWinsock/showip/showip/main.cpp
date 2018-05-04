@@ -48,15 +48,20 @@ int main(int argc, char *argv[])
 	struct addrinfo *p;
 	for (p = result; p != NULL; p = p->ai_next) {
 		if (p->ai_family == AF_INET) {
-			char ip4[INET_ADDRSTRLEN];
-			inet_ntop(p->ai_family, &(p->ai_addr), ip4,
-				  INET_ADDRSTRLEN);
-			printf("IPv4 %s\n", ip4);
+			char ip4_str[INET_ADDRSTRLEN];
+			struct sockaddr_in *ipv4 =
+			    (struct sockaddr_in *)p->ai_addr;
+			void *addr = &(ipv4->sin_addr);
+			inet_ntop(p->ai_family, addr, ip4_str, INET_ADDRSTRLEN);
+			printf("IPv4 %s\n", ip4_str);
 		} else {
-			char ip6[INET6_ADDRSTRLEN];
-			inet_ntop(p->ai_family, &(p->ai_addr), ip6,
+			char ip6_str[INET6_ADDRSTRLEN];
+			struct sockaddr_in6 *ipv6 =
+			    (struct sockaddr_in6 *)p->ai_addr;
+			void *addr = &(ipv6->sin6_addr);
+			inet_ntop(p->ai_family, addr, ip6_str,
 				  INET6_ADDRSTRLEN);
-			printf("IPv6 %s\n", ip6);
+			printf("IPv6 %s\n", ip6_str);
 		}
 	}
 
