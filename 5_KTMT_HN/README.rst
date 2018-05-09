@@ -64,3 +64,6 @@ Learn cracking
 
 `Microcorruption
 <https://microcorruption.com/>`_
+
+`crackmes.cf
+<http://crackmes.cf/>`_
