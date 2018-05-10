@@ -59,8 +59,17 @@ Instructions
 Learn cracking
 ==============
 
+Tools
+-----
+
 `OllyDbg
 <http://www.ollydbg.de/>`_
+
+`x64dbg
+<https://x64dbg.com/>`_
+
+Training
+--------
 
 `Microcorruption
 <https://microcorruption.com/>`_
