@@ -76,3 +76,6 @@ Training
 
 `crackmes.cf
 <http://crackmes.cf/>`_
+
+`crackmes.one
+<https://crackmes.one/>`_
